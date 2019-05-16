@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar style="background:transparent;">
+    <ion-button (click)=navigateBack() fill=clear style="color:black;"><ion-icon name="ios-arrow-back"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-card style='background-color: orange; height: 430px; margin-top: 50px;'>
+  <ion-card-content>
+    <button (click)='openCamera()' class= "center" style="background-color: transparent; margin-top: 50px; width:200px; height: 200px">
+      <ion-img src="assets/camera.svg"></ion-img>
+    </button>
+  </ion-card-content>
+</ion-card>
+
+
+<h1 style="margin-top: 30px; text-align: center; font-weight: lighter;">Sube una foto de lo ocurrido</h1>
+<ion-button (click)='navigateFoward()' class='center' style='width:200px; margin-top: 20px;' expand=block>Cotizar</ion-button>
+</ion-content>

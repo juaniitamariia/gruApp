@@ -1,0 +1,71 @@
+<ion-header no-border>
+    <ion-toolbar class="arrow-btn" style="background:whitesmoke;">
+      <ion-button (click)=navigateBack() fill=clear style="color:black;"><ion-icon name=md-arrow-round-back></ion-icon></ion-button>
+      <ion-title style="font-weight:300;">Agregar Nuevo Vehículo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+ <ion-content>
+    <ion-card class=add-towing-card>
+      <h5 class=label-input>Marca</h5>
+      <ion-input [(ngModel)]="make" type=“text” class=name></ion-input>
+      <!-- <select #select [(ngModel)]="make" class="selector">
+      <option *ngFor="let item of list" [value]="item.id">{{item.name}}</option>
+    </select> -->
+      <!-- <select [(ngModel)]="make" class="selector">
+        <ion-option value="Hyundai">Hyundai</ion-option>
+        <ion-option value="Toyota">Toyota</ion-option>
+        <ion-option value="Ford">Ford</ion-option>
+        <ion-option value="Chevrolet">Chevrolet</ion-option>
+        <ion-option value="Jeep">Jeep</ion-option>
+        <ion-option value="Mini">Mini</ion-option>
+        <ion-option value="Chrysler">Chrysler</ion-option>
+        <ion-option value="Nissan">Nissan</ion-option>
+        <ion-option value="Subaru">Subary</ion-option>
+        <ion-option value="Honda">Honda</ion-option>
+        <ion-option value="Acura">Acura</ion-option>
+        <ion-option value="Dodge">Dodge</ion-option>
+        <ion-option value="BMW">BWM</ion-option>
+        <ion-option value="Porsche">Porsche</ion-option>
+        <ion-option value="Buick">Buick</ion-option>
+        <ion-option value="Cadillac">Cadillac</ion-option>
+        <ion-option value="Fiat">Fiat</ion-option>
+        <ion-option value="GMC">GMC</ion-option>
+        <ion-option value="Infiniti">Infiniti</ion-option>
+        <ion-option value="Jaguar">Jaguar</ion-option>
+        <ion-option value="Kia">Kia</ion-option>
+        <ion-option value="LandRover">Land Rover</ion-option>
+        <ion-option value="Lexus">Lexus</ion-option>
+        <ion-option value="Mazda">Mazda</ion-option>
+        <ion-option value="Mitsubishi">Mitsubishi</ion-option>
+        <ion-option value="Pontiac">Pontiac</ion-option>
+        <ion-option value="Ram">Ram</ion-option>
+        <ion-option value="Tesla">Tesla</ion-option>
+        <ion-option value="Volkswagen">Volkswagen</ion-option>
+        <ion-option value="Volvo">Volvo</ion-option>
+        <ion-option value="Suzuki">Suzuki</ion-option>
+        <ion-option value="Smart">Smart</ion-option>
+        <ion-option value="Mercedes">Mecedes</ion-option>
+        <ion-option value="Genesis">Genesis</ion-option>
+      </select> -->
+
+   
+      <h5 class=label-input>Modelo</h5>
+      <ion-input [(ngModel)]="model" type=“text” class=name></ion-input>
+   
+      <h5 class=label-input>Año</h5>
+      <ion-input [(ngModel)]="year" type=“text” class=name></ion-input>
+   
+      <h5 class=label-input>Tablilla</h5>
+      <ion-input [(ngModel)]="licensePlateNum" type=“text” class=name></ion-input>
+   
+      <h5 class=label-input>Color</h5>
+      <ion-input [(ngModel)]="color" type=“text” class=name></ion-input>
+   
+    </ion-card>
+
+   </ion-content>
+
+  
+  <ion-button (click)="validateInputs()" class="addbutton">AGREGAR</ion-button>
+  

@@ -1,0 +1,47 @@
+<ion-header no-border style="border-bottom: solid rgb(196, 196, 196) 1px;">
+  <ion-toolbar style="background:whitesmoke;">
+    <ion-button (click)=navigateBack() fill=clear class="arrow-btn" style="color:black;"><ion-icon name=md-arrow-round-back></ion-icon></ion-button>
+    <ion-title class="choose-car-title" style="font-weight:300;">Escoger carro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list [(ngModel)]="carro" lines=none > 
+    <ion-item id="cars" *ngFor="let car of cars">
+        <ion-card class="card">
+          <button class="boton" (click)=navigate(car)>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="4">
+                        <ion-img style="margin-top: 5px; height: 50px;" src="assets/document.png"></ion-img>
+                    </ion-col>
+                    <ion-col size="6">
+                        <h4 style="text-align: left; margin: 0px;">{{car.get('make')}}</h4>
+                        <h6 style="text-align: left; color: lightgray; font-size: 15px; margin: 0px;">Tablilla: {{car.get('licensePlateNum')}}</h6>
+                        <h6 style="text-align: left; color: lightgray; font-size: 15px; margin: 0px;">Año: {{car.get('year')}}</h6>
+                        <h6 style="text-align: left; color: lightgray; font-size: 15px; margin: 0px;">Color: {{car.get('color')}}</h6>
+                    </ion-col>
+                    <!-- <ion-col size="4">
+                        <ion-radio [value]="car"></ion-radio>
+                   <input type="radio" name="car" value={{car.id}} style="margin: 17px; float: right;">
+                    </ion-col> -->
+                </ion-row>
+            </ion-grid>
+          </button>
+        </ion-card>
+    </ion-item>
+</ion-list>
+
+
+   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button href="/addcar" style="border-radius: 50%; border: solid white 2px;">
+        <ion-icon name="md-add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+  </ion-content>
+
+  <ion-button expand='block' (click)=add() class=add-car>Añadir Carro</ion-button>
+  <!-- <ion-button expand='block' (click)=navigate() class=select-button>Seleccionar</ion-button> -->
+
+

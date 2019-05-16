@@ -1,0 +1,31 @@
+<ion-header no-border>
+  <ion-toolbar class="arrow-btn" style="background:whitesmoke;">
+    <ion-button (click)=navigateBack() fill=clear style="color:black;"><ion-icon name=md-arrow-round-back></ion-icon></ion-button>
+    <ion-title style="font-weight:300;">Edita el Vehículo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class=add-towing-card>
+    <h5 class=label-input>Marca</h5>
+    <ion-input [(ngModel)]="make" type=“text” class=name></ion-input>
+ 
+    <h5 class=label-input>Modelo</h5>
+    <ion-input [(ngModel)]="model" type=“text” class=name></ion-input>
+ 
+    <h5 class=label-input>Año</h5>
+    <ion-input [(ngModel)]="year" type=“text” class=name></ion-input>
+ 
+    <h5 class=label-input>Tablilla</h5>
+    <ion-input [(ngModel)]="licensePlateNum" type=“text” class=name></ion-input>
+ 
+    <h5 class=label-input>Color</h5>
+    <ion-input [(ngModel)]="color" type=“text” class=name></ion-input>
+ 
+  </ion-card>
+
+ </ion-content>
+
+
+<ion-button (click)="save()" class="addbutton">GUARDAR</ion-button>
+

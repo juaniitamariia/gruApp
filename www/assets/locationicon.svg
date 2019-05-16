@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="96px" viewBox="0 0 21 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Choose-Vehicle-type" transform="translate(-16.000000, -538.000000)">
+            <g id="Intro" transform="translate(0.000000, 200.000000)">
+                <g id="Group-2" transform="translate(16.000000, 338.000000)">
+                    <path d="M10.5,20.5 L10.5,72.0024271" id="Line-2" stroke="#C8C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,4"></path>
+                    <g id="ic_current">
+                        <circle id="Oval" stroke="#4CE5B1" stroke-width="2" fill="#FFFFFF" cx="10.5" cy="10.5" r="9.5"></circle>
+                        <circle id="Oval" fill="#4CE5B1" cx="10.5" cy="10.5" r="5.25"></circle>
+                    </g>
+                    <g id="ic_pin" transform="translate(1.000000, 71.000000)" fill="#F52D56">
+                        <path d="M9.25925926,24.0831163 C8.31976997,24.0831163 3.8382071,18.589048 2.66022859,16.6750307 C0.970113053,13.9288768 0,12.312162 0,9.25925926 C0,4.14551158 4.14551158,0 9.25925926,0 C14.3730069,0 18.5185185,4.14551158 18.5185185,9.25925926 C18.5185185,12.2963594 17.4715581,13.9239079 15.7757794,16.6750307 C14.6726255,18.4647172 10.1987486,24.0831163 9.25925926,24.0831163 Z M9.25925926,13.8888889 C11.8161331,13.8888889 13.8888889,11.8161331 13.8888889,9.25925926 C13.8888889,6.70238542 11.8161331,4.62962963 9.25925926,4.62962963 C6.70238542,4.62962963 4.62962963,6.70238542 4.62962963,9.25925926 C4.62962963,11.8161331 6.70238542,13.8888889 9.25925926,13.8888889 Z" id="Oval"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

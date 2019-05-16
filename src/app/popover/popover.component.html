@@ -1,0 +1,241 @@
+<ion-content>
+<div *ngIf="service == 'grua'">
+    <ion-img class=img style="width: 50%;" src="assets/grua.svg"></ion-img>
+    <div class=title>
+        <h1 style="font-size: 20px; font-weight: 400;">¿Ayuda para remolque?</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'grua'">
+    <!-- condicion de GRUA -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="font-size: 15px; margin-top: 5px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio de enganche........$30.00</p>
+            <!-- PRECIO servicio de enganche -->
+            <p style="font-size: 15px; padding: 0px; margin-top: 0px; margin-left: 15px; margin-bottom: 0px;">Precio por milla............$3.00/milla</p>
+            <!-- PRECIO calculado por milla y las millas -->
+
+            <!-- <p class=descr>Tiene un costo total de</p>
+            <h4 class=total>$90.00</h4> -->
+            <!-- COSTO TOTAL GRUA -->
+        </div>
+
+        <div class=radioDiv>
+
+            <ion-radio-group [(ngModel)]="lugar">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="6">
+                            <div class=items>
+                                <ion-item lines="none">
+                                    <ion-label class=lugar>Carretera</ion-label>
+                                    <ion-radio value="Carretera" (click)='Carretera()' mode="md" slot="start"></ion-radio>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                        <ion-col size="6">
+                            <div class=items>
+                                <ion-item lines="none">
+                                    <ion-label class=lugar>Sótano</ion-label>
+                                    <ion-radio value="Sotano" (click)='Sotano()' mode="md" slot="start"></ion-radio>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="6">
+                            <div>
+                                <ion-item lines="none">
+                                    <ion-label class=lugar>Multipiso</ion-label>
+                                    <ion-radio value="Multipiso" (click)='Multipiso()' mode="md" slot="start" id='multipiso'></ion-radio>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                        <ion-col size="6">
+                            <div>
+                                <ion-item lines="none">
+                                    <ion-label class=lugar>Otros</ion-label>
+                                    <ion-radio value="Otros" (click)='Otros()' mode="md" slot="start"></ion-radio>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-radio-group>
+        </div>
+    </ion-card>
+
+    <div class="input">
+        <ion-textarea [(ngModel)]="msg" placeholder="Notas"></ion-textarea>
+    </div>
+
+</div>
+<!-- condicion de GRUA -->
+
+<div *ngIf="service == 'goma'">
+    <ion-img class=img style="width: 70%;" src="assets/gomavacia.svg"></ion-img>
+    <!-- condicion de GOMA VACIA -->
+    <div class=title>
+        <h1 style=" margin-top: 50px; text-align: center; font-size: 20px; font-weight: 400; margin-bottom: 30px;">¿Ayuda para poner repuesta?</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'goma'">
+    <!-- condicion de GOMA VACIA -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="text-align: center; font-size: 15px; margin-top: 70px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio............$30.00</p>
+            <!-- PRECIO servicio de GOMA VACIA -->
+
+            <p class=descr style="text-align: center;">Tiene un costo total de</p>
+            <h4 class=total>$30.00</h4>
+            <!-- COSTO TOTAL GOMA-->
+        </div>
+
+        <div class=radioDiv>
+        </div>
+    </ion-card>
+
+    <div class="input">
+        <ion-textarea [(ngModel)]="msg" placeholder="Notas"></ion-textarea>
+    </div>
+
+</div>
+<!-- condicion de GOMA VACIA-->
+
+<div *ngIf="service == 'gasolina'">
+    <ion-img class=img style="width: 20%;" src="assets/gasolina.svg"></ion-img>
+    <!-- condicion de GASOLINA -->
+    <div class=title>
+        <h1 style=" margin-top: 50px; text-align: center; font-size: 20px; font-weight: 400; margin-bottom: 30px;">¿Necesitas gasolina?</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'gasolina'">
+    <!-- condicion de GASOLINA -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="text-align: center; font-size: 15px; margin-top: 70px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio............$30.00</p>
+            <!-- PRECIO servicio GASOLINA -->
+            <p style="text-align: center; font-size: 15px; margin-top: 10px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Gasolina............$5.00</p>
+            <!-- PRECIO GASOLINA -->
+
+            <p class=descr style="text-align: center;">Tiene un costo total de</p>
+            <h4 class=total>$35.00</h4>
+            <!-- COSTO TOTAL GASOLINA-->
+        </div>
+
+        <div class=radioDiv>
+        </div>
+    </ion-card>
+    <div class="input">
+        <ion-textarea [(ngModel)]="msg" placeholder="Notas"></ion-textarea>
+    </div>
+</div>
+<!-- condicion de GASOLINA-->
+
+<div *ngIf="service == 'bateria'">
+    <ion-img class=img style="width: 40%;" src="assets/bateria.svg"></ion-img>
+    <!-- condicion de BATERIA-->
+    <div class=title>
+        <h1 style=" margin-left: 30px; margin-top: 70px; text-align: center; font-size: 20px; font-weight: 400; margin-bottom: 30px;">¿Carga de bateria?</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'bateria'">
+    <!-- condicion de BATERIA -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="text-align: center; font-size: 15px; margin-top: 70px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio............$30.00</p>
+            <!-- PRECIO servicio GASOLINA -->
+            <p class=descr style="text-align: center;">Tiene un costo total de</p>
+            <h4 class=total>$30.00</h4>
+            <!-- COSTO TOTAL BATERIA-->
+        </div>
+
+        <div class=radioDiv>
+        </div>
+    </ion-card>
+
+    <div class="input">
+        <ion-textarea placeholder="Notas"></ion-textarea>
+    </div>
+</div>
+<!-- condicion de BATERIA-->
+
+<div *ngIf="service == 'llaves'">
+    <ion-img class=img style="width: 35%;" src="assets/llaves.svg"></ion-img>
+    <!-- condicion de CERRAJERO -->
+    <div class=title>
+        <h1 style=" margin-top: 80px; text-align: center; font-size: 20px; font-weight: 400; margin-bottom: 30px;">¿Ayuda para abrir el carro?</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'llaves'">
+    <!-- condicion de CERRAJERO -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="text-align: center; font-size: 15px; margin-top: 70px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio............$30.00</p>
+            <!-- PRECIO servicio CERRAJERO -->
+
+            <p class=descr style="text-align: center;">Tiene un costo total de</p>
+            <h4 class=total>$30.00</h4>
+            <!-- COSTO TOTAL CERRAJERO-->
+        </div>
+
+        <div class=radioDiv>
+        </div>
+    </ion-card>
+    <div class="input">
+        <ion-textarea [(ngModel)]="msg" placeholder="Notas"></ion-textarea>
+    </div>  
+</div>
+<!-- condicion de CERRAJERO-->
+
+<div *ngIf="service == 'especial'">
+    <ion-img class=img style="width: 60%;" src="assets/choqueicon.svg"></ion-img>
+    <!-- condicion de SERVICIO ESPECIAL -->
+    <div class=title>
+        <h1 style=" margin-left: 40px; margin-top: 80px; text-align: center; font-size: 20px; font-weight: 400; margin-bottom: 30px;">Servicio especial</h1>
+    </div>
+</div>
+
+<div *ngIf="service == 'especial'">
+    <!-- condicion de SERVICIO ESPECIAL -->
+
+    <ion-card padding class=card>
+        <div class=precios>
+            <p style="text-align: center; font-size: 15px; margin-top: 70px; margin-bottom: 5px; padding: 0px; margin-left: 15px;">Servicio de enganche........$300.00</p>
+            <!-- PRECIO servicio SERVICIO ESPECIAL -->
+            <p style="text-align: center; font-size: 15px; padding: 0px; margin-top: 0px; margin-left: 15px; margin-bottom: 0px;">Precio por milla.........$3.00</p>
+            <!-- PRECIO calculado por milla y las millas -->
+
+            <p class=descr style="text-align: center;">Tiene un costo total de</p>
+            <h4 class=total>$303.00</h4>
+            <!-- COSTO TOTAL SERVICIO ESPECIAL-->
+
+        </div>
+
+        <div class=radioDiv>
+        </div>
+    </ion-card>
+
+
+    <div class="input">
+        <ion-input [(ngModel)]="msg" placeholder="Notas"></ion-input>
+    </div>
+</div>
+<!-- condicion de SERVICIO ESPECIAL-->
+
+<div>
+    <!-- Botones -->
+    <button (click)='close()' style="margin-top: 30px; height: 50px; width:150px; background: rgb(252, 252, 252); color: rgb(211, 53, 53); font-size: 15px; border: solid 1px lightgray;">Cancelar</button>
+    <button (click)='navigate()' style="margin-top: 30px; height: 50px; width:150px; background: rgb(252, 252, 252); color: #4ce4b1; font-size: 15px; border: solid 1px lightgray;">Solicitar</button>
+</div>
+</ion-content>

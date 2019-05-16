@@ -1,0 +1,79 @@
+<button class="boton" (click)='navigate()'><ion-icon style="color:gray;" class=menuBtn name="ios-arrow-back"></ion-icon></button>
+<!-- <ion-menu side="start" menuId="custom" class="my-custom-menu">
+    <ion-header>
+      <ion-toolbar class="menuBar">
+        <ion-img src= "assets/profile.svg" class="profilePic" style="width: 100px;"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item ion-buttons href="/registro" lines="none">Inicio</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/Wallet.svg"></ion-img>Método de Pago</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/historial.svg"></ion-img>Historial</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/carro.svg"></ion-img>Mi vehículo</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/invitefriends.svg"></ion-img>Invitar amigos</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/Settings.svg"></ion-img>Ajustes</ion-item>
+        <ion-item ion-buttons href="/registro" lines="none"><ion-img padding src= "assets/logout.svg"></ion-img>Cerrar</ion-item>
+      </ion-list>
+    </ion-content>
+
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-menu> -->
+
+ <!-- menu space -->
+  <ion-card class=mainMenu>
+      <ion-card-content>
+        <div margin style="width: 300px">
+          <ion-img class=iconCar style="fill:black;" src= "assets/carro.svg"></ion-img>
+
+          <div style="margin-left: 70px; margin-right: 5px;" class=distancia>
+            <h6 style="font-size: 12px;">DISTANCIA</h6>
+              <p style="position: absolute; margin-top: 20px; color: black;">20.2 mi</p></div> <!-- distance front view -->
+
+          <div style="margin-right: 5px;" class=distancia>
+            <h6 style="font-size: 12px;">TIEMPO</h6>
+              <p style="position: absolute; margin-top: 20px; color: black;">20 min</p></div> <!-- time front view -->
+
+          <div class=distancia><h6 style="font-size: 12px;">PRECIO</h6>
+            <p style="position: absolute; margin-top: 20px; color: black;">$90.00</p></div> <!-- price front view -->
+            </div>
+
+          <ion-button (click)='goFoward()' style="margin-top: 10px;" expand="block">Solicitar</ion-button>
+       
+      </ion-card-content>
+  </ion-card>
+
+  <!-- Map view -->
+<ion-header>
+ 
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <div  id='map2' style='width: 100%; height: 100vh;'>  
+      </div>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+            body { margin:0; padding:0; }
+            #map { position:absolute; top:0; bottom:0; width:100%; }
+      </style>
+    
+</ion-header>
+
+<ion-content>   
+
+   <div id='map2'></div>
+
+    <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoianJvc2FyaW8yNDEiLCJhIjoiY2pzdXF6NmJiMmgzNzQ5cnJkMjFsa285NSJ9.a6Z7HjeR6q74TBxQhXPy5A';
+            const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/jrosario241/cjsuqzyev4cip1fo3cv5c3vr5',
+            center: [-66.5901489, 18.2208328],
+            zoom: 13.6
+            });
+    </script>
+
+
+</ion-content>

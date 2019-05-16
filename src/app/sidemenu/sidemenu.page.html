@@ -1,0 +1,134 @@
+<!-- sidemenu code -->
+<button class="boton" (click)='openCustom()'>
+    <ion-icon class=menuBtn name="menu"></ion-icon>
+</button>
+<ion-menu side="start" menuId="custom" class="my-custom-menu">
+    <ion-header no-border>
+        <ion-toolbar class="menuBar">
+            <ion-img src="assets/logowhite.png" class="logo" style="width: 200px;"></ion-img>
+            <h6 class=center style="text-align: center; font-weight: 300; font-size: 20px; color: white;">{{user}}</h6>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item ion-buttons (click)='close()' lines="none">
+                <ion-img padding style="padding-right: 10px; width: 60px; margin-right: 0px; padding-left: 10px;"
+                    src="assets/homegruapp.svg"></ion-img>Inicio
+            </ion-item>
+            <ion-item ion-buttons (click)=metodoPago() lines="none">
+                <ion-img style="width: 55px;" padding src="assets/Wallet.svg"></ion-img>Método de Pago
+            </ion-item>
+            <ion-item ion-buttons (click)='solicitudes()' lines="none">
+                <ion-icon style="width: 55px; color: rgb(189, 189, 189)" name="person-add"></ion-icon>Solicitudes
+            </ion-item>
+            <ion-item ion-buttons (click)='navHistorial()' lines="none">
+                <ion-img style="height: 35px; width: 58px; margin: 0px;" src="assets/historial.png"></ion-img>Historial
+            </ion-item>
+            <ion-item ion-buttons (click)='miVehiculo()' lines="none">
+                <ion-img padding class="imagen-carro" src="assets/carro.svg"></ion-img>Mi vehículo
+            </ion-item>
+            <ion-item ion-buttons (click)=inviteFriends() lines="none">
+                <ion-img style="height: 35px; width: 58px; margin: 0px;" src="assets/invite.png"></ion-img>Invitar amigos
+            </ion-item>
+            <ion-item ion-buttons (click)=profile() lines="none">
+                <ion-img style="width: 60px;" padding src="assets/Settings.svg"></ion-img>Ajustes
+            </ion-item>
+            <ion-item ion-buttons (click)='logOut()' lines="none">
+                <ion-img style="width: 55px;" padding src="assets/logout.png"></ion-img>Cerrar
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <ion-router-outlet main></ion-router-outlet>
+</ion-menu>
+
+<ion-card class=mainMenu>
+        <div class="instruction" margin=10px expand="block">
+                <h5 style="padding: 15px; font-size: 15px; margin-bottom: 0px;">*Escoja el servicio que desea*</h5>
+            </div>
+
+    <!-- Services button icons(1) -->
+    <div class=divElem>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    <button (click)="alerts('grua')" class=btnIcon>
+                        <ion-img style="margin-left: 20px; object-fit: contain;" src="assets/grua.svg"></ion-img>
+                        <h6 style="font-weight: 200; margin-top: 5px; font-size: 12px;">GRÚA</h6>
+                    </button>
+                </ion-col>
+                <ion-col size="4">
+                    <button (click)="alerts('goma')" class=btnIcon>
+                        <ion-img style="object-fit: contain;" src="assets/gomavacia.svg"></ion-img>
+                        <h6 style="font-weight: 200; margin-top: 5px; font-size: 12px;">GOMA</h6>
+                    </button>
+                </ion-col>
+                <ion-col size="4">
+                    <button (click)="alerts('gasolina')" class=btnIcon>
+                        <ion-img style="object-fit: contain; width: 30px; margin-left: 35px;" src="assets/gasolina.svg">
+                        </ion-img>
+                        <h6 style="font-weight: 200; margin-top: 5px; font-size: 12px;">GASOLINA</h6>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <!-- Services button icons(2) -->
+            <ion-row>
+                <ion-col size="4">
+                    <button (click)="alerts('especial')" class=btnIcon2>
+                        <ion-img padding style="object-fit: contain; margin-left: 10px;" src="assets/choqueicon.svg">
+                        </ion-img>
+                        <h6 style="font-weight: 200; margin-top: 0px; font-size: 12px; text-align: center;">SERVICIO
+                            ESPECIAL</h6>
+                    </button>
+                </ion-col>
+                <ion-col size="4">
+                    <button (click)="alerts('bateria')" class=btnIcon2>
+                        <ion-img padding style="object-fit: contain; width: 90px;" src="assets/bateria.svg"></ion-img>
+                        <h6 style="font-weight: 200; margin-top: 0px; font-size: 12px;">BATERÍA</h6>
+                    </button>
+                </ion-col>
+                <ion-col size="4">
+                    <button (click)="alerts('llaves')" class=btnIcon2>
+                        <ion-img padding style="object-fit: contain; width: 75px; margin-left: 15px;"
+                            src="assets/llaves.svg">
+                        </ion-img>
+                        <h6 style="font-weight: 200; margin-top: 0px; font-size: 12px;">CERRAJERO</h6>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+</ion-card>
+
+<!-- Map view -->
+
+<ion-header>
+
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <div id='mapindex' style='width: 100%; height: 70vh;'></div>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</ion-header>
+
+<ion-content>
+
+
+</ion-content>

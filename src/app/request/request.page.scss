@@ -1,0 +1,45 @@
+.precio{
+    color: red;
+    font-weight: 800;
+}
+
+.nombre{
+    font-weight: 800;
+}
+
+.btn-aceptar{
+    --background: rgb(30, 219, 140);
+    --color: white;
+    font-size: 15px;
+    width: 50px;
+}
+
+.btn-declinar{
+    --background:rgb(219, 61, 61);
+    --color: white;
+    font-size: 15px;
+    width: 50px;
+}
+
+.espacio{
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+}
+
+.titulo{
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.explicacion{
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    font-size: 10px;
+}

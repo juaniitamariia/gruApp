@@ -1,0 +1,56 @@
+.header{
+    background-color: #6561AB;
+    height: 230px;
+ }
+
+.passInput{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+    padding: 30px;
+    
+}
+
+.logo{
+    position: absolute;
+     left:0;
+     right:0;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 45px;
+     height: 7%;
+}
+
+.passTitle{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color: white;
+    margin-top: 60px;
+    padding: 30px;
+    text-align: center;
+}
+
+.btnBack{
+    
+    margin-top: 40px !important;
+    --background: transparent;
+    --background-activated: transparent;
+    --box-shadow: none;
+}
+
+.input{
+    border-radius: 10px;
+    border: 1px solid rgb(218,218,218);
+    --padding-start: 15px;
+}
+
+
+   
+   

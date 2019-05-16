@@ -1,0 +1,36 @@
+.header{
+    background:#6561AB;
+    box-shadow: none !important;
+}
+
+.logo{
+     position: absolute;
+     left:0;
+     right:0;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 45px;
+     height: 15%;
+     box-shadow: none !important;
+}
+
+.btnBack{
+    
+    z-index:1000;
+    margin-top: 40px !important;
+    --box-shadow: none;
+}
+
+.boton{
+  background: transparent;
+  text-align: left;
+  width: 100vw;
+}
+
+.right {
+  text-align: right;
+
+}
+.left {
+  text-align: left;
+}

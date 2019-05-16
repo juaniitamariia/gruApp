@@ -1,0 +1,109 @@
+.header{
+    background-color: #6561AB;
+    height: 150px;
+ }
+
+ .logo{
+    position: absolute;
+     left:0;
+     right:0;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 45px;
+     height: 7%;
+}
+
+.titlePayment{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.cardBox{
+    
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+     
+    
+}
+
+.size{
+    
+    height: 40% !important;
+    
+
+}
+
+.btnText{
+    
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    width: 300px;
+    text-align: center;
+    padding: 0;
+    
+    
+}
+
+.btnElemen{
+
+    background-color: transparent !important;
+    
+}
+
+.titlePay{
+margin: 20px;
+text-align: left;
+font-size: 12px;
+font-weight: 300;
+
+}
+
+.textBtn{
+    size: 10%;
+}
+
+.menuTabs{
+    border: none;
+    
+}
+
+.btnBack{
+    --background: transparent;
+    --background-activated: transparent;
+     margin-top: 40px !important;
+     --box-shadow: none;
+}
+
+.card{
+    box-shadow: none;
+    margin-top: 5px;
+}
+
+.tarjeta-icon{
+    height: 30px;
+    width: 30px;
+}
+
+.grid{
+    width: 80vw;
+}
+
+.lista{
+    height: 200px !important;
+}
+
+

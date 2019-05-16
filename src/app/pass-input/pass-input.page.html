@@ -1,0 +1,17 @@
+<div class=header>
+
+  <ion-button class="btnBack" (click)=navigateBack()>
+    <ion-icon class="icon" ios="ios-arrow-back" md="ios-arrow-back"></ion-icon>
+  </ion-button>
+
+    <img class=logo src= "assets/logowhite.png">
+    <h1 class=passTitle padding>Ingrese Contraseña</h1>
+  
+  </div>
+  
+  <div class=passInput>
+      <ion-input [(ngModel)]="password" class=input type="password" placeholder=" Contraseña"></ion-input><br>
+      <ion-input [(ngModel)]="verifiedPassword" class=input type="password" placeholder=" Confirmar Contraseña"></ion-input><br><br>
+    <ion-button expand="block" (click)="confirmPass()">Confirmar</ion-button>
+  </div>
+

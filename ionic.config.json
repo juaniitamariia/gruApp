@@ -1,0 +1,9 @@
+{
+  "name": "GruApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+  
+}
+

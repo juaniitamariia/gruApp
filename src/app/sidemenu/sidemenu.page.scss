@@ -1,0 +1,189 @@
+.my-custom-menu {
+    --width: 285px;
+    z-index: 1000;
+    $menu-ios-boxshadow: none;
+  }
+
+  .boton{
+    position: absolute;
+    margin-left: 20px;
+    width:50px;
+    height:50px;
+    z-index: 100;
+    border-radius: 50%;
+    background-color: #6561ab;
+    box-shadow: 50%;
+    margin-top: 40px;
+  }
+
+  .menuBtn{
+    
+    height: 30px;
+    width: 30px;
+    color: white;
+  }
+
+  .menuColor{
+    
+    color: white;
+  }
+
+  .menuBar{
+    height: 250px;
+    --background: #6561ab;
+  }
+
+  .mainMenu{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 100;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .carDescr{
+    border-radius: 0;
+    z-index: 150;
+    margin: 0;
+    background-color: whitesmoke;
+    box-shadow: none;
+  }
+
+  .carActive{
+    margin: 10px;
+    padding-top: 5px;
+    
+  }
+
+  .carBrand{
+    display: inline;
+    position: absolute;
+  }
+
+  .text{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+
+  .btnIcon{
+    width: 110px;
+    height: 70px;
+    background-color: transparent;
+   
+    margin-top: 15px;
+    font-size: 12px;
+    color: #515151;
+  }
+
+  .btnIcon:active{
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+
+  
+  .divElem{
+    font-size: 12px;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btnIcon2{
+    
+    width: 110px;
+    height: 110px;
+    background-color: transparent;
+    margin-top: -20px;
+    font-size: 12px;
+    color: #515151;
+
+  }
+
+  .instruction{
+    color: gray;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .changeBtn{
+    font-size: 18px;
+    font-weight: 300;
+    background-color: transparent;
+    float: right;
+    margin-top: 15px;
+    }
+
+  .final-location {
+    margin: 0;
+    color: rgb(175, 175, 175);
+    font-weight: 300;
+  }
+
+  .add-car {
+    margin: 0;
+    color: rgb(92, 92, 92);
+    font-weight: 300;
+    margin-bottom: 5px;
+  }
+
+  .logo{
+    margin-top: 60px;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .selectedCar{
+    position: absolute;
+    display: inline-flex;
+    top: -13px;
+    margin-bottom: 0px;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 200;
+  }
+
+  .changeDescr{
+    font-size: 12px;
+    font-weight: 200;
+    display: inline-flex;
+    color: gray;
+    margin: 0px;
+    height: 20px;
+    box-align: center;
+  }
+
+  .responsive{
+    height: 100vh;
+  }
+  
+  .center{
+    //position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .imagen-carro{
+    width: 60px;
+   }
+
+   .marker{
+    background-image: url('/src/assets/mapbox-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }

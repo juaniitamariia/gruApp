@@ -1,0 +1,42 @@
+<div class=fondo>
+
+    <img class=logo src="assets/logowhite.png">
+
+    <div class=cardContainer>
+
+        <ion-card class=card>
+            <ion-segment padding>
+
+                <ion-segment-button class=btnToggle (click)="changeRegistro(false)"> Registrarme</ion-segment-button>
+                <ion-segment-button class=btnToggle (click)="changeRegistro(true)"> Iniciar</ion-segment-button>
+
+            </ion-segment>
+
+            <div padding *ngIf="registro">
+
+                <ion-input [(ngModel)]="email" class=input type="text" placeholder="Correo electrónico"></ion-input>
+                <br>
+                   <!-- input del password -->
+                <ion-input type="password" [(ngModel)]="password" class=input placeholder="Contraseña"></ion-input>
+                
+                <ion-button (click)="resetPass()" expand="block" class=olvido-pass>¿Olvidó contraseña?</ion-button>
+                <ion-button (click)="signIn()" margin=20px expand="block"> INICIAR </ion-button>
+                <!-- BOTON DE INICIAR -->
+            </div>
+
+            <div padding *ngIf="!registro">
+                <ion-input [(ngModel)]="name" class=input type="text" placeholder="Nombre"></ion-input>
+                <br>
+                <ion-input [(ngModel)]="email" class=input type="text" placeholder="Correo electrónico"></ion-input>
+                <br>
+                <ion-input [(ngModel)]="phoneNumber" class=input type="number" placeholder="Número de celular"><img class=flag-img src="assets/puertorico.png"></ion-input>
+                <br>
+                <ion-button margin=20px expand="block" (click)=signUp()> REGISTRARME </ion-button>
+            </div>
+        </ion-card>
+
+        <p class=text>Al registrarme acepto los Términos y Condiciones.</p>
+
+    </div>
+
+</div>

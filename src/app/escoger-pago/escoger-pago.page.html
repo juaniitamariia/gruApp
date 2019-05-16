@@ -1,0 +1,52 @@
+<div class=header>
+
+  <ion-button class="btnBack" (click)=navBack()>
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </ion-button>
+
+<img class=logo src= "assets/logowhite.png">
+<h1 class=titlePayment padding>Método de pago</h1>
+<p class="choose-payment" style="font-weight:300;">Escoger tarjeta</p>
+
+</div>
+
+<div class=cardBox>
+
+
+    <ion-card class=size>
+        <ion-card-title class= titlePay>
+            Tarjetas de Crédito
+          </ion-card-title>
+    <ion-content class="lista">
+        <ion-list>
+            <ion-item *ngFor="let card of cards">
+                <button class="boton" (click)=getCard(card)>
+                <ion-card class="card">
+                    <ion-grid class="grid">
+                        <ion-row>
+                            <ion-col size="10">
+                              <ion-img class="tarjeta-icon" src="assets/visa.png" *ngIf="card.brand == 'Visa'"></ion-img>
+                              <ion-img class="tarjeta-icon" src="assets/mastercard.png" *ngIf="card.brand == 'MasterCard'"></ion-img>
+                              <ion-img class="tarjeta-icon" src="assets/american-express.png" *ngIf="card.brand == 'American Express'"></ion-img>
+                                <h5 style="margin: 0px;">xxxx-xxxx-xxxx-{{card.last4}}</h5>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card>
+              </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    </ion-card>
+</div>
+
+<div class= btnText>
+  <ion-button (click)='makePayment()'>PAGAR</ion-button>
+</div>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)='navigateAdd()' style="border-radius: 50%; border: solid white 2px;">
+      <ion-icon name="md-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+

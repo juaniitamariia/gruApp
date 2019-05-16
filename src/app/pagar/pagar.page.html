@@ -1,0 +1,91 @@
+<ion-header no-border>
+    <ion-toolbar style="--background:#6561AB;">
+      <ion-button class="arrow-btn" fill=clear style="color:white;" (click)="navigateBack()"><ion-icon name=md-arrow-round-back></ion-icon></ion-button>
+      <ion-title class="pay-title" style="font-weight:300; color:white">Resumen de Pago</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="div">
+    <ion-content class="content">
+
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <h1 class="titulo">Nombre: </h1>
+              </ion-col>
+              <ion-col >
+                  <h1 class="respuesta" >{{currentUser}}</h1>
+              </ion-col>
+            </ion-row>
+        <!-- <ion-row>
+          <ion-col>
+              <h1 class="titulo">Ubicación Actual: </h1>
+          </ion-col>
+          <ion-col>
+              <h1 class="respuesta">Ciudad Jardin, Caguas</h1>
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col>
+              <h1 class="titulo">Destino: </h1>
+          </ion-col>
+          <ion-col *ngIf="servicio == 'Goma' || servicio == 'llaves' || servicio == 'Bateria' || servicio == 'Gasolina'">
+              <h1 class="respuesta">Mi Ubicación Actual</h1>
+          </ion-col>
+          <ion-col *ngIf="servicio == 'grua'">
+              <h1 class="respuesta">otra ubicacion actual</h1>
+          </ion-col>
+          <ion-col *ngIf="servicio == 'especial'">
+              <h1 class="respuesta">otra ubicacion actual</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <h1 class="titulo">Servicio: </h1>
+          </ion-col>
+          <ion-col>
+              <h1 class="respuesta">{{servicio}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngIf="servicio == 'grua' || servicio == 'especial'">
+              <h1 class="titulo">Millas:</h1>
+          </ion-col>
+          <ion-col *ngIf="servicio == 'grua' || servicio == 'especial'">
+              <h1 class="respuesta">$15.00</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <h1 class="titulo">Carro:</h1>
+          </ion-col>
+          <ion-col>
+              <h1 class="respuesta">{{marcaCarro}}</h1>
+              <h1 class="respuesta">{{modeloCarro}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <h1 class="titulo">Tablilla:</h1>
+          </ion-col>
+          <ion-col>
+              <h1 class="respuesta">{{tablilla}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <h1 style="font-weight: 300;">TOTAL:</h1>
+          </ion-col>
+          <ion-col>
+              <h1 class="total">${{total}}.00</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-card>
+
+  <ion-button (click)="navigate()" fill="solid"  class="boton">
+    PROCEDER A PAGAR
+  </ion-button>
+  
+  

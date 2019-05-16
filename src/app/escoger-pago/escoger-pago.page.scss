@@ -1,0 +1,145 @@
+.header{
+    background-color: #6561AB;
+    height: 250px;
+ }
+
+ .logo{
+    position: absolute;
+     left:0;
+     right:0;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 45px;
+     height: 5%;
+}
+
+.choose-payment{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: white;
+    margin-top: 55px;
+    padding: 30px;
+    text-align: center;
+}
+
+.titlePayment{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color: white;
+    margin-top: 8px;
+    padding: 30px;
+    text-align: center;
+}
+
+.cardBox{
+    
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 190px;
+    top: 90px;
+     
+    
+}
+
+.size{
+    
+    height: 250px !important;
+}
+
+.btnText{
+    //position: relative;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 300px;
+    text-align: center;
+    padding: 0;
+    margin-top: 25px;
+    
+}
+
+.btnElemen{
+
+    background-color: transparent !important;
+    
+}
+
+.titlePay{
+
+text-align: left;
+position: absolute;
+font-size: 12px;
+padding: 20px;
+
+}
+
+.textBtn{
+    size: 10%;
+}
+
+.menuTabs{
+    border: none;
+    
+}
+
+.btnBack{
+    margin-top: 50px;
+    --box-shadow:none !important;
+}
+
+.grid{
+    --ion-grid-width: 70px
+}
+
+.img{
+    height: 33px;
+    margin: 0px;
+    padding:0px;
+}
+
+.col{
+    padding: 0px;
+}
+
+.item{
+    font-size: 15px;
+}
+
+.tarjeta-icon{
+    height: 30px;
+    width: 30px;
+}
+
+.grid{
+    width: 80vw;
+}
+
+.lista{
+    height: 200px !important;
+}
+
+.card{
+    box-shadow: none;
+}
+
+.boton{
+    background: transparent;
+}
+
+.active, .boton:hover {
+    background-color: rgb(247, 243, 243);
+    color: white;
+  }

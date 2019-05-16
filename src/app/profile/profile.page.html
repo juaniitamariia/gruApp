@@ -1,0 +1,39 @@
+<ion-header no-border>
+  <ion-button class="btnBack" (click)=navBack()>
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </ion-button>
+
+
+<div class='header'>
+  <h1 padding style="margin-top: -3px; display: inline-flex; font-size: 40px; color: white; font-weight: 300;">Mi Cuenta</h1>
+  
+</div>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" style="font-size: 15px; text-align: right;" placeholder="{{name}}"></ion-input>
+      <ion-button fill=clear slot="end"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>
+      </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" style="font-size: 15px; text-align: right;" placeholder="{{email}}"></ion-input>
+      <ion-button fill=clear slot="end"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>
+      </ion-item>
+    <ion-item>
+      <ion-label>Número de licencia</ion-label>
+      <ion-input type="numeric" style="font-size: 15px; text-align: right;" placeholder="########"></ion-input>
+      <ion-button  fill=clear slot="end"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>
+      </ion-item>
+    <ion-item>
+      <ion-label>Teléfono</ion-label>
+      <ion-input type="tel" style="font-size: 15px; text-align: right;" placeholder="{{phoneNumber}}"></ion-input>
+      <ion-button fill=clear slot="end"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>
+      </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<ion-button (click)=navBack() class="addbutton">GUARDAR</ion-button>

@@ -1,0 +1,60 @@
+<ion-header no-border style="border-bottom: solid rgb(196, 196, 196) 1px;">
+    <ion-toolbar style="background:whitesmoke;">
+        <ion-button (click)=navigateBack() fill=clear style="color:black;">
+            <ion-icon name=md-arrow-round-back></ion-icon>
+        </ion-button>
+        <ion-title style="font-weight:300;">Mi Vehículo</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list lines=none>
+        <ion-item id="cars" *ngFor="let car of cars">
+            <ion-card class="card">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <ion-img style="margin-top: 5px; height: 50px;" src="assets/document.png"></ion-img>
+                        </ion-col>
+                        <ion-col size="4">
+                            <h5 style="margin: 0px;">{{car.get('make')}}</h5>
+                            <h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('licensePlateNum')}}</h6>
+                            <h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('year')}}</h6>
+                            <h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('color')}}</h6>
+                        </ion-col>
+                        <ion-col size="4">
+                          <ion-button (click)="removeCar(car)" fill=transparent>
+                              <ion-icon name="trash"></ion-icon>
+                          </ion-button>
+                          <ion-button (click)="edit(car)" fill=transparent>
+                              <ion-icon name="md-create"></ion-icon>
+                          </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+
+    <!-- <ion-card class="card">
+        <ion-grid>
+            <ion-row>
+                  <ion-col size="4">
+                        <ion-img style="margin-top: 5px; height: 50px;" src="assets/document.png"></ion-img>
+                    </ion-col>
+                    <ion-col size="4">
+                        <h5 style="margin: 0px; margin-top: 10px; margin-bottom: 5px;">Mitsubishi Outlander</h5>
+                        <h6 style="color: lightgray; font-size: 15px; margin: 0px;">234 987</h6>
+                    </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card> -->
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button href="/addcar" style="border-radius: 50%; border: solid white 2px;">
+            <ion-icon name="md-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

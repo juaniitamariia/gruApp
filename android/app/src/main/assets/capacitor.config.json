@@ -1,0 +1,7 @@
+{
+  "appId": "test.gruApp.app",
+  "appName": "GruApp",
+  "bundledWebRuntime": false,
+  "webDir": "www",
+  "npmClient": "npm"
+}

@@ -1,0 +1,63 @@
+  <!-- Menu de Botones-->
+  <ion-card class=mainMenu>
+    <div *ngIf="service == 'bateria'" class=center>
+      <ion-img style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/bateria.svg"></ion-img> 
+    </div>
+
+    <div class=center>
+        <ion-img *ngIf="service == 'grua'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/grua.svg"></ion-img> 
+    </div>
+
+      <div class=center>
+          <ion-img *ngIf="service == 'gasolina'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/gasolina.svg"></ion-img> 
+      </div>
+
+      <div class=center>
+          <ion-img *ngIf="service == 'especial'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/choqueicon.svg"></ion-img> 
+      </div>
+
+      <div class=center>
+          <ion-img *ngIf="service == 'goma'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/gomavacia.svg"></ion-img> 
+      </div>
+
+      <div class=center>
+          <ion-img *ngIf="service == 'llaves'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/llaves.svg"></ion-img> 
+      </div>
+
+    <div>
+      <ion-button margin  style='font-size: 15px;' expand=block>Cambiar la ubicación</ion-button>
+      <ion-button margin  href="/rating"  [disabled]="disabled" style="font-size: 15px;" expand=block>Servicio culminado</ion-button>
+      <!-- <ion-button margin  (click)='presentAlertPrompt()' style="font-size: 15px;" expand=block>El servicio no fue brindado</ion-button> -->
+      <ion-button margin  (click)='Cancel()' style="--background: rgb(255, 75, 75); font-size: 15px;" expand=block>Cancelar</ion-button>
+    </div>
+  </ion-card>
+
+
+  <!-- Map view -->
+  <ion-header>
+ 
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <div  id='map4' style='width: 100%; height: 100vh;'>  
+      </div>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+            body { margin:0; padding:0; }
+            #map { position:absolute; top:0; bottom:0; width:100%; }
+      </style>
+    
+</ion-header>
+
+<ion-content>   
+
+
+</ion-content>
+
+
+
+
+
+

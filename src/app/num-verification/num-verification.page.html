@@ -1,0 +1,27 @@
+<div class=header>
+
+  <ion-button class="btnBack" (click)= navigate()>
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </ion-button>
+
+<img class=logo src= "assets/logowhite.png">
+
+</div>
+
+<div class=codigo>
+    
+    <div id="form">
+        <ion-input id="one" type="text" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max="9"
+         (onkeyup)="add(this)"></ion-input>
+        <ion-input id="two" type="text" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        (onkeyup)="add(this)"></ion-input>
+        <ion-input id="three" type=“text” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        (onkeyup)="add(this)"></ion-input>
+        <ion-input id="four" type=“text” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        (onkeyup)="add(this)"></ion-input>
+      </div>
+
+      <ion-button margin=20px expand="block" (click)= reSendCode()>Reenviar</ion-button>
+      <ion-button margin=20px expand="block" (click)= navigateFoward()>Verificar</ion-button>
+
+</div>

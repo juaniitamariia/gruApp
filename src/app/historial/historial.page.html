@@ -1,0 +1,44 @@
+<ion-header no-border>
+  <ion-button class="btnBack" href="/sidemenu">
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </ion-button>
+
+  <img class='logo' src="assets/logowhite.png">
+  <div class='header'>
+    <h1 padding style="font-size: 40px; color: white; font-weight: 300; margin-top: 20px;">Historial</h1>
+  </div>
+</ion-header>
+<ion-content>
+
+  <ion-list lines=none>
+    <ion-card *ngFor="let request of requests" style="padding: 0;">
+      <ion-item id="requests">
+        <button class="boton" expand="full" (click)=presentInfo(request)>
+          <ion-grid>
+            <ion-row>
+
+              <!-- FIRST COLUMN STARTS HERE -->
+              <ion-col size="6" >
+                <h6 class="left" style="margin: 0px; color: darkgray">Servicio: <span style="color: black">{{request.service}}</span></h6>
+
+                <!--<h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('licensePlateNum')}}</h6> -->
+                <!-- <h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('color')}}</h6> -->
+
+                <h6 class="left" style="color: darkgray; font-size: 12px; margin: 0px;">{{request.dateString}}</h6>
+              </ion-col>
+              <!-- FIRST COLUMN ENDS HERE -->
+
+              <!-- SECOND COLUMN STARTS HERE -->
+              <ion-col size="6">
+                <p class="right" style="color: darkgray; font-size: 15px; margin: 0px;">Precio: <span style="color: rgb(54, 180, 54)">${{request.price}}.00</span> </p>
+
+                <p class="right" style="color: darkgray; font-size: 15px; margin: 0px;">Carro: <span style="color: black">{{request.clientCar.make}} {{request.clientCar.model}} </span></p>
+              </ion-col>
+              <!-- SECOND COLUMN ENDS HERE -->
+            </ion-row>
+
+          </ion-grid>
+        </button>
+      </ion-item>
+    </ion-card>
+  </ion-list>

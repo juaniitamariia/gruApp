@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar style="background:transparent;">
+    <ion-button (click)='back();' fill=clear style="color:black;"><ion-icon name=md-close></ion-icon></ion-button>
+    <ion-title style="font-size: 13px; font-weight:300; text-align: center;">AÑADIR TARJETA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class=add-towing-card>
+    <h5 class=label-input>Número de tarjeta</h5>
+    <ion-input [(ngModel)]="numTarjeta" type=“text” class=name placeholder="xxxx xxxx xxxx xxxx"></ion-input>
+ 
+    <h5 class=label-input>Mes de expiración </h5>
+    <ion-input [(ngModel)]="month" type=“text” class=name placeholder="MM" maxlength="2"></ion-input>
+ 
+    <h5 class=label-input>Año de expiración </h5>
+    <ion-input [(ngModel)]="year" type=“text” class=name placeholder="YYYY" maxlength="4"></ion-input>
+ 
+    <h5 class=label-input>CVV</h5>
+    <ion-input [(ngModel)]="cvv" type=“text” class=name placeholder="xxx"></ion-input>
+ 
+  </ion-card>
+
+ </ion-content>
+
+ <h6 class=center style="display: inline-flex; font-size: 13px; font-weight:300; color: rgb(170, 170, 170);"><ion-icon  style="display: inline-flex; font-size: 13px; color: rgb(170, 170, 170);" name="lock"></ion-icon>Secure Payments</h6>
+
+<ion-button (click)=paymentMethod() class="addbutton">AGREGAR</ion-button>

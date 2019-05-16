@@ -1,0 +1,69 @@
+<ion-header>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-slides class= "slide" pager="true" [options] = "slideOpts">
+
+    <ion-slide height = 500px >
+      <ion-card class= "card">
+
+          <ion-img  src="assets/gruapp slide 1.svg"></ion-img>
+          <ion-card-subtitle> <br>
+           <h2>Solicitar un servicio</h2>
+          </ion-card-subtitle> <br>
+
+           <p>Desde cualquier lugar que te encuentres en la isla,
+             podrás solicitar uno de los siguientes servicios:
+             cerrajero, batería, gasolina grúa y servicio especial.</p> 
+             
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-card class= "card">
+        
+            <ion-img class=slide src="assets/gruapp slide 2.svg"></ion-img>
+            <ion-card-subtitle> <br>
+             <h3>Confirmar el servicio</h3>
+            </ion-card-subtitle> <br>
+  
+             <p>Podrás confirmar el servicio solicitado, luego de haberte
+               calculado el costo dependiendo de la ubicación en la que te encuentres.</p> 
+               
+            
+        </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-card class= "card">
+        
+            <ion-img class=slide-3-4 src="assets/gruappslidegrua3.png"></ion-img>
+            <ion-card-subtitle> <br>
+             <h3>Tu servicio va de camino</h3>
+            </ion-card-subtitle> <br>
+  
+             <p>Una vez te acepten el servicios, podrás ver por dónde
+               viene la persona que te dará el servicio solicitado.</p>             
+            
+        </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-card class= "card">
+        
+            <ion-img class= slide position="center"  src="assets/gruappslidelisto4.png"></ion-img>
+            <ion-card-subtitle> <br>
+             <h2>¡Listo!</h2>
+            </ion-card-subtitle> <br>
+  
+             <p>Una vez terminado el servicio podrás evaluar el servicio brindado.</p> 
+               
+               <!-- boton para comenzar y que lleva a prox pagina -->
+            <ion-button margin=20px expand="block" (click)=navigate()> COMENZAR </ion-button>
+        </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

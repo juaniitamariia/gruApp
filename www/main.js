@@ -1354,18 +1354,28 @@ var PopoverComponent = /** @class */ (function () {
     PopoverComponent.prototype.navigate = function () {
         this.navTransition();
         this.grupovider.lugar = this.lugar; //guarda el lugar en donde esta el carro
-        this.close();
-        this.popController.dismiss();
+        //this.close();
         if (this.service == 'especial') {
+            this.popController.dismiss();
+            this.grupovider.lugar = this.lugar;
             console.log("special condition is working!");
             this.navTransition();
-            this.nav.navigateRoot("/locatio-marker");
+            this.nav.navigateRoot("/photo");
             this.close();
         }
         else if (this.service == 'grua') {
-            this.nav.navigateRoot("/locatio-marker");
+            if (this.lugar == undefined) {
+                this.placeNotSpecified();
+                console.log("vacio");
+            }
+            else {
+                this.popController.dismiss();
+                this.grupovider.lugar = this.lugar;
+                this.nav.navigateRoot("/locatio-marker");
+            }
         }
         else {
+            this.popController.dismiss();
             this.grupovider.messageNotes = this.msg;
             this.nav.navigateRoot("/mark-location");
         }
@@ -1571,6 +1581,40 @@ var PopoverComponent = /** @class */ (function () {
             console.log('servicio: ' + this.grupovider.service);
             console.log('precio: ' + this.grupovider.price);
         }
+        else if (this.service == 'especial') {
+            this.grupovider.service = 'Servicio Especial';
+        }
+        else if (this.service == 'grua') {
+            this.grupovider.service = 'Grua';
+        }
+    };
+    PopoverComponent.prototype.placeNotSpecified = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alerCtrl.create({
+                            header: '¡ALERTA!',
+                            message: 'No ha especificado en que lugar se encuentra su vehículo.',
+                            buttons: [{
+                                    text: 'OK',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function () {
+                                        console.log('Confirm Cancel');
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     PopoverComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

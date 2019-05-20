@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController} from '@ionic/angular';
 import { NavController } from "@ionic/angular";
+import { GruproviderService } from "./../gruprovider.service";
 
 @Component({
   selector: 'app-popovergrua',
@@ -9,9 +10,17 @@ import { NavController } from "@ionic/angular";
 })
 export class PopovergruaComponent implements OnInit {
 
-  constructor(public popController : PopoverController, public navigate : NavController) { }
+  constructor(public popController : PopoverController, public navigate : NavController,
+              public provider : GruproviderService) { }
+total: any;
+distancia : any;
 
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.distancia = this.provider.distance;
+    this.total = this.provider.total;
+    console.log(this.provider.distance);
+  }
 
 
   close(){

@@ -18,6 +18,7 @@ import {
 } from '@angular/common';
 import * as Parse from 'parse';
 import { GruproviderService } from "./../gruprovider.service";
+import { AlertController } from "@ionic/angular";
 
 let parse = require('parse');
 
@@ -29,15 +30,17 @@ let parse = require('parse');
 export class PhotoPage implements OnInit {
 
   constructor(public camera: Camera, public nav: NavController, public nativePageTransitions: NativePageTransitions,
-    public location: Location, public provider : GruproviderService) {
+    public location: Location, public provider : GruproviderService, public alertCtrl : AlertController) {
     parse.serverURL = 'https://parseapi.back4app.com/';
     Parse.initialize("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
 
   }
 
+  picture:any;
+
   ngOnInit() {}
 
-  openCamera() {
+   async openCamera() {
 
     console.log('did enter');
 
@@ -57,6 +60,8 @@ export class PhotoPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
 
+      this.picture = 'data:image/jpeg;base64,' + imageData;
+
       let base64Image = imageData;
       let name = "photo.jpg";
 
@@ -75,7 +80,31 @@ export class PhotoPage implements OnInit {
     });
   }
 
+
+  async isPhotoSaved(){
+    if(this.provider.photo ==  null){
+      const alert = await this.alertCtrl.create({
+        header: '¡ALERTA!',
+        message: 'Necesitas enviar una foto al grüero para cotizar el servicio',
+        buttons: [{
+          text: 'OK',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }]
+      });
+      await alert.present();
+
+    }else{
+      this.navigateFoward();
+      console.log('Saved photo succesfully!!')
+    }
+  }
+
   navigateFoward() {
+
     let options: NativeTransitionOptions = {
       direction: 'left',
       duration: 200,

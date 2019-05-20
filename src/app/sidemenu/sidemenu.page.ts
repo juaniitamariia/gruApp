@@ -65,6 +65,7 @@ export class SidemenuPage implements OnInit {
   photo: any;
   start :any;
   coordenates : any[];
+  requestCount: any;
 
   constructor(public menu: MenuController,
     public nav: NavController, public router: Router,
@@ -83,6 +84,7 @@ export class SidemenuPage implements OnInit {
     this.getName();
     this.getPhoto();
     this.getLocation();
+    this.getQuote();
   }
 
   ngOnDestroy(){
@@ -124,6 +126,13 @@ export class SidemenuPage implements OnInit {
     this.nativePageTransitions.slide(options);
 
     this.nav.navigateRoot('/metodo-pago');
+  }
+
+  getQuote(){
+
+    this.requestCount = 0;
+
+
   }
 
   profile(){

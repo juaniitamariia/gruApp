@@ -61,6 +61,8 @@ export class LocatioMarkerPage implements OnInit {
   directions: any;
   map: any;
   destination: any;
+  distance: number;
+  distanceCost: number;
 
   constructor(public menu: MenuController,
     private nav: NavController, public gruprovider: GruproviderService,
@@ -76,33 +78,35 @@ export class LocatioMarkerPage implements OnInit {
 
     this.loadMap();
     this.start = [this.gruprovider.long, this.gruprovider.lat];
-    //console.log('coordenadas: ' + this.start);
-    //console.log(this.directions.setDestination());
+    
   }
   ngOnDestroy() {
     this.map1.remove();
   }
 
-  setDestino() {
-    this.destination = this.mapboxDirections.setDestination(this.destino)
+  setDestino(){
+    this.destination = this.mapboxDirections.setDestination(this.destino);
+    this.distanceEquation();
   }
-
+  
+  
+//carga el mapa y le añade todos los atributos
   loadMap() {
 
     this.map1 = new mapboxgl.Map({
       container: 'map1',
       style: 'mapbox://styles/jrosario241/cjsuqzyev4cip1fo3cv5c3vr5'
-    });
+    });  //añadir el mapa
 
-    this.map1.dragRotate.disable();
-    const geolocate = new mapboxgl.GeolocateControl({
+    this.map1.dragRotate.disable(); //evita que el mapa rote
+    const geolocate = new mapboxgl.GeolocateControl({ 
       positionOptions: {
         enableHighAccuracy: true
       },
       trackUserLocation: true
-    });
+    }); //punto azul de localización actual del usuario
 
-    this.map1.addControl(geolocate);
+    this.map1.addControl(geolocate); //añade el control (cuadro) 
 
     this.mapboxDirections = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
@@ -113,9 +117,9 @@ export class LocatioMarkerPage implements OnInit {
         instructions: false,
         inputs: false
     }
-    });
+    }); //atributo de añadir direcciones al mapa 
 
-    this.map1.addControl(this.mapboxDirections, 'bottom-left');
+    this.map1.addControl(this.mapboxDirections, 'bottom-left'); //añade control de las direcciones
     this.geolocation.getCurrentPosition().then((resp) => {
       
     }).catch((error) => {
@@ -124,12 +128,21 @@ export class LocatioMarkerPage implements OnInit {
 
     let self = this; //scope
     this.map1.on('load', function () {
-      self.mapboxDirections.setOrigin([self.gruprovider.long, self.gruprovider.lat])
+      self.mapboxDirections.setOrigin([self.gruprovider.long, self.gruprovider.lat]) //latitud y longitud de la ubicacion actual
       geolocate.trigger();
     });
 
     console.log("Map finished loading");
     console.log(this.destino);
+    this.mapboxDirections.on("route", e => {
+      let routes = e.route
+      // Each route object has a distance property
+      this.distance = Math.ceil(routes[0].distance * 0.00062137);
+      this.gruprovider.distance = this.distance; //guarda distancia (MILLAS)
+      this.gruprovider.destination = this.destino; //guarda destino (PUNTOP B)
+      console.log("Route lengths", routes);
+      console.log('Millas', this.distance);
+  })
   }
 
 
@@ -152,46 +165,32 @@ export class LocatioMarkerPage implements OnInit {
 
   }
 
-  changePage() { //funcion que cambia el servicio
+  //**/funcion que cambia el servicio**
+    async changePage() { 
     if(this.mapboxDirections.getDestination().geometry == null){
       console.log("no puedes pasar")
+      this.emptyDestinou();
       return;
     }
-    console.log(this.mapboxDirections.getOrigin())
-    console.log(this.mapboxDirections.getDestination())
-    console.log(this.mapboxDirections.get)
+    
+    console.log(this.mapboxDirections.getOrigin()) //extrae el origen de la ruta
+    console.log(this.mapboxDirections.getDestination()) //extrae el destino de la ruta
 
-    let options: NativeTransitionOptions = {
-      direction: 'left',
-      duration: 200,
-      slowdownfactor: -1,
-      slidePixels: 20,
-      iosdelay: 100,
-      androiddelay: 100,
-    }
-
-    console.log('transition');
-    this.nativePageTransitions.slide(options);
     this.gruprovider.service = this.service;
-    //this.nav.navigateRoot("/escoger-carro");
-    //service = this.grupovider.service;
-    //console.log(service);
+    this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
+
+    console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
+    this.distanceEquation();
+    this.presentPopover();
+    
   }
 
-  // geocoder(){
-  //   var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
-  //   this.map1.addControl(new MapboxGeocoder({
-  //     accessToken: mapboxgl.accessToken
-  //     }));
-  // }
 
   //Funcion ejecutada al momento de seleccionar el boton de Solicitar
 
   async presentPopover() { //Popover de detalles del carro
     const popover = await this.popover.create({
-
       component: PopovergruaComponent,
-      //event: event,
       translucent: false
     });
     console.log("pop working");
@@ -199,6 +198,7 @@ export class LocatioMarkerPage implements OnInit {
 
   }
 
+  //transiciones de las paginas
   transition() {
     let options: NativeTransitionOptions = {
       direction: 'left',
@@ -230,6 +230,14 @@ export class LocatioMarkerPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+
+//Funcion que calcula el costo de distancia por millas 
+  distanceEquation(){
+    this.distanceCost = (this.distance * 3) + this.gruprovider.price; //multiplica $3 x total de millas
+    this.gruprovider.total = this.distanceCost;
+    console.log(this.gruprovider.total);
   }
 
 

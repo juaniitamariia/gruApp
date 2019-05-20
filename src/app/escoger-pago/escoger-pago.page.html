@@ -23,7 +23,7 @@
                 <button class="boton" (click)=getCard(card)>
                 <ion-card class="card">
                     <ion-grid class="grid">
-                        <ion-row>
+                        <ion-row style="height: 50px;">
                             <ion-col size="10">
                               <ion-img class="tarjeta-icon" src="assets/visa.png" *ngIf="card.brand == 'Visa'"></ion-img>
                               <ion-img class="tarjeta-icon" src="assets/mastercard.png" *ngIf="card.brand == 'MasterCard'"></ion-img>

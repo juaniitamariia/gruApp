@@ -23,6 +23,7 @@ export class PagarPage implements OnInit {
   modeloCarro : any;
   tablilla : any;
   total: number;
+  totalCost: number;
   constructor (public location : Location, public nav: NavController, public provider : GruproviderService,
                 public nativePageTransitions: NativePageTransitions, public alerCtrl : AlertController ) { 
                   parse.serverURL = 'https://parseapi.back4app.com/';
@@ -31,6 +32,8 @@ export class PagarPage implements OnInit {
 
   ngOnInit() {
     this.userInfo();
+    console.log(this.provider.service);
+    //this.totalCost = this.provider.distance * 3;
   }
 
   navigateBack(){
@@ -97,7 +100,11 @@ export class PagarPage implements OnInit {
    
       this.total = this.provider.price;
       this.provider.total = this.total;
-      console.log(this.total);
+      console.log(this.provider.price);
+
+      if(this.provider.service == 'Grua' || this.provider.service == 'Especial'){
+        //this.total = this.total + this.totalCost
+      }
 
       this.total = this.provider.total;
 

@@ -6,15 +6,16 @@
 
 <ion-content padding>
 
-<ion-card style='background-color: orange; height: 430px; margin-top: 50px;'>
-  <ion-card-content>
-    <button (click)='openCamera()' class= "center" style="background-color: transparent; margin-top: 50px; width:200px; height: 200px">
-      <ion-img src="assets/camera.svg"></ion-img>
+<ion-card style='box-shadow: none; height: 350px; margin-top: 40px;'>
+  
+    <button (click)='openCamera()' style="padding: 0; background-color: orange; position: absolute; height: 300px; width: 100%;">
+      <ion-img class="picture-camera" *ngIf= "picture == null" src="assets/camera.svg"></ion-img>
+      <ion-img *ngIf= "picture != null" src={{picture}}></ion-img>
     </button>
-  </ion-card-content>
+ 
 </ion-card>
 
 
-<h1 style="margin-top: 30px; text-align: center; font-weight: lighter;">Sube una foto de lo ocurrido</h1>
-<ion-button (click)='navigateFoward()' class='center' style='width:200px; margin-top: 20px;' expand=block>Cotizar</ion-button>
+<h1 style="margin-top: 10px;text-align: center; font-weight: lighter;">Sube una foto de lo ocurrido</h1>
+<ion-button (click)='isPhotoSaved()' class='center' style='width:200px; margin-top: 10px;' expand=block>Cotizar</ion-button>
 </ion-content>

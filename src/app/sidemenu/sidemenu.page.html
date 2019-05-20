@@ -20,6 +20,8 @@
             </ion-item>
             <ion-item ion-buttons (click)='solicitudes()' lines="none">
                 <ion-icon style="width: 55px; color: rgb(189, 189, 189)" name="person-add"></ion-icon>Solicitudes
+                
+                <ion-badge *ngIf= "requestCount > 0" slot="end" color="danger">{{requestCount}}</ion-badge>
             </ion-item>
             <ion-item ion-buttons (click)='navHistorial()' lines="none">
                 <ion-img style="height: 35px; width: 58px; margin: 0px;" src="assets/historial.png"></ion-img>Historial

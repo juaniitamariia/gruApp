@@ -59,7 +59,8 @@ export class GruproviderService {
   card : any;
   lugar: string; //lugar que se guarda en el servicio de grua
   photo : any;
-  
+  destination: any;
+  distance: any;
   constructor(public nav: NavController, private alert: AlertController) {
 
   }

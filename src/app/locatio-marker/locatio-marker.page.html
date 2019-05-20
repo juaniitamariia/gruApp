@@ -10,7 +10,7 @@
 
 <ion-card class=menu>
   <h6 class="instrucciones">ESCRIBA O MARQUE EL LUGAR A DONDE QUIERE IR LUEGO DE SER ASISTIDO POR EL GRUERO</h6>
-  <p class="titulo-destino">DESTINO</p>
+  <p class="titulo-destino">DESTINO <span *ngIf="this.distance != null" style="font-weight: bold; color: black;">{{this.distance}}mi</span></p>
   <ion-row style="margin-left: 5px; margin-right: 5px;">
 <ion-col size="10"><ion-input [(ngModel)]='destino' class="input-destino" placeholder="Ej. Calle Hiedra, Cidra PR."></ion-input></ion-col>   <!-- (ngModelChange)="loadMap()" -->
 <ion-col size="2"><ion-button (click)="setDestino()"><ion-icon name="pin"></ion-icon></ion-button></ion-col>

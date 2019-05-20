@@ -17,8 +17,8 @@ import {
   Location
 } from '@angular/common';
 import * as Parse from 'parse';
-import { GruproviderService } from "./../gruprovider.service";
 import { AlertController } from "@ionic/angular";
+import { GruproviderService } from "./../gruprovider.service";
 
 let parse = require('parse');
 
@@ -30,7 +30,7 @@ let parse = require('parse');
 export class PhotoPage implements OnInit {
 
   constructor(public camera: Camera, public nav: NavController, public nativePageTransitions: NativePageTransitions,
-    public location: Location, public provider : GruproviderService, public alertCtrl : AlertController) {
+    public location: Location, public alertCtrl : AlertController, public provider : GruproviderService) {
     parse.serverURL = 'https://parseapi.back4app.com/';
     Parse.initialize("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
 
@@ -70,7 +70,7 @@ export class PhotoPage implements OnInit {
       }); //convierte la foto a base64
       parseFile.save().then((savedFile) => {
         console.log('file saved:' + savedFile);
-        this.provider.photo = savedFile;
+        this.provider.photo = savedFile; //foto tomada
       }, (err) => {
         console.log('error grabando file: ' + err)
       })
@@ -78,6 +78,7 @@ export class PhotoPage implements OnInit {
     }, (err) => {
       console.log('error de camara' + err);
     });
+
   }
 
 
@@ -115,7 +116,7 @@ export class PhotoPage implements OnInit {
     }
     console.log('transition');
     this.nativePageTransitions.slide(options);
-    this.nav.navigateRoot('/pagar');
+    this.nav.navigateRoot('/locatio-marker');
   }
 
   navigateBack() {

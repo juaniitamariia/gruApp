@@ -25,20 +25,20 @@
               <h1 class="respuesta">Ciudad Jardin, Caguas</h1>
           </ion-col>
         </ion-row> -->
-        <ion-row>
-          <ion-col>
+        <!-- <ion-row> -->
+          <!-- <ion-col>
               <h1 class="titulo">Destino: </h1>
           </ion-col>
           <ion-col *ngIf="servicio == 'Goma' || servicio == 'llaves' || servicio == 'Bateria' || servicio == 'Gasolina'">
               <h1 class="respuesta">Mi Ubicación Actual</h1>
-          </ion-col>
-          <ion-col *ngIf="servicio == 'grua'">
+          </ion-col> -->
+          <!-- <ion-col *ngIf="servicio == 'grua'">
               <h1 class="respuesta">otra ubicacion actual</h1>
-          </ion-col>
-          <ion-col *ngIf="servicio == 'especial'">
+          </ion-col> -->
+          <!-- <ion-col *ngIf="servicio == 'especial'">
               <h1 class="respuesta">otra ubicacion actual</h1>
-          </ion-col>
-        </ion-row>
+          </ion-col> -->
+        <!-- </ion-row> -->
         <ion-row>
           <ion-col>
               <h1 class="titulo">Servicio: </h1>
@@ -48,10 +48,10 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col *ngIf="servicio == 'grua' || servicio == 'especial'">
+          <ion-col *ngIf="servicio == 'Grua' || servicio == 'Servicio Especial'">
               <h1 class="titulo">Millas:</h1>
           </ion-col>
-          <ion-col *ngIf="servicio == 'grua' || servicio == 'especial'">
+          <ion-col *ngIf="servicio == 'Grua' || servicio == 'Servicio Especial'">
               <h1 class="respuesta">${{totalCost}}.00</h1>
           </ion-col>
         </ion-row>

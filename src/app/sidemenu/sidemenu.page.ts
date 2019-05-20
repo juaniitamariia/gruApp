@@ -244,23 +244,18 @@ export class SidemenuPage implements OnInit {
   }
 
   async Especial() {
+    this.presentPopover();
     const alert = await this.alerCtrl.create({
       header: '¡ALERTA!',
       message: 'Si su vehículo se encuentra fuera de carretera, no está en un sótano y tampoco en un multipiso debe ser cotizado como un servicio especial. Al dar Ok lo estará llevando a servicio especial para que haga todo el proceso.',
       buttons: [{
-        text: 'Cancel',
+        text: 'Ok',
         role: 'cancel',
         cssClass: 'secondary',
         handler: () => {
           console.log('Confirm Cancel');
         }
-      }, {
-        text: 'Ok',
-          cssClass: 'secondary',
-          handler: () => {
-            this.nav.navigateRoot("/photo");
-          }
-      }
+      },
     ],
       
     });

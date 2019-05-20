@@ -119,6 +119,8 @@ export class EscogerPagoPage implements OnInit {
       this.errorAlert(error);
       console.log(error);
     });
+
+    
   }
 
   async errorAlert(error: any) {
@@ -180,6 +182,41 @@ export class EscogerPagoPage implements OnInit {
       });
     }
 
+    Parse.Cloud.run('createServiceRequest', {
+      userId: Parse.User.current().id,
+      clientCar: this.provider.car, 
+      client: this.provider.name,
+      destination: this.provider.destination,
+      service: this.provider.service,
+      price: this.provider.price,
+      notes: this.provider.messageNotes
+
+    }).then((result) => {
+
+      if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial' ){
+        Parse.Cloud.run('createServiceRequest', {
+        pointB: this.provider.destination,
+        precioPorMilla: this.provider.precioMilla,
+        millas : this.provider.distance
+        }).then((result) => {
+    
+          console.log(result)
+        }, (error) => {
+          console.log(error);
+        });
+      } else if (this.provider.service == 'Servicio Especial'){
+        Parse.Cloud.run('createServiceRequest', {
+          image: this.provider.photo
+          }).then((result) => {
+            console.log(result)
+          }, (error) => {
+            console.log(error);
+          });
+      }
+      
+    }, (error) => {
+      console.log(error);
+    });
  
   }
 }

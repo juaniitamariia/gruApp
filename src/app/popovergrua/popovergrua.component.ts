@@ -14,11 +14,13 @@ export class PopovergruaComponent implements OnInit {
               public provider : GruproviderService) { }
 total: any;
 distancia : any;
+time: number
 
 
   ngOnInit() {
     this.distancia = this.provider.distance;
     this.total = this.provider.total;
+    this.time = this.provider.time
     console.log(this.provider.distance);
   }
 

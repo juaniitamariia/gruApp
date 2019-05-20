@@ -33,6 +33,7 @@ import {
 import {
   AlertController
 } from "@ionic/angular";
+import { Location } from "@angular/common";
 
 //let mapboxDirections = require('@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions');
 let MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
@@ -63,11 +64,12 @@ export class LocatioMarkerPage implements OnInit {
   destination: any;
   distance: number;
   distanceCost: number;
+  time: number;
 
   constructor(public menu: MenuController,
     private nav: NavController, public gruprovider: GruproviderService,
     public nativePageTransitions: NativePageTransitions, public popover: PopoverController,
-    public geolocation: Geolocation, public alertCtrl: AlertController) {
+    public geolocation: Geolocation, public alertCtrl: AlertController, public location: Location) {
 
     this.service = this.gruprovider.service; //igualando lo que esta en el provider
     mapboxgl.accessToken = 'pk.eyJ1IjoianJvc2FyaW8yNDEiLCJhIjoiY2pzdXF6NmJiMmgzNzQ5cnJkMjFsa285NSJ9.a6Z7HjeR6q74TBxQhXPy5A';
@@ -136,12 +138,14 @@ export class LocatioMarkerPage implements OnInit {
     console.log(this.destino);
     this.mapboxDirections.on("route", e => {
       let routes = e.route
+      this.gruprovider.time = Math.ceil(routes[0].duration/60)
       // Each route object has a distance property
       this.distance = Math.ceil(routes[0].distance * 0.00062137);
       this.gruprovider.distance = this.distance; //guarda distancia (MILLAS)
       this.gruprovider.destination = this.destino; //guarda destino (PUNTOP B)
       console.log("Route lengths", routes);
       console.log('Millas', this.distance);
+      console.log(this.time)
   })
   }
 
@@ -160,9 +164,7 @@ export class LocatioMarkerPage implements OnInit {
 
     console.log('transition');
     this.nativePageTransitions.slide(options);
-
-    this.nav.navigateRoot("/sidemenu");
-
+    this.location.back();
   }
 
   //**/funcion que cambia el servicio**
@@ -172,16 +174,20 @@ export class LocatioMarkerPage implements OnInit {
       this.emptyDestinou();
       return;
     }
-    
-    console.log(this.mapboxDirections.getOrigin()) //extrae el origen de la ruta
-    console.log(this.mapboxDirections.getDestination()) //extrae el destino de la ruta
 
-    this.gruprovider.service = this.service;
-    this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
-
-    console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
-    this.distanceEquation();
-    this.presentPopover();
+    if(this.gruprovider.service == 'Servicio Especial'){
+      this.nav.navigateRoot("/request");
+    }else{
+      console.log(this.mapboxDirections.getOrigin()) //extrae el origen de la ruta
+      console.log(this.mapboxDirections.getDestination()) //extrae el destino de la ruta
+  
+      this.gruprovider.service = this.service;
+      this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
+  
+      console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
+      this.distanceEquation();
+      this.presentPopover();  
+    }
     
   }
 
@@ -235,6 +241,7 @@ export class LocatioMarkerPage implements OnInit {
 
 //Funcion que calcula el costo de distancia por millas 
   distanceEquation(){
+    this.gruprovider.precioMilla = (this.distance * 3);
     this.distanceCost = (this.distance * 3) + this.gruprovider.price; //multiplica $3 x total de millas
     this.gruprovider.total = this.distanceCost;
     console.log(this.gruprovider.total);

@@ -69,7 +69,7 @@ module.exports = "<ion-header>\n  <ion-toolbar style=\"background:transparent;\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto; }\n\n.picture-camera {\n  height: 50px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdWFuaXRhL0Rlc2t0b3AvR3J1QXBwIGNvcHkgMi9zcmMvYXBwL3Bob3RvL3Bob3RvLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFrQjtFQUNsQixPQUFNO0VBQ04sUUFBTztFQUNQLGlCQUFpQjtFQUNqQixrQkFBa0IsRUFBQTs7QUFHdEI7RUFDSSxZQUFZLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9waG90by9waG90by5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVye1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBsZWZ0OjA7XG4gICAgcmlnaHQ6MDtcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gICAgfVxuXG4ucGljdHVyZS1jYW1lcmF7XG4gICAgaGVpZ2h0OiA1MHB4O1xufSJdfQ== */"
+module.exports = ".center {\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto; }\n\n.picture-camera {\n  height: 50px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdWFuaXRhL0RvY3VtZW50cy9HaXRIdWIvZ3J1QXBwL3NyYy9hcHAvcGhvdG8vcGhvdG8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQWtCO0VBQ2xCLE9BQU07RUFDTixRQUFPO0VBQ1AsaUJBQWlCO0VBQ2pCLGtCQUFrQixFQUFBOztBQUd0QjtFQUNJLFlBQVksRUFBQSIsImZpbGUiOiJzcmMvYXBwL3Bob3RvL3Bob3RvLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXJ7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGxlZnQ6MDtcbiAgICByaWdodDowO1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICB9XG5cbi5waWN0dXJlLWNhbWVyYXtcbiAgICBoZWlnaHQ6IDUwcHg7XG59Il19 */"
 
 /***/ }),
 
@@ -103,13 +103,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var parse = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
 var PhotoPage = /** @class */ (function () {
-    function PhotoPage(camera, nav, nativePageTransitions, location, provider, alertCtrl) {
+    function PhotoPage(camera, nav, nativePageTransitions, location, alertCtrl, provider) {
         this.camera = camera;
         this.nav = nav;
         this.nativePageTransitions = nativePageTransitions;
         this.location = location;
-        this.provider = provider;
         this.alertCtrl = alertCtrl;
+        this.provider = provider;
         parse.serverURL = 'https://parseapi.back4app.com/';
         parse__WEBPACK_IMPORTED_MODULE_6__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     }
@@ -142,7 +142,7 @@ var PhotoPage = /** @class */ (function () {
                     }); //convierte la foto a base64
                     parseFile.save().then(function (savedFile) {
                         console.log('file saved:' + savedFile);
-                        _this.provider.photo = savedFile;
+                        _this.provider.photo = savedFile; //foto tomada
                     }, function (err) {
                         console.log('error grabando file: ' + err);
                     });
@@ -198,7 +198,7 @@ var PhotoPage = /** @class */ (function () {
         };
         console.log('transition');
         this.nativePageTransitions.slide(options);
-        this.nav.navigateRoot('/pagar');
+        this.nav.navigateRoot('/locatio-marker');
     };
     PhotoPage.prototype.navigateBack = function () {
         var options = {
@@ -221,7 +221,7 @@ var PhotoPage = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./photo.page.scss */ "./src/app/photo/photo.page.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_2__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"], _ionic_native_native_page_transitions_ngx__WEBPACK_IMPORTED_MODULE_3__["NativePageTransitions"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"], _gruprovider_service__WEBPACK_IMPORTED_MODULE_7__["GruproviderService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]])
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _gruprovider_service__WEBPACK_IMPORTED_MODULE_7__["GruproviderService"]])
     ], PhotoPage);
     return PhotoPage;
 }());

@@ -98,15 +98,14 @@ export class PagarPage implements OnInit {
     console.log(this.currentUser);
 
    
-      this.total = this.provider.price;
-      this.provider.total = this.total;
+      this.total = this.provider.total;
+      this.totalCost = this.provider.distance * 3;
       console.log(this.provider.price);
 
-      if(this.provider.service == 'Grua' || this.provider.service == 'Especial'){
-        //this.total = this.total + this.totalCost
-      }
+      // if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial'){
+      //   this.total = this.total + this.totalCost
+      //}
 
-      this.total = this.provider.total;
 
   }
 }

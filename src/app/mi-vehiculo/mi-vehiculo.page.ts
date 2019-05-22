@@ -59,7 +59,7 @@ export class MiVehiculoPage implements OnInit {
     let index : any;
     index = this.cars.indexOf(selectedCar); console.log(index);
     console.log('enter');
-    Parse.Cloud.run('deleteCar', {carId: selectedCar.id}).then((result) =>  
+    Parse.Cloud.run('deleteQuotes', {carId: selectedCar.id}).then((result) =>  
     {
       this.cars.splice(index, 1);
       console.log(result);

@@ -26,7 +26,20 @@ export class CotizacionesPage implements OnInit {
   navigateBack(){
     this.location.back();
   }
-
+    //funcion para remover cotizacion
+    removeCotizaciones(selectedQuotes:any){
+      let index : any;
+      index = this.quots.indexOf(selectedQuotes); console.log(index);
+      console.log('enter');
+      Parse.Cloud.run('deleteQuotes', {quotesID: selectedQuotes.id}).then((result) =>  
+      {
+        this.quots.splice(index, 1);
+        console.log(result);
+    },(error) => {
+      console.log(error);
+    });
+    }
+  
   getQuotes(){
     Parse.Cloud.run('getUsersQuotes', {serviceID: this.provider.serviceId}).then((result) => {
 

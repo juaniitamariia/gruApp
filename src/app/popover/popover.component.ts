@@ -234,9 +234,12 @@ export class PopoverComponent implements OnInit {
       console.log('precio: ' + this.grupovider.price);
     } else if(this.service == 'especial'){
       this.grupovider.service = 'Servicio Especial';
+      console.log('servicio: ' + this.grupovider.service);
     }else if(this.service == 'grua'){
       this.grupovider.service = 'Grua';
       this.grupovider.price = 30;
+      console.log('servicio: ' + this.grupovider.service);
+      console.log('precio: ' + this.grupovider.price);
     }
 
   }

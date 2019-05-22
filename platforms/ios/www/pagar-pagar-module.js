@@ -182,12 +182,12 @@ var PagarPage = /** @class */ (function () {
         this.modeloCarro = this.provider.selectedCar.get('model');
         this.tablilla = this.provider.selectedCar.get('licensePlateNum');
         console.log(this.currentUser);
-        this.total = this.provider.total;
-        this.totalCost = this.provider.distance * 3;
+        this.total = this.provider.price;
         console.log(this.provider.price);
-        // if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial'){
-        //   this.total = this.total + this.totalCost
-        //}
+        if (this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial') {
+            this.total = this.provider.total;
+            this.totalCost = this.provider.distance * 3;
+        }
     };
     PagarPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

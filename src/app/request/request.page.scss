@@ -1,45 +1,94 @@
-.precio{
-    color: red;
-    font-weight: 800;
+// .precio{
+//     color: red;
+//     font-weight: 800;
+// }
+
+// .nombre{
+//     font-weight: 800;
+// }
+
+// .btn-aceptar{
+//     --background: rgb(30, 219, 140);
+//     --color: white;
+//     font-size: 15px;
+//     width: 50px;
+// }
+
+// .btn-declinar{
+//     --background:rgb(219, 61, 61);
+//     --color: white;
+//     font-size: 15px;
+//     width: 50px;
+// }
+
+// .espacio{
+//     left: 0;
+//     right: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     height: 100vh;
+// }
+
+// .titulo{
+//     font-size: 12px;
+//     margin-bottom: 20px;
+//     margin-top: 20px;
+// }
+
+// .explicacion{
+//     left: 0;
+//     right: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     margin-bottom: 0px;
+//     font-size: 10px;
+// }
+
+.header {
+  background: #6561AB;
+  box-shadow: none !important;
 }
 
-.nombre{
-    font-weight: 800;
+.logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  height: 15%;
+  box-shadow: none !important;
 }
 
-.btn-aceptar{
-    --background: rgb(30, 219, 140);
-    --color: white;
-    font-size: 15px;
-    width: 50px;
+.btnBack {
+
+  z-index: 1000;
+  margin-top: 40px !important;
+  --box-shadow: none;
 }
 
-.btn-declinar{
-    --background:rgb(219, 61, 61);
-    --color: white;
-    font-size: 15px;
-    width: 50px;
+.boton {
+  background: transparent;
+  text-align: left;
+  width: 100vw;
 }
 
-.espacio{
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100vh;
+.right {
+  text-align: right;
+
 }
 
-.titulo{
-    font-size: 12px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.left {
+  text-align: left;
 }
 
-.explicacion{
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0px;
-    font-size: 10px;
+.btn-aceptar {
+  --background: rgb(30, 219, 140);
+  --color: white;
+  font-size: 15px;
+  width: 50px;
+}
+
+.btn-cotizaciones{
+  --background: rgb(78, 172, 78);
 }

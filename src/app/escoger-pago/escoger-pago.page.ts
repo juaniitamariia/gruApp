@@ -153,6 +153,7 @@ export class EscogerPagoPage implements OnInit {
       return;
     }else{
       console.log('seleccionada')
+      console.log(this.provider.total)
       Parse.Cloud.run('purchase', {
         amount: this.provider.total,
         cardId: this.provider.card.id,
@@ -163,9 +164,12 @@ export class EscogerPagoPage implements OnInit {
         Parse.Cloud.run('createServiceRequest', {
           car: this.provider.selectedCar.id,
           latitud: this.provider.lat,
+          pointB: this.provider.destination,
+          millas : this.provider.distance,
           longitud: this.provider.long,
           service: this.provider.service,
           notas: this.provider.messageNotes,
+          image: this.provider.photo,
           price: this.provider.total,
           dateString: moment(new Date()).format('M/D/YYYY, h:mm a')
         }).then((result) => {
@@ -182,41 +186,5 @@ export class EscogerPagoPage implements OnInit {
       });
     }
 
-    Parse.Cloud.run('createServiceRequest', {
-      userId: Parse.User.current().id,
-      clientCar: this.provider.car, 
-      client: this.provider.name,
-      destination: this.provider.destination,
-      service: this.provider.service,
-      price: this.provider.price,
-      notes: this.provider.messageNotes
-
-    }).then((result) => {
-
-      if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial' ){
-        Parse.Cloud.run('createServiceRequest', {
-        pointB: this.provider.destination,
-        precioPorMilla: this.provider.precioMilla,
-        millas : this.provider.distance
-        }).then((result) => {
-    
-          console.log(result)
-        }, (error) => {
-          console.log(error);
-        });
-      } else if (this.provider.service == 'Servicio Especial'){
-        Parse.Cloud.run('createServiceRequest', {
-          image: this.provider.photo
-          }).then((result) => {
-            console.log(result)
-          }, (error) => {
-            console.log(error);
-          });
-      }
-      
-    }, (error) => {
-      console.log(error);
-    });
- 
   }
 }

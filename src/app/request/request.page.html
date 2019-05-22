@@ -1,72 +1,57 @@
 <ion-header no-border>
-  <ion-toolbar style="--background:#6561AB;">
-    <ion-button class="arrow-btn" fill=clear style="color:white;" (click)="navigateBack()"><ion-icon name=md-arrow-round-back></ion-icon></ion-button>
-    <ion-title class="pay-title" style="font-weight:300; color:white">Solicitudes</ion-title>
-  </ion-toolbar>
-</ion-header>
-<h6 class="explicacion">
-  *COTIZACIONES DE GRUEROS QUE PUEDEN ATENDERTE*
-</h6>
-<div class="espacio">
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="4">
-            <h6 class="titulo">GRUERO:</h6> 
-        </ion-col>
-        <ion-col size="5">
-            <h6 class="nombre">Carlos Aponte</h6> 
-        </ion-col>
-        <ion-col size="3">
-          <ion-button class="btn-aceptar">
-              <ion-icon name="md-checkmark-circle"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col size="4">
-              <h6 class="titulo">PRECIO:</h6> 
-          </ion-col>
-          <ion-col size="5">
-              <h6 class="precio">$250.00</h6> 
-          </ion-col>
-          <ion-col size="3">
-              <ion-button class="btn-declinar">
-                  <ion-icon name="md-close-circle"></ion-icon>
-              </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-  </ion-card>
+  <ion-button class="btnBack" (click)=navigateBack()>
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </ion-button>
 
-  <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="4">
-              <h6 class="titulo">GRUERO:</h6> 
-          </ion-col>
-          <ion-col size="5">
-              <h6 class="nombre">Carlos Aponte</h6> 
-          </ion-col>
-          <ion-col size="3">
-            <ion-button class="btn-aceptar">
-                <ion-icon name="md-checkmark-circle"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col size="4">
-                <h6 class="titulo">PRECIO:</h6> 
-            </ion-col>
-            <ion-col size="5">
-                <h6 class="precio">$250.00</h6> 
-            </ion-col>
-            <ion-col size="3">
-                <ion-button class="btn-declinar">
-                    <ion-icon name="md-close-circle"></ion-icon>
-                </ion-button>
+  <img class='logo' src="assets/logowhite.png">
+  <div class='header'>
+    <h3 padding style="font-size: 30px; color: white; font-weight: 300; margin-top: 20px;">Solicitudes</h3>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines=none>
+    <ion-card *ngFor="let request of requests" style="padding: 0;">
+      <ion-item id="requests">
+        <button class="boton" expand="full" (click)=presentInfo(request)>
+          <ion-grid>
+
+
+            <ion-row>
+
+              <!-- FIRST COLUMN STARTS HERE -->
+              <ion-col size="6">
+                <h6 class="left" style="margin: 0px; color: darkgray">Servicio:
+                  <span style="color: black"> {{request.service}}</span></h6>
+
+                <!--<h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('licensePlateNum')}}</h6> -->
+                <!-- <h6 style="color: lightgray; font-size: 15px; margin: 0px;">{{car.get('color')}}</h6> -->
+
+                <h6 class="left" style="color: darkgray; font-size: 12px; margin: 0px;">{{request.dateString}}</h6>
               </ion-col>
-          </ion-row>
-      </ion-grid>
+              <!-- FIRST COLUMN ENDS HERE -->
+
+              <!-- SECOND COLUMN STARTS HERE -->
+              <ion-col size="6">
+                <p class="right" style="color: darkgray; font-size: 15px; margin: 0px;">Precio:
+                  <span style="color: rgb(54, 180, 54)">${{request.price}}.00</span> </p>
+
+                <p class="right" style="color: darkgray; font-size: 15px; margin: 0px;">Carro:
+                  <span style="color: black">{{request.clientCar.make}} {{request.clientCar.model}} </span></p>
+              </ion-col>
+              <!-- SECOND COLUMN ENDS HERE -->
+
+              <span *ngIf="request.service != 'Grua'">
+                  <ion-button (click)="goTo()" class="btn-cotizaciones">VER COTIZACIONES</ion-button>
+              </span>
+
+            </ion-row>
+
+
+          </ion-grid>
+        </button>
+      </ion-item>
     </ion-card>
-</div>
+  </ion-list>
+</ion-content> 

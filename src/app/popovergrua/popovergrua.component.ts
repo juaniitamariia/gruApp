@@ -12,7 +12,7 @@ export class PopovergruaComponent implements OnInit {
 
   constructor(public popController : PopoverController, public navigate : NavController,
               public provider : GruproviderService) { }
-total: any;
+total: number;
 distancia : any;
 time: number
 

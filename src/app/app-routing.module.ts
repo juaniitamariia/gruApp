@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'mark-location', loadChildren: './mark-location/mark-location.module#MarkLocationPageModule' },
   { path: 'request', loadChildren: './request/request.module#RequestPageModule' },
   { path: 'edit-car', loadChildren: './edit-car/edit-car.module#EditCarPageModule' },
+  { path: 'cotizaciones', loadChildren: './cotizaciones/cotizaciones.module#CotizacionesPageModule' },
 ];
 
 @NgModule({

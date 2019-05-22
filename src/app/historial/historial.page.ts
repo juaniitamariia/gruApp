@@ -6,7 +6,7 @@ import { PopoverComponent} from '../popover/popover.component';
 
 
 
-const parse = require('parse');
+let parse = require('parse');
 
 
 @Component({

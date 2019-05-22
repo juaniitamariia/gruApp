@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { NavController } from "@ionic/angular";
+import { GruproviderService } from "./../gruprovider.service";
 import * as Parse from 'parse';
 
 let parse = require('parse');
@@ -16,7 +17,7 @@ export class RequestPage implements OnInit {
   name: any;
   service: any;
 
-  constructor(public location : Location, public control: NavController) {
+  constructor(public location : Location, public control: NavController, public provider:GruproviderService) {
     parse.serverURL = 'https://parseapi.back4app.com/';
     Parse.initialize('guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2', 'qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8');
    }
@@ -40,13 +41,14 @@ export class RequestPage implements OnInit {
         }
         this.requests = result;
         this.service = this.requests.service;
-        // console.log(this.requests);
-        // console.log(this.requests.destination.latitude, this.requests.destination.longitude); // destination                                                       
+        console.log(this.requests);
+
+        // console.log(this.requests.destination.latitude, this.requests.destination.longitude); // destination     
+        this.provider.serviceId = this.requests.objectid;                                                  
       }
       // tslint:disable-next-line:no-unused-expression
     }), (error) => {
       console.log(error);
-
     };
   }
 
@@ -54,8 +56,9 @@ export class RequestPage implements OnInit {
     console.log(this.requests)
   }
 
-  goTo()
+  goTo(objectId)
   {
+    this.provider.serviceId = objectId
     this.control.navigateRoot('/cotizaciones');
   }
 

@@ -132,7 +132,6 @@ var SidemenuPage = /** @class */ (function () {
         parse__WEBPACK_IMPORTED_MODULE_8__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     }
     SidemenuPage.prototype.ngOnInit = function () {
-        // this.userLocation();
         this.loadMap();
         this.getName();
         this.getPhoto();
@@ -173,7 +172,7 @@ var SidemenuPage = /** @class */ (function () {
         this.nav.navigateRoot('/metodo-pago');
     };
     SidemenuPage.prototype.getQuote = function () {
-        this.requestCount = 0;
+        this.requestCount = this.gruprovider.requestQuantity; //cantidad de request 
     };
     SidemenuPage.prototype.profile = function () {
         var options = {
@@ -189,27 +188,60 @@ var SidemenuPage = /** @class */ (function () {
         this.nav.navigateRoot('/profile');
     };
     SidemenuPage.prototype.alerts = function (service) {
-        console.log("pop working");
-        this.gruprovider.service = service;
-        console.log(service);
-        if (service == 'grua' || service == 'goma' || service == 'gasolina' || service == 'llaves' || service == 'bateria') {
-            this.presentPopover();
+        console.log("usuario nuevo??" + this.gruprovider.whatUser);
+        if (this.gruprovider.whatUser == true) {
+            this.serviceRequested(); //ya solicitaste un servicio, el usuario debe esperar
         }
-        if (service == 'goma') {
-            this.Goma();
+        else {
+            console.log("pop working");
+            this.gruprovider.service = service;
+            console.log(service);
+            if (service == 'grua' || service == 'goma' || service == 'gasolina' || service == 'llaves' || service == 'bateria') {
+                this.presentPopover();
+            }
+            if (service == 'goma') {
+                this.Goma();
+            }
+            else if (service == 'gasolina') {
+                this.Gasolina();
+            }
+            else if (service == 'especial') {
+                this.Especial();
+            }
+            else if (service == 'llaves') {
+                this.Llaves();
+            }
+            else if (service == 'bateria') {
+                this.Bateria();
+            }
         }
-        else if (service == 'gasolina') {
-            this.Gasolina();
-        }
-        else if (service == 'especial') {
-            this.Especial();
-        }
-        else if (service == 'llaves') {
-            this.Llaves();
-        }
-        else if (service == 'bateria') {
-            this.Bateria();
-        }
+    };
+    SidemenuPage.prototype.serviceRequested = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alerCtrl.create({
+                            header: '¡ALERTA!',
+                            message: 'Debes esperar que el grüero acepte tu solicitud de servicio',
+                            buttons: [{
+                                    text: 'OK',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function () {
+                                        console.log('Confirm Cancel');
+                                    }
+                                }]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     SidemenuPage.prototype.openCustom = function () {
         this.menu.enable(true, 'custom');
@@ -221,7 +253,6 @@ var SidemenuPage = /** @class */ (function () {
         this.gruprovider.mapboxgl = this.mapboxgl;
         this.gruprovider.service = service;
         console.log(service);
-        //this.Grua();
         var options = {
             direction: 'left',
             duration: 200,
@@ -373,22 +404,6 @@ var SidemenuPage = /** @class */ (function () {
             });
         });
     };
-    // async Grua(){
-    //   const alert = await this.alerCtrl.create({
-    //     header: '¡ALERTA!',
-    //     message: 'El servicio de remolque sólo aplica cuando el vehículo se encuentre en un espacio accesible para la grúa y solo vehículos que tengan solo cuatro ruedas y no tenga carga. No camiones.',
-    //     buttons: [{
-    //       text: 'OK',
-    //       role: 'cancel',
-    //       cssClass: 'secondary',
-    //       handler: () => {
-    //         console.log('Confirm Cancel');      
-    //       }
-    //     }]
-    //   });
-    //   await alert.present();
-    //   //this.nav.navigateRoot('/locatio-marker');
-    // }
     SidemenuPage.prototype.inviteFriends = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var modal;
@@ -408,14 +423,6 @@ var SidemenuPage = /** @class */ (function () {
             });
         });
     };
-    // async presentPopover(service : string) {
-    //   const popover = await this.popoverController.create({
-    //     component: PopoverComponent,
-    //     //event: event,
-    //     translucent: false
-    //   });
-    //   return await popover.present();
-    // }
     SidemenuPage.prototype.navigateFoward = function () {
         this.nav.navigateRoot('/escoger-pago');
     };

@@ -70,17 +70,24 @@ numbersOnly(input){
       this.numbers += (<HTMLInputElement>document.getElementById("three")).value.toString();
       this.numbers += (<HTMLInputElement>document.getElementById("four")).value.toString();
 
-      if (this.gru.verificationCode == this.numbers){
-         console.log('transition');
-         Parse.Cloud.run('setVerified', { userId: Parse.User.current().id} )
-         .then((result) => {
-            this.nativePageTransitions.slide(options);
-            this.nav.navigateRoot('/metodo-pago');
-         });
-      }
-      else if( this.gru.verificationCode != this.numbers){
-         console.log("Nope",this.gru.verificationCode);
-      }
+      console.log('transition');
+      Parse.Cloud.run('setVerified', { userId: Parse.User.current().id, number: this.numbers} )
+      .then((result) => {
+        if(result.success == true){
+         this.nativePageTransitions.slide(options);
+         this.nav.navigateRoot('/metodo-pago');
+        }else{
+          console.log('NO SON IGUALES LOS NUMEROS')
+        }
+      });
+
+
+      // if (this.gru.verificationCode == this.numbers){
+        
+      // }
+      // else if( this.gru.verificationCode != this.numbers){
+      //    console.log("Nope",this.gru.verificationCode);
+      // }
 
       console.log(this.numbers);
    

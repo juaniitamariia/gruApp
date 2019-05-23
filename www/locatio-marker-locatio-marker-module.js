@@ -13108,7 +13108,8 @@ var LocatioMarkerPage = /** @class */ (function () {
                     return [2 /*return*/];
                 }
                 if (this.gruprovider.service == 'Servicio Especial') {
-                    this.nav.navigateRoot("/request");
+                    this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
+                    this.nav.navigateRoot("/sidemenu");
                 }
                 else {
                     console.log(this.mapboxDirections.getOrigin()); //extrae el origen de la ruta

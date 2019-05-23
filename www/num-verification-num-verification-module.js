@@ -142,17 +142,22 @@ var NumVerificationPage = /** @class */ (function () {
         this.numbers += document.getElementById("two").value.toString();
         this.numbers += document.getElementById("three").value.toString();
         this.numbers += document.getElementById("four").value.toString();
-        if (this.gru.verificationCode == this.numbers) {
-            console.log('transition');
-            parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('setVerified', { userId: parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().id })
-                .then(function (result) {
+        console.log('transition');
+        parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('setVerified', { userId: parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().id, number: this.numbers })
+            .then(function (result) {
+            if (result.success == true) {
                 _this.nativePageTransitions.slide(options);
                 _this.nav.navigateRoot('/metodo-pago');
-            });
-        }
-        else if (this.gru.verificationCode != this.numbers) {
-            console.log("Nope", this.gru.verificationCode);
-        }
+            }
+            else {
+                console.log('NO SON IGUALES LOS NUMEROS');
+            }
+        });
+        // if (this.gru.verificationCode == this.numbers){
+        // }
+        // else if( this.gru.verificationCode != this.numbers){
+        //    console.log("Nope",this.gru.verificationCode);
+        // }
         console.log(this.numbers);
     };
     NumVerificationPage.prototype.reSendCode = function () {

@@ -16735,7 +16735,7 @@ var EscogerPagoPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=header>\n\n  <ion-button class=\"btnBack\" (click)=navBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n<img class=logo src= \"assets/logowhite.png\">\n<h1 class=titlePayment padding>Método de pago</h1>\n<p class=\"choose-payment\" style=\"font-weight:300;\">Escoger tarjeta</p>\n\n</div>\n\n<div class=cardBox>\n\n\n    <ion-card class=size>\n        <ion-card-title class= titlePay>\n            Tarjetas de Crédito\n          </ion-card-title>\n    <ion-content class=\"lista\">\n        <ion-list>\n            <ion-item *ngFor=\"let card of cards\">\n                <button class=\"boton\" (click)=getCard(card)>\n                <ion-card class=\"card\">\n                    <ion-grid class=\"grid\">\n                        <ion-row style=\"height: 50px;\">\n                            <ion-col size=\"10\">\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/visa.png\" *ngIf=\"card.brand == 'Visa'\"></ion-img>\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/mastercard.png\" *ngIf=\"card.brand == 'MasterCard'\"></ion-img>\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/american-express.png\" *ngIf=\"card.brand == 'American Express'\"></ion-img>\n                                <h5 style=\"margin: 0px;\">xxxx-xxxx-xxxx-{{card.last4}}</h5>\n                            </ion-col>\n                        </ion-row>\n                    </ion-grid>\n                </ion-card>\n              </button>\n            </ion-item>\n        </ion-list>\n    </ion-content>\n    </ion-card>\n</div>\n\n<div class= btnText>\n  <ion-button (click)='makePayment()'>PAGAR</ion-button>\n</div>\n\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)='navigateAdd()' style=\"border-radius: 50%; border: solid white 2px;\">\n      <ion-icon name=\"md-add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n"
+module.exports = "<div class=header>\n\n  <ion-button class=\"btnBack\" (click)=navBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n<img class=logo src= \"assets/logowhite.png\">\n<h1 class=titlePayment padding>Método de pago</h1>\n<p class=\"choose-payment\" style=\"font-weight:300;\">Escoger tarjeta</p>\n\n</div>\n\n<div class=cardBox>\n\n\n    <ion-card class=size>\n        <ion-card-title class= titlePay>\n            Tarjetas de Crédito\n          </ion-card-title>\n    <ion-content class=\"lista\">\n        <ion-list>\n            <ion-item *ngFor=\"let card of cards\">\n                <button class=\"boton\" (click)=getCard(card)>\n                <ion-card class=\"card\">\n                    <ion-grid class=\"grid\">\n                        <ion-row style=\"height: 50px;\">\n                            <ion-col size=\"10\">\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/visa.png\" *ngIf=\"card.brand == 'Visa'\"></ion-img>\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/mastercard.png\" *ngIf=\"card.brand == 'MasterCard'\"></ion-img>\n                              <ion-img class=\"tarjeta-icon\" src=\"assets/american-express.png\" *ngIf=\"card.brand == 'American Express'\"></ion-img>\n                                <h5 style=\"margin: 0px;\">xxxx-xxxx-xxxx-{{card.last4}}</h5>\n                            </ion-col>\n                        </ion-row>\n                    </ion-grid>\n                </ion-card>\n              </button>\n            </ion-item>\n        </ion-list>\n    </ion-content>\n    </ion-card>\n</div>\n\n<div class= btnText>\n  <ion-button (click)='makePayment()'>SOLICITAR SERVICIO</ion-button>\n</div>\n\n<ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)='navigateAdd()' style=\"border-radius: 50%; border: solid white 2px;\">\n      <ion-icon name=\"md-add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n"
 
 /***/ }),
 
@@ -16849,6 +16849,8 @@ var EscogerPagoPage = /** @class */ (function () {
                         })];
                     case 1:
                         alert = _a.sent();
+                        this.provider.whatUser = true; //el usuario NO es nuevo, ya tiene un servicio pedido
+                        console.log(this.provider.whatUser);
                         return [4 /*yield*/, alert.present()];
                     case 2:
                         _a.sent();
@@ -16908,6 +16910,7 @@ var EscogerPagoPage = /** @class */ (function () {
         }
         else {
             console.log('seleccionada');
+            console.log(this.provider.total);
             parse__WEBPACK_IMPORTED_MODULE_6__["Cloud"].run('purchase', {
                 amount: this.provider.total,
                 cardId: this.provider.card.id,
@@ -16918,9 +16921,12 @@ var EscogerPagoPage = /** @class */ (function () {
                 parse__WEBPACK_IMPORTED_MODULE_6__["Cloud"].run('createServiceRequest', {
                     car: _this.provider.selectedCar.id,
                     latitud: _this.provider.lat,
+                    pointB: _this.provider.destination,
+                    millas: _this.provider.distance,
                     longitud: _this.provider.long,
                     service: _this.provider.service,
                     notas: _this.provider.messageNotes,
+                    image: _this.provider.photo,
                     price: _this.provider.total,
                     dateString: moment__WEBPACK_IMPORTED_MODULE_7__(new Date()).format('M/D/YYYY, h:mm a')
                 }).then(function (result) {
@@ -16935,38 +16941,6 @@ var EscogerPagoPage = /** @class */ (function () {
                 console.log(error);
             });
         }
-        parse__WEBPACK_IMPORTED_MODULE_6__["Cloud"].run('createServiceRequest', {
-            userId: parse__WEBPACK_IMPORTED_MODULE_6__["User"].current().id,
-            clientCar: this.provider.car,
-            client: this.provider.name,
-            destination: this.provider.destination,
-            service: this.provider.service,
-            price: this.provider.price,
-            notes: this.provider.messageNotes
-        }).then(function (result) {
-            if (_this.provider.service == 'Grua' || _this.provider.service == 'Servicio Especial') {
-                parse__WEBPACK_IMPORTED_MODULE_6__["Cloud"].run('createServiceRequest', {
-                    pointB: _this.provider.destination,
-                    precioPorMilla: _this.provider.precioMilla,
-                    millas: _this.provider.distance
-                }).then(function (result) {
-                    console.log(result);
-                }, function (error) {
-                    console.log(error);
-                });
-            }
-            else if (_this.provider.service == 'Servicio Especial') {
-                parse__WEBPACK_IMPORTED_MODULE_6__["Cloud"].run('createServiceRequest', {
-                    image: _this.provider.photo
-                }).then(function (result) {
-                    console.log(result);
-                }, function (error) {
-                    console.log(error);
-                });
-            }
-        }, function (error) {
-            console.log(error);
-        });
     };
     EscogerPagoPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

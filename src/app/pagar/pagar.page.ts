@@ -97,14 +97,14 @@ export class PagarPage implements OnInit {
     this.tablilla = this.provider.selectedCar.get('licensePlateNum')
     console.log(this.currentUser);
 
+      if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial'){
+        this.total = this.provider.total;
+        this.totalCost = this.provider.distance * 3;
+        console.log("total dentro de la condicion:" + this.total)
+      }else{
       this.total = this.provider.price;
       this.provider.total = this.provider.price;
       console.log(this.provider.price);
-
-      if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial'){
-        console.log("total dentro de la condicion:" + this.total)
-        this.total = this.provider.total;
-        this.totalCost = this.provider.distance * 3;
       }
   }
 }

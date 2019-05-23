@@ -31,7 +31,7 @@ export class CotizacionesPage implements OnInit {
       let index : any;
       index = this.quots.indexOf(selectedQuotes); console.log(index);
       console.log('enter');
-      Parse.Cloud.run('deleteQuotes', {quotesID: selectedQuotes.id}).then((result) =>  
+      Parse.Cloud.run('deleteQuotes', {quotesID: selectedQuotes.objectId}).then((result) =>  
       {
         this.quots.splice(index, 1);
         console.log(result);

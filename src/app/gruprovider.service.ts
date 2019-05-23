@@ -64,6 +64,10 @@ export class GruproviderService {
   precioMilla: any;
   time: any;
   serviceId: any;
+
+  whatUser: boolean = false; //distingue si el usuario tiene un request procesado o es un cliente nuevo: false==no tiene ningun request
+  requestQuantity : number;
+
   constructor(public nav: NavController, private alert: AlertController) {
 
   }

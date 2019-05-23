@@ -65,6 +65,7 @@ export class LocatioMarkerPage implements OnInit {
   distance: number;
   distanceCost: number;
   time: number;
+  whatUser: boolean;
 
   constructor(public menu: MenuController,
     private nav: NavController, public gruprovider: GruproviderService,
@@ -77,10 +78,8 @@ export class LocatioMarkerPage implements OnInit {
   }
 
   ngOnInit() {
-
     this.loadMap();
     this.start = [this.gruprovider.long, this.gruprovider.lat];
-    
   }
   ngOnDestroy() {
     this.map1.remove();
@@ -176,7 +175,8 @@ export class LocatioMarkerPage implements OnInit {
     }
 
     if(this.gruprovider.service == 'Servicio Especial'){
-      this.nav.navigateRoot("/request");
+      this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
+      this.nav.navigateRoot("/sidemenu");
     }else{
       console.log(this.mapboxDirections.getOrigin()) //extrae el origen de la ruta
       console.log(this.mapboxDirections.getDestination()) //extrae el destino de la ruta

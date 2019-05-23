@@ -102,6 +102,7 @@ export class PagarPage implements OnInit {
       console.log(this.provider.price);
 
       if(this.provider.service == 'Grua' || this.provider.service == 'Servicio Especial'){
+        console.log("total dentro de la condicion:" + this.total)
         this.total = this.provider.total;
         this.totalCost = this.provider.distance * 3;
       }

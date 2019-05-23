@@ -40,8 +40,11 @@ export class RequestPage implements OnInit {
           result[i] = result[i].toJSON();
         }
         this.requests = result;
+
+        this.provider.requestQuantity = result.length; //devuelve la cantidad total de items en el array
         this.service = this.requests.service;
-        console.log(this.requests);
+        
+        console.log(this.provider.requestQuantity);
 
         // console.log(this.requests.destination.latitude, this.requests.destination.longitude); // destination     
         this.provider.serviceId = this.requests.objectid;                                                  

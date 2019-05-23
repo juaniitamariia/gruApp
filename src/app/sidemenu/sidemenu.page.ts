@@ -46,6 +46,7 @@ import {
   getAllRouteGuards
 } from '@angular/router/src/utils/preactivation';
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 let parse = require('parse');
 
@@ -66,6 +67,7 @@ export class SidemenuPage implements OnInit {
   start :any;
   coordenates : any[];
   requestCount: any;
+  
 
   constructor(public menu: MenuController,
     public nav: NavController, public router: Router,
@@ -79,7 +81,7 @@ export class SidemenuPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.userLocation();
+
     this.loadMap();
     this.getName();
     this.getPhoto();
@@ -130,8 +132,7 @@ export class SidemenuPage implements OnInit {
 
   getQuote(){
 
-    this.requestCount = 0;
-
+    this.requestCount = this.gruprovider.requestQuantity; //cantidad de request 
 
   }
 
@@ -153,27 +154,51 @@ export class SidemenuPage implements OnInit {
 
 
   alerts(service: string) {
-    console.log("pop working");
-    this.gruprovider.service = service;
-    console.log(service);
-
-    if (service == 'grua' || service == 'goma' || service == 'gasolina' || service == 'llaves' || service == 'bateria') {
-      this.presentPopover();
+    console.log("usuario nuevo??" + this.gruprovider.whatUser)
+    if(this.gruprovider.whatUser == true){
+      this.serviceRequested(); //ya solicitaste un servicio, el usuario debe esperar
+    }else{
+      console.log("pop working");
+      this.gruprovider.service = service;
+      console.log(service);
+  
+      if (service == 'grua' || service == 'goma' || service == 'gasolina' || service == 'llaves' || service == 'bateria') {
+        this.presentPopover();
+      }
+      
+      if (service == 'goma') {
+        this.Goma();
+      } else if (service == 'gasolina') {
+        this.Gasolina();
+      } else if (service == 'especial') {
+        this.Especial();
+      } else if (service == 'llaves') {
+        this.Llaves();
+      } else if (service == 'bateria') {
+        this.Bateria();
+      }
+  
     }
-    
-    if (service == 'goma') {
-      this.Goma();
-    } else if (service == 'gasolina') {
-      this.Gasolina();
-    } else if (service == 'especial') {
-      this.Especial();
-    } else if (service == 'llaves') {
-      this.Llaves();
-    } else if (service == 'bateria') {
-      this.Bateria();
-    }
-
+   
   }
+
+  async serviceRequested() {
+    const alert = await this.alerCtrl.create({
+      header: '¡ALERTA!',
+      message: 'Debes esperar que el grüero acepte tu solicitud de servicio',
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }
+      }]
+    });
+
+    await alert.present();
+  }
+
 
 
   openCustom() {
@@ -188,7 +213,6 @@ export class SidemenuPage implements OnInit {
     this.gruprovider.service = service;
     console.log(service);
 
-    //this.Grua();
 
     let options: NativeTransitionOptions = {
       direction: 'left',
@@ -299,24 +323,6 @@ export class SidemenuPage implements OnInit {
     //this.navigateFoward();
   }
 
-  // async Grua(){
-  //   const alert = await this.alerCtrl.create({
-  //     header: '¡ALERTA!',
-  //     message: 'El servicio de remolque sólo aplica cuando el vehículo se encuentre en un espacio accesible para la grúa y solo vehículos que tengan solo cuatro ruedas y no tenga carga. No camiones.',
-  //     buttons: [{
-  //       text: 'OK',
-  //       role: 'cancel',
-  //       cssClass: 'secondary',
-  //       handler: () => {
-  //         console.log('Confirm Cancel');      
-  //       }
-  //     }]
-  //   });
-
-  //   await alert.present();
-  //   //this.nav.navigateRoot('/locatio-marker');
-  // }
-
   async inviteFriends() {
 
     const modal = await this.modalCtrl.create({
@@ -329,15 +335,7 @@ export class SidemenuPage implements OnInit {
   }
 
 
-  // async presentPopover(service : string) {
-  //   const popover = await this.popoverController.create({
-
-  //     component: PopoverComponent,
-  //     //event: event,
-  //     translucent: false
-  //   });
-  //   return await popover.present();
-  // }
+  
 
   navigateFoward() {
     this.nav.navigateRoot('/escoger-pago');

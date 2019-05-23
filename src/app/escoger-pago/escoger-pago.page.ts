@@ -105,7 +105,8 @@ export class EscogerPagoPage implements OnInit {
         }
       ]
     });
-
+    this.provider.whatUser = true; //el usuario NO es nuevo, ya tiene un servicio pedido
+    console.log(this.provider.whatUser)
     await alert.present();
 
   }

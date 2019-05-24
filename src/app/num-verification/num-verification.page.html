@@ -11,13 +11,13 @@
 <div class=codigo>
     
     <div id="form">
-        <ion-input id="one" type="text" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max="9"
-         (onkeyup)="add(this)"></ion-input>
-        <ion-input id="two" type="text" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
-        (onkeyup)="add(this)"></ion-input>
-        <ion-input id="three" type=“text” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
-        (onkeyup)="add(this)"></ion-input>
-        <ion-input id="four" type=“text” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        <ion-input maxlength ='1' #one id="one" type="number" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max="9"
+         (onkeyup)="gotoNextfield(two)"></ion-input>
+        <ion-input maxlength ='1' #two id="two" type="number" class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        (onkeyup)="gotoNextfield(three)"></ion-input>
+        <ion-input maxlength ='1' #three id="three" type=“number” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
+        (onkeyup)="gotoNextfield(four)"></ion-input>
+        <ion-input maxlength ='1' #four id="four" type=“number” class="verification-code" placeholder="&bull;" maxLength="1" size="1" min="0" max=“9”
         (onkeyup)="add(this)"></ion-input>
       </div>
 

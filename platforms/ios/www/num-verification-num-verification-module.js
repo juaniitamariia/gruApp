@@ -58,7 +58,7 @@ var NumVerificationPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=header>\n\n  <ion-button class=\"btnBack\" (click)= navigate()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n<img class=logo src= \"assets/logowhite.png\">\n\n</div>\n\n<div class=codigo>\n    \n    <div id=\"form\">\n        <ion-input id=\"one\" type=\"text\" class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=\"9\"\n         (onkeyup)=\"add(this)\"></ion-input>\n        <ion-input id=\"two\" type=\"text\" class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"add(this)\"></ion-input>\n        <ion-input id=\"three\" type=“text” class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"add(this)\"></ion-input>\n        <ion-input id=\"four\" type=“text” class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"add(this)\"></ion-input>\n      </div>\n\n      <ion-button margin=20px expand=\"block\" (click)= reSendCode()>Reenviar</ion-button>\n      <ion-button margin=20px expand=\"block\" (click)= navigateFoward()>Verificar</ion-button>\n\n</div>\n"
+module.exports = "<div class=header>\n\n  <ion-button class=\"btnBack\" (click)= navigate()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n<img class=logo src= \"assets/logowhite.png\">\n\n</div>\n\n<div class=codigo>\n    \n    <div id=\"form\">\n        <ion-input maxlength ='1' #one id=\"one\" type=\"number\" class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=\"9\"\n         (onkeyup)=\"gotoNextfield(two)\"></ion-input>\n        <ion-input maxlength ='1' #two id=\"two\" type=\"number\" class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"gotoNextfield(three)\"></ion-input>\n        <ion-input maxlength ='1' #three id=\"three\" type=“number” class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"gotoNextfield(four)\"></ion-input>\n        <ion-input maxlength ='1' #four id=\"four\" type=“number” class=\"verification-code\" placeholder=\"&bull;\" maxLength=\"1\" size=\"1\" min=\"0\" max=“9”\n        (onkeyup)=\"add(this)\"></ion-input>\n      </div>\n\n      <ion-button margin=20px expand=\"block\" (click)= reSendCode()>Reenviar</ion-button>\n      <ion-button margin=20px expand=\"block\" (click)= navigateFoward()>Verificar</ion-button>\n\n</div>\n"
 
 /***/ }),
 
@@ -159,6 +159,9 @@ var NumVerificationPage = /** @class */ (function () {
         //    console.log("Nope",this.gru.verificationCode);
         // }
         console.log(this.numbers);
+    };
+    NumVerificationPage.prototype.gotoNextField = function (nextElement) {
+        nextElement.setFocus();
     };
     NumVerificationPage.prototype.reSendCode = function () {
         this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);

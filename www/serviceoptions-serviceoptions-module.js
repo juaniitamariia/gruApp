@@ -58,7 +58,7 @@ var ServiceoptionsPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <!-- Menu de Botones-->\n  <ion-card class=mainMenu>\n    <div *ngIf=\"service == 'bateria'\" class=center>\n      <ion-img style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/bateria.svg\"></ion-img> \n    </div>\n\n    <div class=center>\n        <ion-img *ngIf=\"service == 'grua'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/grua.svg\"></ion-img> \n    </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'gasolina'\" style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/gasolina.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'especial'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/choqueicon.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'goma'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/gomavacia.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'llaves'\" style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/llaves.svg\"></ion-img> \n      </div>\n\n    <div>\n      <ion-button margin  style='font-size: 15px;' expand=block>Cambiar la ubicación</ion-button>\n      <ion-button margin  href=\"/rating\"  [disabled]=\"disabled\" style=\"font-size: 15px;\" expand=block>Servicio culminado</ion-button>\n      <!-- <ion-button margin  (click)='presentAlertPrompt()' style=\"font-size: 15px;\" expand=block>El servicio no fue brindado</ion-button> -->\n      <ion-button margin  (click)='Cancel()' style=\"--background: rgb(255, 75, 75); font-size: 15px;\" expand=block>Cancelar</ion-button>\n    </div>\n  </ion-card>\n\n\n  <!-- Map view -->\n  <ion-header>\n \n    <meta charset='utf-8' />\n    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />\n    <div  id='map4' style='width: 100%; height: 100vh;'>  \n      </div>\n\n    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>\n    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />\n\n    <style>\n            body { margin:0; padding:0; }\n            #map { position:absolute; top:0; bottom:0; width:100%; }\n      </style>\n    \n</ion-header>\n\n<ion-content>   \n\n\n</ion-content>\n\n\n\n\n\n\n"
+module.exports = "  <!-- Menu de Botones-->\n  <ion-card class=mainMenu>\n    <div *ngIf=\"service == 'bateria'\" class=center>\n      <ion-img style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/bateria.svg\"></ion-img> \n    </div>\n\n    <div class=center>\n        <ion-img *ngIf=\"service == 'Grua'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/grua.svg\"></ion-img> \n    </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'Gasolina'\" style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/gasolina.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'Servicio Especial'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/choqueicon.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'Goma'\" style='margin: auto; margin-top: 20px; width: 30%;' src= \"assets/gomavacia.svg\"></ion-img> \n      </div>\n\n      <div class=center>\n          <ion-img *ngIf=\"service == 'Cerrajeria'\" style='margin: auto; margin-top: 20px; width: 15%;' src= \"assets/llaves.svg\"></ion-img> \n      </div>\n\n    <div>\n      <ion-button margin  style='font-size: 15px;' expand=block>Cambiar la ubicación</ion-button>\n      <ion-button margin  href=\"/rating\"  [disabled]=\"disabled\" style=\"font-size: 15px;\" expand=block>Servicio culminado</ion-button>\n      <ion-button margin  (click)='Cancel()' style=\"--background: rgb(255, 75, 75); font-size: 15px;\" expand=block>Cancelar</ion-button>\n    </div>\n  </ion-card>\n\n\n  <!-- Map view -->\n  <ion-header>\n \n    <meta charset='utf-8' />\n    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />\n    <div  id='map4' style='width: 100%; height: 100vh;'>  \n      </div>\n\n    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>\n    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />\n\n    <style>\n            body { margin:0; padding:0; }\n            #map { position:absolute; top:0; bottom:0; width:100%; }\n      </style>\n    \n</ion-header>\n\n<ion-content>   \n\n\n</ion-content>\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -89,6 +89,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var mapbox_gl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mapbox-gl */ "./node_modules/mapbox-gl/dist/mapbox-gl.js");
 /* harmony import */ var mapbox_gl__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(mapbox_gl__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(parse__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -96,6 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var parse = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
 var ServiceoptionsPage = /** @class */ (function () {
     function ServiceoptionsPage(grupovider, menu, popoverAlert, alerCtrl, nav) {
         this.grupovider = grupovider;
@@ -107,6 +111,8 @@ var ServiceoptionsPage = /** @class */ (function () {
         this.service = this.grupovider.service;
         console.log(this.service);
         mapbox_gl__WEBPACK_IMPORTED_MODULE_4__["accessToken"] = 'pk.eyJ1IjoianJvc2FyaW8yNDEiLCJhIjoiY2pzdXF6NmJiMmgzNzQ5cnJkMjFsa285NSJ9.a6Z7HjeR6q74TBxQhXPy5A';
+        parse.serverURL = 'https://parseapi.back4app.com/';
+        parse__WEBPACK_IMPORTED_MODULE_5__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     }
     ServiceoptionsPage.prototype.ngOnInit = function () {
         this.loadMap();
@@ -118,11 +124,28 @@ var ServiceoptionsPage = /** @class */ (function () {
             style: 'mapbox://styles/jrosario241/cjsuqzyev4cip1fo3cv5c3vr5',
         });
         console.log(this.map4);
-    };
-    ServiceoptionsPage.prototype.openCustom = function () {
-        this.menu.enable(true, 'custom');
-        this.menu.open('custom');
-        console.log("is working");
+        parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('getDriverLocation', {})
+            .then(function (result) {
+            console.log(result.get('currentlocation'));
+        });
+        var url = 'https://wanderdrone.appspot.com/';
+        this.map4.on('load', function () {
+            window.setInterval(function () {
+                this.map4.getSource('drone').setData(url);
+            }, 2000);
+            this.map4.addSource('drone', {
+                type: 'geojson',
+                data: url
+            });
+            this.map4.addLayer({
+                "id": "drone",
+                "type": "symbol",
+                "source": "drone",
+                "layout": {
+                    "icon-image": "rocket-15"
+                }
+            });
+        });
     };
     ServiceoptionsPage.prototype.Cancel = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -147,9 +170,11 @@ var ServiceoptionsPage = /** @class */ (function () {
                                     cssClass: 'secondary',
                                     handler: function () {
                                         console.log('Confirm Cancel');
+                                        _this.grupovider.whatUser = false;
                                         _this.navMenu();
                                     }
-                                }]
+                                }
+                            ]
                         })];
                     case 1:
                         alert = _a.sent();
@@ -172,23 +197,19 @@ var ServiceoptionsPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.alerCtrl.create({
                             header: 'Servicio no brindado',
-                            inputs: [
-                                {
+                            inputs: [{
                                     name: 'notas',
                                     type: 'text',
                                     placeholder: 'Notas'
-                                }
-                            ],
-                            buttons: [
-                                {
+                                }],
+                            buttons: [{
                                     text: 'Someter',
                                     cssClass: 'greenBtn',
                                     handler: function () {
                                         console.log('Confirm Cancel');
                                         _this.nav.navigateRoot('/sidemenu');
                                     }
-                                }
-                            ]
+                                }]
                         })];
                     case 1:
                         alert = _a.sent();

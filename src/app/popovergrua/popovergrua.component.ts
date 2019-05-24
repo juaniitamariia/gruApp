@@ -14,7 +14,8 @@ export class PopovergruaComponent implements OnInit {
               public provider : GruproviderService) { }
 total: number;
 distancia : any;
-time: number
+time: number;
+service:  any = this.provider.service;
 
 
   ngOnInit() {

@@ -46,7 +46,6 @@ import {
   getAllRouteGuards
 } from '@angular/router/src/utils/preactivation';
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 let parse = require('parse');
 

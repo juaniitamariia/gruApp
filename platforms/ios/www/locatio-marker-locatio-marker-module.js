@@ -13107,17 +13107,16 @@ var LocatioMarkerPage = /** @class */ (function () {
                     this.emptyDestinou();
                     return [2 /*return*/];
                 }
+                console.log(this.mapboxDirections.getOrigin()); //extrae el origen de la ruta
+                console.log(this.mapboxDirections.getDestination()); //extrae el destino de la ruta
+                this.gruprovider.service = this.service;
+                this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
+                console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
+                this.distanceEquation();
                 if (this.gruprovider.service == 'Servicio Especial') {
-                    this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
-                    this.nav.navigateRoot("/sidemenu");
+                    this.nav.navigateRoot("/escoger-carro");
                 }
                 else {
-                    console.log(this.mapboxDirections.getOrigin()); //extrae el origen de la ruta
-                    console.log(this.mapboxDirections.getDestination()); //extrae el destino de la ruta
-                    this.gruprovider.service = this.service;
-                    this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
-                    console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
-                    this.distanceEquation();
                     this.presentPopover();
                 }
                 return [2 /*return*/];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { GruproviderService } from "./../gruprovider.service";
+import { NavController } from "@ionic/angular";
 import * as Parse from 'parse';
 
 let parse = require('parse');
@@ -14,7 +15,7 @@ export class CotizacionesPage implements OnInit {
 
   quots : any;
 
-  constructor( public location: Location, public provider : GruproviderService) {
+  constructor( public location: Location, public provider : GruproviderService, public nav : NavController) {
     parse.serverURL = 'https://parseapi.back4app.com/';
     Parse.initialize('guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2', 'qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8');
    }
@@ -58,4 +59,7 @@ export class CotizacionesPage implements OnInit {
     };
   }
 
+  acceptQuote(){
+    this.nav.navigateRoot('/serviceoptions');
+  }
 }

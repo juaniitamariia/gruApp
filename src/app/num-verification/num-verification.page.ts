@@ -93,6 +93,10 @@ numbersOnly(input){
    
    }
 
+   gotoNextField(nextElement){
+   nextElement.setFocus();
+}
+
    reSendCode() {
       this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
       if (this.verificationCode.length != 4) {

@@ -14,7 +14,7 @@
   <ion-list lines=none>
     <ion-card *ngFor="let request of requests" style="padding: 0;">
       <ion-item id="requests">
-        <button class="boton" expand="full" (click)=presentInfo(request)>
+        <button class="boton" expand="full">
           <ion-grid>
 
 
@@ -42,8 +42,12 @@
               </ion-col>
               <!-- SECOND COLUMN ENDS HERE -->
 
-              <span *ngIf="request.service != 'Grua'">
+              <span *ngIf="request.service == 'Servicio Especial'">
                   <ion-button (click)="goTo(request.objectId)" class="btn-cotizaciones">VER COTIZACIONES</ion-button>
+              </span>
+
+              <span *ngIf="request.service != 'Servicio Especial'">
+                  <ion-button (click)=seeDriver(request.objectId)>CONFIRMAR</ion-button>
               </span>
 
             </ion-row>

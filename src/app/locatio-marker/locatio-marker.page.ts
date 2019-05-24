@@ -174,10 +174,6 @@ export class LocatioMarkerPage implements OnInit {
       return;
     }
 
-    if(this.gruprovider.service == 'Servicio Especial'){
-      this.gruprovider.destination = this.mapboxDirections.getDestination().geometry.coordinates; //coordenadas del punto B(destino) en un array
-      this.nav.navigateRoot("/sidemenu");
-    }else{
       console.log(this.mapboxDirections.getOrigin()) //extrae el origen de la ruta
       console.log(this.mapboxDirections.getDestination()) //extrae el destino de la ruta
   
@@ -186,8 +182,15 @@ export class LocatioMarkerPage implements OnInit {
   
       console.log("LEGS: " + this.mapboxDirections.getDestination().routes);
       this.distanceEquation();
-      this.presentPopover();  
-    }
+       
+
+      if(this.gruprovider.service == 'Servicio Especial'){
+          this.nav.navigateRoot("/escoger-carro")
+      }else{
+        this.presentPopover(); 
+      }
+
+     
     
   }
 

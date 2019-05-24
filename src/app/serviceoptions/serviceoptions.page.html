@@ -5,29 +5,28 @@
     </div>
 
     <div class=center>
-        <ion-img *ngIf="service == 'grua'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/grua.svg"></ion-img> 
+        <ion-img *ngIf="service == 'Grua'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/grua.svg"></ion-img> 
     </div>
 
       <div class=center>
-          <ion-img *ngIf="service == 'gasolina'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/gasolina.svg"></ion-img> 
+          <ion-img *ngIf="service == 'Gasolina'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/gasolina.svg"></ion-img> 
       </div>
 
       <div class=center>
-          <ion-img *ngIf="service == 'especial'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/choqueicon.svg"></ion-img> 
+          <ion-img *ngIf="service == 'Servicio Especial'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/choqueicon.svg"></ion-img> 
       </div>
 
       <div class=center>
-          <ion-img *ngIf="service == 'goma'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/gomavacia.svg"></ion-img> 
+          <ion-img *ngIf="service == 'Goma'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/gomavacia.svg"></ion-img> 
       </div>
 
       <div class=center>
-          <ion-img *ngIf="service == 'llaves'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/llaves.svg"></ion-img> 
+          <ion-img *ngIf="service == 'Cerrajeria'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/llaves.svg"></ion-img> 
       </div>
 
     <div>
       <ion-button margin  style='font-size: 15px;' expand=block>Cambiar la ubicación</ion-button>
       <ion-button margin  href="/rating"  [disabled]="disabled" style="font-size: 15px;" expand=block>Servicio culminado</ion-button>
-      <!-- <ion-button margin  (click)='presentAlertPrompt()' style="font-size: 15px;" expand=block>El servicio no fue brindado</ion-button> -->
       <ion-button margin  (click)='Cancel()' style="--background: rgb(255, 75, 75); font-size: 15px;" expand=block>Cancelar</ion-button>
     </div>
   </ion-card>

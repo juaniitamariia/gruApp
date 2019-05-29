@@ -105,6 +105,7 @@ export class GruproviderService {
     });
     return true;
   }
+  
   sendCode(code){
   Parse.Cloud.run('sendVerificationCode', {
     verificationCode: code,

@@ -146,46 +146,5 @@ export class EscogerPagoPage implements OnInit {
     console.log(this.provider.selectedCar)
   }
 
-  makePayment(){ //enviar parametros al Cloud Function
 
-    if(this.provider.card == null){
-      this.errorAlert("Tarjeta no ha sido seleccionada.");
-      console.log('no hay tarjeta seleccionada');
-      return;
-    }else{
-      console.log('seleccionada')
-      console.log(this.provider.total)
-      Parse.Cloud.run('purchase', {
-        amount: this.provider.total,
-        cardId: this.provider.card.id,
-        customerId: this.provider.card.customer,
-        service: this.provider.service
-      }).then((result) => {
-        console.log(result);
-        Parse.Cloud.run('createServiceRequest', {
-          car: this.provider.selectedCar.id,
-          latitud: this.provider.lat,
-          pointB: this.provider.destination,
-          millas : this.provider.distance,
-          longitud: this.provider.long,
-          service: this.provider.service,
-          notas: this.provider.messageNotes,
-          image: this.provider.photo,
-          price: this.provider.total,
-          dateString: moment(new Date()).format('M/D/YYYY, h:mm a')
-        }).then((result) => {
-          console.log(result);
-          this.Listo(); //navegar y culminar pedido
-        }, (error) => {
-          this.errorAlert(error);
-          console.log(error);
-        });
-  
-      }, (error) => {
-        this.errorAlert(error);
-        console.log(error);
-      });
-    }
-
-  }
 }

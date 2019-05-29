@@ -1,6 +1,6 @@
 <ion-header no-border>
         <ion-toolbar class='toolbar'>
-                <ion-button class="btnBack" (click)= navigateBtn() fill=clear style="color:black;"><ion-icon style="color: white;" name=md-arrow-round-back></ion-icon></ion-button>
+                <!-- <ion-button class="btnBack" (click)= navigateBtn() fill=clear style="color:black;"><ion-icon style="color: white;" name=md-arrow-round-back></ion-icon></ion-button> -->
                 <ion-title class= center style="font-weight:300;">Rating</ion-title>
          </ion-toolbar>
 </ion-header>
@@ -11,7 +11,6 @@
         <ion-card-content>
 
             <h1 class=center style="font-weight:200; color: black; font-size: 17px; margin: 10px; margin-top: 40px;"> Jane Doe </h1>
-            <h1 class=center style="margin-top: -10px; font-weight:200; color: gray; font-size: 12px;"> ### ### </h1>
             <h1 class=center style="font-weight:200; color: black; margin: 10px; margin-top: 30px;"> ¿Cuál fue tu experiencia? </h1>
             <p style="text-align: center; font-weight:200; color: gray; font-size: 15px;">Tus sugerencias nos ayudará a ser mejores. ¡Esmérate!</p>
     
@@ -25,10 +24,10 @@
                 </div>
 
                 <div class=text-input>
-                    <ion-textarea class=input-text placeholder="Comentario"></ion-textarea>
+                    <ion-textarea [(ngModel)]='comentarios' class=input-text placeholder="Comentario"></ion-textarea>
                 </div>
 
-                <ion-button (click)= navigateBtn() expand=block class=boton-someter>SOMETER RESEÑA</ion-button>
+                <ion-button (click)= validateRating() expand=block class=boton-someter>SOMETER RESEÑA</ion-button>
 
         </ion-card-content>
     </ion-card>

@@ -18,6 +18,7 @@ export class NumVerificationPage implements OnInit {
    verify: any;
    verificationCode: String
 
+
   constructor(public nativePageTransitions: NativePageTransitions, private nav: NavController, private gru: GruproviderService) {
   }
 
@@ -95,7 +96,9 @@ numbersOnly(input){
 
    gotoNextField(nextElement){
    nextElement.setFocus();
-}
+     }
+    
+
 
    reSendCode() {
       this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);

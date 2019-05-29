@@ -52,7 +52,6 @@ export class EditCarPage implements OnInit {
     this.year = car.year;
     this.color = car.color;
     this.carId = car.objectId;
-    console.log(this.model);
   }
 
   save() {
@@ -70,11 +69,5 @@ export class EditCarPage implements OnInit {
       console.log(error);
     });
   }
-
-  // edit() {
-  //   this.save();
-  //   this.navigate.navigateRoot('/mi-vehiculo');
-  // }
-
 
 }

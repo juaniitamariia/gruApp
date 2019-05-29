@@ -58,7 +58,7 @@ var ProfilePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-button class=\"btnBack\" (click)=navBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n\n<div class='header'>\n  <h1 padding style=\"margin-top: -3px; display: inline-flex; font-size: 40px; color: white; font-weight: 300;\">Mi Cuenta</h1>\n  \n</div>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label>Nombre</ion-label>\n      <ion-input type=\"text\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{name}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Email</ion-label>\n      <ion-input type=\"email\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{email}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Número de licencia</ion-label>\n      <ion-input type=\"numeric\" style=\"font-size: 15px; text-align: right;\" placeholder=\"########\"></ion-input>\n      <ion-button  fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Teléfono</ion-label>\n      <ion-input type=\"tel\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{phoneNumber}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n  </ion-list>\n</ion-content>\n\n\n<ion-button (click)=navBack() class=\"addbutton\">GUARDAR</ion-button>"
+module.exports = "<ion-header no-border>\n  <ion-button class=\"btnBack\" (click)=navBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n\n<div class='header'>\n  <h1 padding style=\"margin-top: -3px; display: inline-flex; font-size: 40px; color: white; font-weight: 300;\">Mi Cuenta</h1>\n  \n</div>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label>Nombre</ion-label>\n      <ion-input [(ngModel)]=\"name\" type=\"text\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{name}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Email</ion-label>\n      <ion-input [(ngModel)]=\"email\" type=\"email\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{email}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Número de licencia</ion-label>\n      <ion-input [(ngModel)]=\"licenseNumber\" type=\"numeric\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{licenseNumber}}\"></ion-input>\n      <ion-button  fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n    <ion-item>\n      <ion-label>Teléfono</ion-label>\n      <ion-input [(ngModel)]=\"phoneNumber\" type=\"tel\" style=\"font-size: 15px; text-align: right;\" placeholder=\"{{phoneNumber}}\"></ion-input>\n      <ion-button fill=clear slot=\"end\"><ion-icon name=ios-arrow-forward></ion-icon></ion-button>\n      </ion-item>\n  </ion-list>\n</ion-content>\n\n\n<ion-button (click)=checkLicenseNum() class=\"addbutton\">GUARDAR</ion-button>"
 
 /***/ }),
 
@@ -96,12 +96,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var parse = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(imagePicker, nav, nativePageTransitions) {
+    function ProfilePage(imagePicker, nav, nativePageTransitions, alert) {
         this.imagePicker = imagePicker;
         this.nav = nav;
         this.nativePageTransitions = nativePageTransitions;
+        this.alert = alert;
         parse.serverURL = 'https://parseapi.back4app.com/';
         parse__WEBPACK_IMPORTED_MODULE_5__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     }
@@ -130,6 +132,7 @@ var ProfilePage = /** @class */ (function () {
         parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('getUser', { userId: parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().id }).then(function (result) {
             _this.email = result.getEmail();
             _this.phoneNumber = result.get('phoneNumber');
+            _this.licenseNumber = result.get('licenseNum');
             console.log(result);
         }, function (error) {
             console.log(error);
@@ -148,6 +151,28 @@ var ProfilePage = /** @class */ (function () {
             console.log(_this.photo);
         });
     };
+    ProfilePage.prototype.checkLicenseNum = function () {
+        if (this.licenseNumber.length == 7) {
+            this.updateClient();
+        }
+        else {
+            this.notPermited();
+        }
+    };
+    ProfilePage.prototype.updateClient = function () {
+        parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('updateClient', {
+            userId: parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().id,
+            newName: this.name,
+            newEmail: this.email,
+            newLicenseNum: this.licenseNumber,
+            newPhoneNumber: this.phoneNumber
+        }).then(function (result) {
+            console.log(result);
+        }, function (error) {
+            console.log(error);
+        });
+        this.navBack();
+    };
     ProfilePage.prototype.navBack = function () {
         var options = {
             direction: 'right',
@@ -161,13 +186,42 @@ var ProfilePage = /** @class */ (function () {
         this.nativePageTransitions.slide(options);
         this.nav.navigateRoot('/sidemenu');
     };
+    ProfilePage.prototype.notPermited = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alert.create({
+                            header: 'Error',
+                            message: 'La licencia lleva 7 dígitos.',
+                            buttons: [
+                                {
+                                    text: 'OK',
+                                    cssClass: 'greenBtn',
+                                    handler: function () {
+                                        console.log('Confirm Cancel');
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-profile',
             template: __webpack_require__(/*! ./profile.page.html */ "./src/app/profile/profile.page.html"),
             styles: [__webpack_require__(/*! ./profile.page.scss */ "./src/app/profile/profile.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_2__["ImagePicker"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _ionic_native_native_page_transitions_ngx__WEBPACK_IMPORTED_MODULE_4__["NativePageTransitions"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_2__["ImagePicker"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _ionic_native_native_page_transitions_ngx__WEBPACK_IMPORTED_MODULE_4__["NativePageTransitions"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
     ], ProfilePage);
     return ProfilePage;
 }());

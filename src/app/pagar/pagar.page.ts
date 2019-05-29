@@ -24,6 +24,7 @@ export class PagarPage implements OnInit {
   tablilla : any;
   total: number;
   totalCost: number;
+  millas: any = this.provider.distance;
   constructor (public location : Location, public nav: NavController, public provider : GruproviderService,
                 public nativePageTransitions: NativePageTransitions, public alerCtrl : AlertController ) { 
                   parse.serverURL = 'https://parseapi.back4app.com/';

@@ -120,7 +120,6 @@ var EditCarPage = /** @class */ (function () {
         this.year = car.year;
         this.color = car.color;
         this.carId = car.objectId;
-        console.log(this.model);
     };
     EditCarPage.prototype.save = function () {
         var _this = this;

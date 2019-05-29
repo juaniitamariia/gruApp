@@ -70,7 +70,7 @@ export class PhotoPage implements OnInit {
       }); //convierte la foto a base64
       parseFile.save().then((savedFile) => {
         console.log('file saved:' + savedFile);
-        this.provider.photo = savedFile; //foto tomada
+        this.provider.photo == savedFile; //foto tomada
       }, (err) => {
         console.log('error grabando file: ' + err)
       })

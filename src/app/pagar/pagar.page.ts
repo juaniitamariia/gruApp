@@ -54,28 +54,6 @@ export class PagarPage implements OnInit {
   console.log('transition');
    this.nativePageTransitions.slide(options);
   }
-  
-  async Listo() { //Alerta de pedido exitoso
-    const alert = await this.alerCtrl.create({
-      header: '¡Pedido Exitoso!',
-      message: 'Tu pedido ya se envió a los proveedores mas cercanos. En menos de 2 minutos tendrá una comfirmación de un proveedor.',
-      buttons: ['¡Listo!']
-    });
-
-    await alert.present();
-
-    let options: NativeTransitionOptions = {
-      direction: 'left',
-      duration: 200,
-      slowdownfactor: -1,
-      slidePixels: 20,
-      iosdelay: 100, 
-      androiddelay: 100,
-     }
-  console.log('transition');
-   this.nativePageTransitions.slide(options);
-   this.nav.navigateRoot("/serviceoptions"); //pedido exitoso lleva a pagina de rating del servicio
-  } 
 
   navigate(){
     let options: NativeTransitionOptions = {

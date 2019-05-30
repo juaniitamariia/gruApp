@@ -44,8 +44,9 @@ export class ServiceoptionsPage implements OnInit {
     public popoverAlert: PopoverController, public alerCtrl: AlertController,
     public nav: NavController,public provider: GruproviderService) {
 
-    this.service = this.grupovider.service;
-    console.log(this.service);
+    this.service = this.provider.service;
+    console.log(this.provider.service);
+    console.log("Test!!");
 
     mapboxgl.accessToken = 'pk.eyJ1IjoianJvc2FyaW8yNDEiLCJhIjoiY2pzdXF6NmJiMmgzNzQ5cnJkMjFsa285NSJ9.a6Z7HjeR6q74TBxQhXPy5A';
 
@@ -60,7 +61,8 @@ export class ServiceoptionsPage implements OnInit {
 
   goToLocation()
   {
-    this.nav.navigateRoot('/location-marker');
+    console.log("Entrando al goToLocation");
+    this.nav.navigateRoot('/locatio-marker');
   }
 
 
@@ -80,31 +82,11 @@ export class ServiceoptionsPage implements OnInit {
         service: this.provider.service
       }).then((result) => {
         console.log(result);
-        Parse.Cloud.run('createServiceRequest', {
-          car: this.provider.selectedCar.id,
-          latitud: this.provider.lat,
-          pointB: this.provider.destination,
-          millas : this.provider.distance,
-          longitud: this.provider.long,
-          service: this.provider.service,
-          notas: this.provider.messageNotes,
-          image: this.provider.photo,
-          price: this.provider.total,
-          dateString: moment(new Date()).format('M/D/YYYY, h:mm a')
-        }).then((result) => {
-          console.log(result);
-          this.Listo(); //navegar y culminar pedido
-        }, (error) => {
-          this.errorAlert(error);
-          console.log(error);
-        });
-  
       }, (error) => {
         this.errorAlert(error);
         console.log(error);
       });
     }
-
   }
 
   async errorAlert(error: any) {
@@ -134,28 +116,6 @@ export class ServiceoptionsPage implements OnInit {
     }
   }
 
-
-  async Listo(){ //Alerta de pedido Exitoso
-    const alert = await this.alerCtrl.create({
-      header: '¡Pedido Exitoso!',
-      message: 'Tu pedido ya se envió a los proveedores más cercanos. En unos minutos tendrá una confirmación de un proveedor.',
-      buttons: [
-        {
-          text: '¡Listo!',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            this.transition();
-            this.nav.navigateRoot('/sidemenu');
-          }
-        }
-      ]
-    });
-    this.provider.whatUser = true; //el usuario NO es nuevo, ya tiene un servicio pedido
-    console.log(this.provider.whatUser);
-    await alert.present();
-
-  }
   
 
   loadMap() {
@@ -172,7 +132,6 @@ export class ServiceoptionsPage implements OnInit {
     Parse.Cloud.run('getDriverLocation', {} )
       .then((result) => {
         console.log(result.get('currentlocation'))
-
       });
 
 

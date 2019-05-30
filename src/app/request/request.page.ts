@@ -56,7 +56,8 @@ export class RequestPage implements OnInit {
   }
 
   seeDriver(objectId){
-    this.provider.serviceId = objectId
+    console.log(this.requests);
+    this.provider.serviceId = objectId;
    this.control.navigateForward("/serviceoptions");
   }
 

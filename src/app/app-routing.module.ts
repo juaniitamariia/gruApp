@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'request', loadChildren: './request/request.module#RequestPageModule' },
   { path: 'edit-car', loadChildren: './edit-car/edit-car.module#EditCarPageModule' },
   { path: 'cotizaciones', loadChildren: './cotizaciones/cotizaciones.module#CotizacionesPageModule' },
+  { path: 'change-location', loadChildren: './change-location/change-location.module#ChangeLocationPageModule' },
 ];
 
 @NgModule({

@@ -11,7 +11,7 @@
 <div class=codigo>
     
     <div id="form">
-        <ion-input maxlength = "1" id="one" #one  type="tel"  class="verification-code" placeholder="&bull;"  size="1" min="0" max="9"
+        <ion-input maxlength = "1" id="one" #one  type="tel"  pattern = "regularExp" class="verification-code" placeholder="&bull;"  size="1" min="0" max="9"
         (keyup) = "gotoNextField(two)"  ></ion-input>
         <ion-input maxlength = "1"  id="two" #two type="tel" class="verification-code" placeholder="&bull;"  size="1" min="0" max="9"
         (keyup)="gotoNextField(three)"></ion-input>

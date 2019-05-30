@@ -55,6 +55,7 @@ export class GruproviderService {
   price : number;
   messageNotes : string;
   selectedCar:any;
+  // selectedCard:any;
   total : number;
   card : any;
   lugar: string; //lugar que se guarda en el servicio de grua

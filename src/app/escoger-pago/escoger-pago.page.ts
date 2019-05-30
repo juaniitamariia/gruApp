@@ -36,6 +36,7 @@ export class EscogerPagoPage implements OnInit {
 
   cards: any; //variable de tarjetas
   selectedCard: any; //tarjeta seleccionada
+
   
   constructor(public nav: NavController, public nativePageTransitions: NativePageTransitions, public location: Location,
     public alerCtrl: AlertController, public provider: GruproviderService) {
@@ -66,6 +67,29 @@ export class EscogerPagoPage implements OnInit {
 
     this.transition();
     this.nav.navigateRoot('/sidemenu');
+  }
+
+  createService()
+  {
+  
+      Parse.Cloud.run('createServiceRequest', {
+        car: this.provider.selectedCar.id,
+        latitud: this.provider.lat,
+        pointB: this.provider.destination,
+        millas : this.provider.distance,
+        longitud: this.provider.long,
+        service: this.provider.service,
+        notas: this.provider.messageNotes,
+        image: this.provider.photo,
+        price: this.provider.total,
+        dateString: moment(new Date()).format('M/D/YYYY, h:mm a')
+      }).then((result) => {
+          console.log(result);
+          this.Listo();
+      });
+
+      console.log('creo el servicio')
+      
   }
 
   navigateAdd() { //navega a las pagina de añadir tarjetas
@@ -141,9 +165,12 @@ export class EscogerPagoPage implements OnInit {
   }
 
   getCard(selectedCard) {
+    console.log("Entrando getCard");
     this.provider.card = selectedCard;
     console.log(selectedCard);
-    console.log(this.provider.selectedCar)
+    console.log('selected succesfully')
+
+    this.createService();
   }
 
 

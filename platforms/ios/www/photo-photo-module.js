@@ -142,7 +142,7 @@ var PhotoPage = /** @class */ (function () {
                     }); //convierte la foto a base64
                     parseFile.save().then(function (savedFile) {
                         console.log('file saved:' + savedFile);
-                        _this.provider.photo = savedFile; //foto tomada
+                        _this.provider.photo == savedFile; //foto tomada
                     }, function (err) {
                         console.log('error grabando file: ' + err);
                     });

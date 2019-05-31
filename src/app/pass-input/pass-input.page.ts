@@ -52,10 +52,10 @@ export class PassInputPage implements OnInit {
   async confirmPass(){
     this.provider.password = this.password;
 
-    if( this.password == this.verifiedPassword && this.provider.signUp() == true ){
-      this.provider.signUp();
+    if( this.password == this.verifiedPassword){ //&& this.provider.signUp() == true
+      this.provider.signUp(); //función del provider que setea el codigo
       this.navigate();
-    }else if ( this.password != this.verifiedPassword){
+    }else if (this.password != this.verifiedPassword){
       const alert = await this.alert.create({
         header: 'Error',
         message: 'Las contraseñas no son iguales',
@@ -70,9 +70,9 @@ export class PassInputPage implements OnInit {
       });
       await alert.present();
     }
-    else if (this.password == this.verifiedPassword && this.provider.signUp() == false){
-      this.presentAlert();
-    }
+    // else if (this.password == this.verifiedPassword){ //&& this.provider.signUp() == false
+    //   this.presentAlert();
+    // }
   }
 
   async presentAlert() {

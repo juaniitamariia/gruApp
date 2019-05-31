@@ -58,7 +58,7 @@ var RequestPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-button class=\"btnBack\" (click)=navigateBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n  <img class='logo' src=\"assets/logowhite.png\">\n  <div class='header'>\n    <h3 padding style=\"font-size: 30px; color: white; font-weight: 300; margin-top: 20px;\">Solicitudes</h3>\n  </div>\n</ion-header>\n\n<ion-content>\n\n  <ion-list lines=none>\n    <ion-card *ngFor=\"let request of requests\" style=\"padding: 0;\">\n      <ion-item id=\"requests\">\n        <button class=\"boton\" expand=\"full\">\n          <ion-grid>\n\n\n            <ion-row>\n\n              <!-- FIRST COLUMN STARTS HERE -->\n              <ion-col size=\"6\">\n                <h6 class=\"left\" style=\"margin: 0px; color: darkgray\">Servicio:\n                  <span style=\"color: black\"> {{request.service}}</span></h6>\n\n                <!--<h6 style=\"color: lightgray; font-size: 15px; margin: 0px;\">{{car.get('licensePlateNum')}}</h6> -->\n                <!-- <h6 style=\"color: lightgray; font-size: 15px; margin: 0px;\">{{car.get('color')}}</h6> -->\n\n                <h6 class=\"left\" style=\"color: darkgray; font-size: 12px; margin: 0px;\">{{request.dateString}}</h6>\n              </ion-col>\n              <!-- FIRST COLUMN ENDS HERE -->\n\n              <!-- SECOND COLUMN STARTS HERE -->\n              <ion-col size=\"6\">\n                <p class=\"right\" style=\"color: darkgray; font-size: 15px; margin: 0px;\">Precio:\n                  <span style=\"color: rgb(54, 180, 54)\">${{request.price}}.00</span> </p>\n\n                <p class=\"right\" style=\"color: darkgray; font-size: 15px; margin: 0px;\">Carro:\n                  <span style=\"color: black\">{{request.clientCar.make}} {{request.clientCar.model}} </span></p>\n              </ion-col>\n              <!-- SECOND COLUMN ENDS HERE -->\n\n              <span *ngIf=\"request.service == 'Servicio Especial'\">\n                  <ion-button (click)=\"goTo(request.objectId)\" class=\"btn-cotizaciones\">VER COTIZACIONES</ion-button>\n              </span>\n\n              <span *ngIf=\"request.service != 'Servicio Especial'\">\n                  <ion-button (click)=seeDriver(request.objectId)>CONFIRMAR</ion-button>\n              </span>\n\n            </ion-row>\n\n\n          </ion-grid>\n        </button>\n      </ion-item>\n    </ion-card>\n  </ion-list>\n</ion-content> "
+module.exports = "<ion-header no-border>\n  <ion-button class=\"btnBack\" (click)=navigateBack()>\n    <ion-icon name=\"ios-arrow-back\"></ion-icon>\n  </ion-button>\n\n  <img class='logo' src=\"assets/logowhite.png\">\n  <div class='header'>\n    <h3 padding style=\"font-size: 30px; color: white; font-weight: 300; margin-top: 20px;\">Solicitudes</h3>\n  </div>\n</ion-header>\n\n<ion-content>\n\n  <ion-list lines=none>\n    <ion-card *ngFor=\"let request of requests\" style=\"padding: 0;\">\n      <ion-item id=\"requests\">\n        <button class=\"boton\" expand=\"full\">\n          <ion-grid>\n\n\n            <ion-row>\n\n              <!-- FIRST COLUMN STARTS HERE -->\n              <ion-col size=\"6\">\n                <h6 class=\"left\" style=\"margin: 0px; color: darkgray\">Servicio:\n                  <span style=\"color: black\"> {{request.service}}</span></h6>\n\n                <!--<h6 style=\"color: lightgray; font-size: 15px; margin: 0px;\">{{car.get('licensePlateNum')}}</h6> -->\n                <!-- <h6 style=\"color: lightgray; font-size: 15px; margin: 0px;\">{{car.get('color')}}</h6> -->\n\n                <h6 class=\"left\" style=\"color: darkgray; font-size: 12px; margin: 0px;\">{{request.dateString}}</h6>\n              </ion-col>\n              <!-- FIRST COLUMN ENDS HERE -->\n\n              <!-- SECOND COLUMN STARTS HERE -->\n              <ion-col size=\"6\">\n                <p class=\"right\" style=\"color: darkgray; font-size: 15px; margin: 0px;\">Precio:\n                  <span style=\"color: rgb(54, 180, 54)\">${{request.price}}.00</span> </p>\n\n                <p class=\"right\" style=\"color: darkgray; font-size: 15px; margin: 0px;\">Carro:\n                  <span style=\"color: black\">{{request.clientCar.make}} {{request.clientCar.model}} </span></p>\n              </ion-col>\n              <!-- SECOND COLUMN ENDS HERE -->\n\n              <span *ngIf=\"request.service == 'Servicio Especial'\">\n                  <ion-button (click)=\"goTo(request.objectId, request)\" class=\"btn-cotizaciones\">VER COTIZACIONES</ion-button>\n              </span>\n\n              <span *ngIf=\"request.service != 'Servicio Especial'\">\n                  <ion-button (click)=\"seeDriver(request.objectId, request)\">CONFIRMAR</ion-button>\n              </span>\n\n            </ion-row>\n\n\n          </ion-grid>\n        </button>\n      </ion-item>\n    </ion-card>\n  </ion-list>\n</ion-content> "
 
 /***/ }),
 
@@ -122,23 +122,26 @@ var RequestPage = /** @class */ (function () {
                     result[i] = result[i].toJSON();
                 }
                 _this.requests = result;
+                _this.provider.requests = result;
                 _this.provider.requestQuantity = result.length; //devuelve la cantidad total de items en el array
                 _this.service = _this.requests.service;
                 console.log(_this.provider.requestQuantity);
-                // console.log(this.requests.destination.latitude, this.requests.destination.longitude); // destination     
-                _this.provider.serviceId = _this.requests.objectid;
+                _this.provider.serviceId = _this.requests.objectid; //guarda el id del request                                              
             }
             // tslint:disable-next-line:no-unused-expression
         }), function (error) {
             console.log(error);
         };
     };
-    RequestPage.prototype.seeDriver = function (objectId) {
+    RequestPage.prototype.seeDriver = function (objectId, request) {
+        console.log(this.requests);
         this.provider.serviceId = objectId;
+        this.provider.selectedRequest = request;
         this.control.navigateForward("/serviceoptions");
     };
-    RequestPage.prototype.goTo = function (objectId) {
+    RequestPage.prototype.goTo = function (objectId, request) {
         this.provider.serviceId = objectId;
+        this.provider.selectedRequest = request;
         this.control.navigateRoot('/cotizaciones');
     };
     RequestPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

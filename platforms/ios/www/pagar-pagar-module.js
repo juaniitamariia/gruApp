@@ -133,37 +133,6 @@ var PagarPage = /** @class */ (function () {
         console.log('transition');
         this.nativePageTransitions.slide(options);
     };
-    PagarPage.prototype.Listo = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var alert, options;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.alerCtrl.create({
-                            header: '¡Pedido Exitoso!',
-                            message: 'Tu pedido ya se envió a los proveedores mas cercanos. En menos de 2 minutos tendrá una comfirmación de un proveedor.',
-                            buttons: ['¡Listo!']
-                        })];
-                    case 1:
-                        alert = _a.sent();
-                        return [4 /*yield*/, alert.present()];
-                    case 2:
-                        _a.sent();
-                        options = {
-                            direction: 'left',
-                            duration: 200,
-                            slowdownfactor: -1,
-                            slidePixels: 20,
-                            iosdelay: 100,
-                            androiddelay: 100,
-                        };
-                        console.log('transition');
-                        this.nativePageTransitions.slide(options);
-                        this.nav.navigateRoot("/serviceoptions"); //pedido exitoso lleva a pagina de rating del servicio
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     PagarPage.prototype.navigate = function () {
         var options = {
             direction: 'left',

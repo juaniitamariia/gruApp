@@ -13,6 +13,7 @@ import {
 import {
   userInfo
 } from 'os';
+import { AnyARecord } from 'dns';
 
 
 
@@ -68,6 +69,8 @@ export class GruproviderService {
 
   whatUser: boolean = false; //distingue si el usuario tiene un request procesado o es un cliente nuevo: false==no tiene ningun request
   requestQuantity : number;
+  selectedRequest: any;
+  requests : any;
 
   constructor(public nav: NavController, private alert: AlertController) {
 

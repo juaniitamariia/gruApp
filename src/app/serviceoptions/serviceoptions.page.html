@@ -1,62 +1,94 @@
   <!-- Menu de Botones-->
   <ion-card class=mainMenu>
     <div *ngIf="service == 'bateria'" class=center>
-      <ion-img style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/bateria.svg"></ion-img> 
+      <ion-img style='margin: auto; margin-top: 20px; width: 15%;' src="assets/bateria.svg"></ion-img>
     </div>
 
     <div class=center>
-        <ion-img *ngIf="service == 'Grua'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/grua.svg"></ion-img> 
+      <ion-img *ngIf="service == 'Grua'" style='margin: auto; margin-top: 20px; width: 30%;' src="assets/grua.svg">
+      </ion-img>
     </div>
 
-      <div class=center>
-          <ion-img *ngIf="service == 'Gasolina'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/gasolina.svg"></ion-img> 
-      </div>
+    <div class=center>
+      <ion-img *ngIf="service == 'Gasolina'" style='margin: auto; margin-top: 20px; width: 15%;'
+        src="assets/gasolina.svg"></ion-img>
+    </div>
 
-      <div class=center>
-          <ion-img *ngIf="service == 'Servicio Especial'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/choqueicon.svg"></ion-img> 
-      </div>
+    <div class=center>
+      <ion-img *ngIf="service == 'Servicio Especial'" style='margin: auto; margin-top: 20px; width: 30%;'
+        src="assets/choqueicon.svg"></ion-img>
+    </div>
 
-      <div class=center>
-          <ion-img *ngIf="service == 'Goma'" style='margin: auto; margin-top: 20px; width: 30%;' src= "assets/gomavacia.svg"></ion-img> 
-      </div>
+    <div class=center>
+      <ion-img *ngIf="service == 'Goma'" style='margin: auto; margin-top: 20px; width: 30%;' src="assets/gomavacia.svg">
+      </ion-img>
+    </div>
 
-      <div class=center>
-          <ion-img *ngIf="service == 'Cerrajeria'" style='margin: auto; margin-top: 20px; width: 15%;' src= "assets/llaves.svg"></ion-img> 
-      </div>
+    <div class=center>
+      <ion-img *ngIf="service == 'Cerrajeria'" style='margin: auto; margin-top: 20px; width: 15%;'
+        src="assets/llaves.svg"></ion-img>
+    </div>
 
     <div>
-      <ion-button *ngIf="service == 'Grua'" margin  (click)='goToLocation()'  style='font-size: 15px;'  expand=block>Cambiar la ubicación</ion-button>
-      <ion-button margin  href="/rating"  [disabled]="disabled" style="font-size: 15px;" expand=block>Servicio culminado (PAGAR)</ion-button>
-      <ion-button margin  (click)='Cancel()' style="--background: rgb(255, 75, 75); font-size: 15px;" expand=block>Cancelar</ion-button>
+      <ion-button *ngIf="service == 'Grua'" margin (click)='goToLocation()' style='font-size: 15px;' expand=block>
+        Cambiar la ubicación</ion-button>
+      <ion-button margin href="/rating" [disabled]="disabled" style="font-size: 15px;" expand=block>Servicio culminado
+        (PAGAR)</ion-button>
+      <ion-button margin (click)='Cancel()' style="--background: rgb(255, 75, 75); font-size: 15px;" expand=block>
+        Cancelar</ion-button>
     </div>
   </ion-card>
 
 
   <!-- Map view -->
   <ion-header>
- 
+
     <meta charset='utf-8' />
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <div  id='map4' style='width: 100%; height: 100vh;'>  
-      </div>
+    <div id='map4' style='width: 100%; height: 100vh;'>
+    </div>
 
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+      var url = 'https://wanderdrone.appspot.com/';
+      map4.on('load', function () {
+        window.setInterval(function () {
+          map4.getSource('drone').setData(url);
+        }, 2000);
+
+        map4.addSource('drone', {
+          type: 'geojson',
+          data: url
+        });
+        map4.addLayer({
+          "id": "drone",
+          "type": "symbol",
+          "source": "drone",
+          "layout": {
+            "icon-image": "rocket-15"
+          }
+        });
+      });
+    </script>
 
     <style>
-            body { margin:0; padding:0; }
-            #map { position:absolute; top:0; bottom:0; width:100%; }
-      </style>
-    
-</ion-header>
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
-<ion-content>   
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+
+  </ion-header>
+
+  <ion-content>
 
 
-</ion-content>
-
-
-
-
-
-
+  </ion-content>

@@ -42,7 +42,7 @@ export class ServiceoptionsPage implements OnInit {
 
   constructor(public grupovider: GruproviderService, public menu: MenuController,
     public popoverAlert: PopoverController, public alerCtrl: AlertController,
-    public nav: NavController,public provider: GruproviderService) {
+    public nav: NavController, public provider: GruproviderService) {
 
     this.service = this.provider.service;
     console.log(this.provider.service);
@@ -59,20 +59,19 @@ export class ServiceoptionsPage implements OnInit {
     this.menu.swipeEnable(false);
   }
 
-  goToLocation()
-  {
+  goToLocation(serviceId: any) {
     console.log("Entrando al goToLocation");
-    this.nav.navigateRoot('/locatio-marker');
+    this.nav.navigateRoot('/change-location');
   }
 
 
-  makePayment(){ //enviar parametros al Cloud Function
+  makePayment() { //enviar parametros al Cloud Function
 
-    if(this.provider.card == null){
+    if (this.provider.card == null) {
       this.errorAlert("Tarjeta no ha sido seleccionada.");
       console.log('no hay tarjeta seleccionada');
       return;
-    }else{
+    } else {
       console.log('seleccionada')
       console.log(this.provider.total)
       Parse.Cloud.run('purchase', {
@@ -116,45 +115,27 @@ export class ServiceoptionsPage implements OnInit {
     }
   }
 
-  
+
 
   loadMap() {
 
     this.map4 = new mapboxgl.Map({
       container: 'map4',
       style: 'mapbox://styles/jrosario241/cjsuqzyev4cip1fo3cv5c3vr5',
-     
+
     });
 
     console.log(this.map4);
 
 
-    Parse.Cloud.run('getDriverLocation', {} )
-      .then((result) => {
-        console.log(result.get('currentlocation'))
-      });
+    // Parse.Cloud.run('getDriverLocation', {})
+    //   .then((result) => {
+    //     console.log(result.get('currentlocation'))
+    //   });
 
-
-    var url = 'https://wanderdrone.appspot.com/';
-    this.map4.on('load', function () {
-      window.setInterval(function () {
-        this.map4.getSource('drone').setData(url);
-      }, 2000);
-
-      this.map4.addSource('drone', {
-        type: 'geojson',
-        data: url
-      });
-      this.map4.addLayer({
-        "id": "drone",
-        "type": "symbol",
-        "source": "drone",
-        "layout": {
-          "icon-image": "rocket-15"
-        }
-      });
-    });
     
+
+
 
   }
 
@@ -187,8 +168,26 @@ export class ServiceoptionsPage implements OnInit {
   }
 
   navMenu() {
+    
+    Parse.Cloud.run('deleteService', {
+     serviceId: this.provider.serviceId
+    }).then((result) => {
+      console.log(result);
+    }, (error) => {
+      this.errorAlert(error);
+      console.log(error);
+    });
+    //this.deleteRequest();
     this.nav.navigateRoot("/sidemenu");
   }
+
+  // deleteRequest(){
+  //   var requests;
+  //   requests = this.provider.requests;
+  //   //let index : any;
+  //   //index = requests.indexOf(this.provider.selectedRequest); console.log(index);
+  //   //requests.splice(index, 1);
+  // }
 
   async presentAlertPrompt() {
     const alert = await this.alerCtrl.create({
@@ -214,5 +213,3 @@ export class ServiceoptionsPage implements OnInit {
 
   }
 }
-
-

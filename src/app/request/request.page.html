@@ -43,11 +43,11 @@
               <!-- SECOND COLUMN ENDS HERE -->
 
               <span *ngIf="request.service == 'Servicio Especial'">
-                  <ion-button (click)="goTo(request.objectId)" class="btn-cotizaciones">VER COTIZACIONES</ion-button>
+                  <ion-button (click)="goTo(request.objectId, request)" class="btn-cotizaciones">VER COTIZACIONES</ion-button>
               </span>
 
               <span *ngIf="request.service != 'Servicio Especial'">
-                  <ion-button (click)=seeDriver(request.objectId)>CONFIRMAR</ion-button>
+                  <ion-button (click)="seeDriver(request.objectId, request)">CONFIRMAR</ion-button>
               </span>
 
             </ion-row>

@@ -21,11 +21,12 @@ import {Stripe} from '@ionic-native/stripe/ngx';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { FormsModule } from '@angular/forms';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import {PopoverDescriptionComponent} from './popover-description/popover-description.component';
 
 
 @NgModule({
-  declarations: [AppComponent, PopoverComponent, PopovergruaComponent, ShareComponent],
-  entryComponents: [PopoverComponent, PopovergruaComponent],
+  declarations: [AppComponent, PopoverComponent, PopovergruaComponent, ShareComponent,PopoverDescriptionComponent],
+  entryComponents: [PopoverComponent, PopovergruaComponent,PopoverDescriptionComponent],
   bootstrap: [AppComponent, ShareComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicRatingModule, FormsModule], 
   providers: [
@@ -47,6 +48,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
     StatusBar,
     ScreenOrientation,
     Keyboard,
+    PopoverDescriptionComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ]
 })

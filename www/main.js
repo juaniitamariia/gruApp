@@ -847,9 +847,16 @@ var map = {
 	],
 	"./bookingservice/bookingservice.module": [
 		"./src/app/bookingservice/bookingservice.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
 		"common",
 		"bookingservice-bookingservice-module"
+	],
+	"./change-location/change-location.module": [
+		"./src/app/change-location/change-location.module.ts",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
+		"default~change-location-change-location-module~locatio-marker-locatio-marker-module",
+		"common",
+		"change-location-change-location-module"
 	],
 	"./cotizaciones/cotizaciones.module": [
 		"./src/app/cotizaciones/cotizaciones.module.ts",
@@ -865,6 +872,7 @@ var map = {
 	],
 	"./escoger-pago/escoger-pago.module": [
 		"./src/app/escoger-pago/escoger-pago.module.ts",
+		"common",
 		"escoger-pago-escoger-pago-module"
 	],
 	"./historial/historial.module": [
@@ -881,19 +889,20 @@ var map = {
 	],
 	"./locatio-marker/locatio-marker.module": [
 		"./src/app/locatio-marker/locatio-marker.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
+		"default~change-location-change-location-module~locatio-marker-locatio-marker-module",
 		"common",
 		"locatio-marker-locatio-marker-module"
 	],
 	"./locationon/locationon.module": [
 		"./src/app/locationon/locationon.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
 		"common",
 		"locationon-locationon-module"
 	],
 	"./mark-location/mark-location.module": [
 		"./src/app/mark-location/mark-location.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
 		"common",
 		"mark-location-mark-location-module"
 	],
@@ -939,13 +948,13 @@ var map = {
 	],
 	"./serviceoptions/serviceoptions.module": [
 		"./src/app/serviceoptions/serviceoptions.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
 		"common",
 		"serviceoptions-serviceoptions-module"
 	],
 	"./sidemenu/sidemenu.module": [
 		"./src/app/sidemenu/sidemenu.module.ts",
-		"default~bookingservice-bookingservice-module~locatio-marker-locatio-marker-module~locationon-locatio~b72d5b3e",
+		"default~bookingservice-bookingservice-module~change-location-change-location-module~locatio-marker-l~7854fb3f",
 		"common",
 		"sidemenu-sidemenu-module"
 	],
@@ -1020,6 +1029,7 @@ var routes = [
     { path: 'request', loadChildren: './request/request.module#RequestPageModule' },
     { path: 'edit-car', loadChildren: './edit-car/edit-car.module#EditCarPageModule' },
     { path: 'cotizaciones', loadChildren: './cotizaciones/cotizaciones.module#CotizacionesPageModule' },
+    { path: 'change-location', loadChildren: './change-location/change-location.module#ChangeLocationPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1146,6 +1156,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @ionic-native/screen-orientation/ngx */ "./node_modules/@ionic-native/screen-orientation/ngx/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/keyboard/ngx */ "./node_modules/@ionic-native/keyboard/ngx/index.js");
+/* harmony import */ var _popover_description_popover_description_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./popover-description/popover-description.component */ "./src/app/popover-description/popover-description.component.ts");
+
 
 
 
@@ -1178,8 +1190,8 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_9__["PopoverComponent"], _app_popovergrua_popovergrua_component__WEBPACK_IMPORTED_MODULE_18__["PopovergruaComponent"], _share_share_component__WEBPACK_IMPORTED_MODULE_19__["ShareComponent"]],
-            entryComponents: [_popover_popover_component__WEBPACK_IMPORTED_MODULE_9__["PopoverComponent"], _app_popovergrua_popovergrua_component__WEBPACK_IMPORTED_MODULE_18__["PopovergruaComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_9__["PopoverComponent"], _app_popovergrua_popovergrua_component__WEBPACK_IMPORTED_MODULE_18__["PopovergruaComponent"], _share_share_component__WEBPACK_IMPORTED_MODULE_19__["ShareComponent"], _popover_description_popover_description_component__WEBPACK_IMPORTED_MODULE_24__["PopoverDescriptionComponent"]],
+            entryComponents: [_popover_popover_component__WEBPACK_IMPORTED_MODULE_9__["PopoverComponent"], _app_popovergrua_popovergrua_component__WEBPACK_IMPORTED_MODULE_18__["PopovergruaComponent"], _popover_description_popover_description_component__WEBPACK_IMPORTED_MODULE_24__["PopoverDescriptionComponent"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _share_share_component__WEBPACK_IMPORTED_MODULE_19__["ShareComponent"]],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], ionic4_rating__WEBPACK_IMPORTED_MODULE_13__["IonicRatingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_22__["FormsModule"]],
             providers: [
@@ -1201,6 +1213,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_21__["ScreenOrientation"],
                 _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_23__["Keyboard"],
+                _popover_description_popover_description_component__WEBPACK_IMPORTED_MODULE_24__["PopoverDescriptionComponent"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ]
         }),
@@ -1290,6 +1303,87 @@ var GruproviderService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
     ], GruproviderService);
     return GruproviderService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/popover-description/popover-description.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/popover-description/popover-description.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<span>\n    <div class=header>\n         <ion-img class=img style=\"width: 50%;\" src=\"assets/grua.svg\"></ion-img>\n         <div class=title>\n         </div>\n       </div>\n   </span>\n\n      \n   \n      <span >\n     <ion-card padding class=card>\n      \n         <div class=precios>\n           <!-- Precio del servicio -->\n             <p style=\"font-size: 15px; margin-top: 5px; margin-bottom: 5px; padding: 0px; margin-left: 15px;\">Servicio de enganche........$30.00</p>\n              <!-- Distancia -->\n             <p style=\"font-size: 15px; padding: 0px; margin-top: 0px; margin-left: 15px; margin-bottom: 0px;\">Precio por Milla.............$3.00/milla</p>\n              <!-- Pecio millas calculadas -->\n             <p style=\"font-size: 15px; padding: 0px; margin-top: 0px; margin-left: 15px; margin-bottom: 0px;\">Millas.......................................{{distancia}}mi</p>\n              <!-- Tiempo estimado -->\n             <p style=\"font-size: 15px; padding: 0px; margin-top: 0px; margin-left: 15px; margin-bottom: 0px;\">Tiempo Estimado.................{{time}}min</p>\n            \n             <p class=descr>Tiene un costo total de</p>\n             <h4 class=total>${{total}}.00</h4>\n             <!-- COSTO TOTAL GRUA -->\n         </div>\n     </ion-card>\n   </span>\n   \n   \n     <div class=\"botones\">\n       <!-- Botones -->\n       <button (click)='close()' style=\"margin-top: 30px; height: 50px; width:150px; background: rgb(252, 252, 252); color: rgb(211, 53, 53); font-size: 15px; border: solid 1px lightgray;\">Cancelar</button>\n       <button (click)='navigateFoward()' style=\"margin-top: 30px; height: 50px; width:150px; background: rgb(252, 252, 252); color: #4ce4b1; font-size: 15px; border: solid 1px lightgray;\">Solicitar</button>\n     </div>\n   \n   \n   \n   "
+
+/***/ }),
+
+/***/ "./src/app/popover-description/popover-description.component.scss":
+/*!************************************************************************!*\
+  !*** ./src/app/popover-description/popover-description.component.scss ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".img {\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 100px;\n  display: inline-flex; }\n\n.title {\n  width: 250px;\n  font-size: 12px;\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin-left: 40px;\n  margin-right: auto;\n  margin-top: 150px;\n  display: inline-flex; }\n\n.card {\n  height: 250px;\n  --width: 400px;\n  box-shadow: none;\n  margin-top: 210px; }\n\n.precios {\n  position: absolute;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  display: inline; }\n\n.descr {\n  text-align: center;\n  display: inline-flex;\n  margin-left: 15px;\n  font-size: 15px; }\n\n.total {\n  display: inline-flex;\n  margin-left: 5px;\n  font-weight: bolder; }\n\n.items {\n  background-color: transparent; }\n\n.lugar {\n  font-size: 15px;\n  border: 2px;\n  background-color: transparent;\n  width: 200px; }\n\n.input {\n  width: 250px;\n  height: 100px;\n  background-color: transparent;\n  padding: 10px;\n  margin-left: 25px;\n  border: solid 1px #b8b8b8;\n  border-radius: 12px; }\n\n.respuesta {\n  font-size: 13px;\n  font-weight: 600;\n  margin: 0px; }\n\n.titulo {\n  font-size: 13px;\n  font-weight: 300;\n  margin: 0px; }\n\n.total {\n  color: #f84f4f; }\n\n.botones {\n  margin-bottom: 0px;\n  margin-top: -7px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qdWFuaXRhL0RvY3VtZW50cy9HaXRIdWIvZ3J1QXBwL3NyYy9hcHAvcG9wb3Zlci1kZXNjcmlwdGlvbi9wb3BvdmVyLWRlc2NyaXB0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQWtCO0VBQ2xCLE9BQU07RUFDTixRQUFPO0VBQ1AsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixpQkFBaUI7RUFDakIsb0JBQW9CLEVBQUE7O0FBR3hCO0VBQ0ksWUFBWTtFQUNaLGVBQWU7RUFDZixrQkFBa0I7RUFDbEIsT0FBTTtFQUNOLFFBQU87RUFDUCxpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLGlCQUFpQjtFQUNqQixvQkFBb0IsRUFBQTs7QUFHeEI7RUFDSSxhQUFhO0VBQ2IsY0FBUTtFQUNSLGdCQUFnQjtFQUNoQixpQkFBaUIsRUFBQTs7QUFHckI7RUFDSSxrQkFBa0I7RUFDbEIsT0FBTTtFQUNOLFFBQU87RUFDUCxpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLGVBQWUsRUFBQTs7QUFHbkI7RUFDSSxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLGlCQUFpQjtFQUNqQixlQUFlLEVBQUE7O0FBR25CO0VBQ0ksb0JBQW9CO0VBQ3BCLGdCQUFnQjtFQUNoQixtQkFBbUIsRUFBQTs7QUFLdkI7RUFDSSw2QkFBNkIsRUFBQTs7QUFHakM7RUFDSSxlQUFlO0VBRWYsV0FBVztFQUNYLDZCQUE2QjtFQUM3QixZQUFZLEVBQUE7O0FBR2hCO0VBQ0ksWUFBWTtFQUNaLGFBQWE7RUFDYiw2QkFBNkI7RUFDN0IsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQix5QkFBb0M7RUFDcEMsbUJBQW1CLEVBQUE7O0FBR3ZCO0VBQ0ksZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixXQUFXLEVBQUE7O0FBSWY7RUFDQyxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLFdBQVcsRUFBQTs7QUFJWjtFQUNJLGNBQXVCLEVBQUE7O0FBRzNCO0VBQ0ksa0JBQWtCO0VBQ2xCLGdCQUFnQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcG9wb3Zlci1kZXNjcmlwdGlvbi9wb3BvdmVyLWRlc2NyaXB0aW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmltZ3tcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDowO1xuICAgIHJpZ2h0OjA7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIG1hcmdpbi10b3A6IDEwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xufVxuXG4udGl0bGV7XG4gICAgd2lkdGg6IDI1MHB4O1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDowO1xuICAgIHJpZ2h0OjA7XG4gICAgbWFyZ2luLWxlZnQ6IDQwcHg7XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIG1hcmdpbi10b3A6IDE1MHB4O1xuICAgIGRpc3BsYXk6IGlubGluZS1mbGV4O1xufVxuXG4uY2FyZHtcbiAgICBoZWlnaHQ6IDI1MHB4O1xuICAgIC0td2lkdGg6IDQwMHB4O1xuICAgIGJveC1zaGFkb3c6IG5vbmU7XG4gICAgbWFyZ2luLXRvcDogMjEwcHg7XG59XG5cbi5wcmVjaW9zeyBcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDowO1xuICAgIHJpZ2h0OjA7XG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICAgIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLmRlc2Nye1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICBtYXJnaW4tbGVmdDogMTVweDtcbiAgICBmb250LXNpemU6IDE1cHg7XG59XG5cbi50b3RhbHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcbiAgICBtYXJnaW4tbGVmdDogNXB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkZXI7XG59XG5cblxuXG4uaXRlbXN7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG59XG5cbi5sdWdhcntcbiAgICBmb250LXNpemU6IDE1cHg7XG4gICAgLy9ib3JkZXItY29sb3I6IGJsYWNrO1xuICAgIGJvcmRlcjogMnB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICAgIHdpZHRoOiAyMDBweDtcbn1cblxuLmlucHV0e1xuICAgIHdpZHRoOiAyNTBweDtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICAgIHBhZGRpbmc6IDEwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IDI1cHg7XG4gICAgYm9yZGVyOiBzb2xpZCAxcHggcmdiKDE4NCwgMTg0LCAxODQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG59XG5cbi5yZXNwdWVzdGF7XG4gICAgZm9udC1zaXplOiAxM3B4O1xuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgbWFyZ2luOiAwcHg7XG5cbn1cblxuLnRpdHVsb3tcbiBmb250LXNpemU6IDEzcHg7XG4gZm9udC13ZWlnaHQ6IDMwMDtcbiBtYXJnaW46IDBweDtcblxufVxuXG4udG90YWx7XG4gICAgY29sb3I6IHJnYigyNDgsIDc5LCA3OSk7XG59XG5cbi5ib3RvbmVze1xuICAgIG1hcmdpbi1ib3R0b206IDBweDtcbiAgICBtYXJnaW4tdG9wOiAtN3B4O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/popover-description/popover-description.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/popover-description/popover-description.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: PopoverDescriptionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverDescriptionComponent", function() { return PopoverDescriptionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _gruprovider_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../gruprovider.service */ "./src/app/gruprovider.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+
+
+var PopoverDescriptionComponent = /** @class */ (function () {
+    function PopoverDescriptionComponent(popController, navigate, provider, location) {
+        this.popController = popController;
+        this.navigate = navigate;
+        this.provider = provider;
+        this.location = location;
+        this.service = this.provider.service;
+    }
+    PopoverDescriptionComponent.prototype.ngOnInit = function () {
+        this.distancia = this.provider.distance;
+        this.total = this.provider.total;
+        this.time = this.provider.time;
+        console.log(this.provider.distance);
+    };
+    PopoverDescriptionComponent.prototype.close = function () {
+        this.popController.dismiss();
+    };
+    PopoverDescriptionComponent.prototype.navigateFoward = function () {
+        this.close();
+        this.provider.service = "Grua";
+        this.location.back();
+    };
+    PopoverDescriptionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-popover-description',
+            template: __webpack_require__(/*! ./popover-description.component.html */ "./src/app/popover-description/popover-description.component.html"),
+            styles: [__webpack_require__(/*! ./popover-description.component.scss */ "./src/app/popover-description/popover-description.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+            _gruprovider_service__WEBPACK_IMPORTED_MODULE_3__["GruproviderService"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
+    ], PopoverDescriptionComponent);
+    return PopoverDescriptionComponent;
 }());
 
 
@@ -1964,14 +2058,16 @@ __webpack_require__.r(__webpack_exports__);
 var ShareComponent = /** @class */ (function () {
     function ShareComponent(socialSharing) {
         this.socialSharing = socialSharing;
+        this.mensaje = 'GruApp es una aplicación móvil de asistencia en carretera que trabaja de manera segura y rápida en todo el país y sin costos de membresía. ¡Haga clic aquí www.gruapp.app para descargar!';
+        this.url = 'http://localhost:8102';
     }
     ShareComponent.prototype.ngOnInit = function () { };
     ShareComponent.prototype.shareFacebook = function () {
         // Share via facebook
-        this.socialSharing.shareViaFacebook('message', 'image', 'url').then(function () {
-            // Success!
-        }).catch(function () {
-            // Error!
+        this.socialSharing.shareViaFacebook('GruApp es una aplicación móvil de asistencia en carretera que trabaja de manera segura y rápida en todo el país y sin costos de membresía. ¡Haga clic aquí www.gruapp.app para descargar!', 'http://localhost:8102').then(function (result) {
+            console.log(result);
+        }).catch(function (error) {
+            console.log(error);
         });
     };
     ShareComponent.prototype.shareInstagram = function () {

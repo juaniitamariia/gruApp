@@ -1,0 +1,142 @@
+.solicitar{
+    margin-right: auto;
+    margin-left: auto;
+    left:0;
+    right:0;
+    width: 170px;
+    margin-bottom: 10px;
+  }
+  
+  .titulo-destino{
+    font-size: 12px;
+    color: rgb(187, 181, 181);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  .instrucciones{
+    color:gray;
+    font-size: 13px;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .input-destino{
+    border: solid 1px rgb(212, 208, 208);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    --padding-start: 8px;
+  }
+  
+    .boton{
+      position: absolute;
+      margin-left: 20px;
+      width:50px;
+      height:50px;
+      z-index: 1000;
+      border-radius: 50%;
+      background-color: #6561ab;
+      box-shadow: 50%;
+      margin-top: 40px;
+    }
+  
+    .menuBtn{
+      height: 30px;
+      width: 30px;
+      color: white;
+    }
+  
+    .mainMenu{
+      position: absolute;
+      left:0;
+      right:0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 450px;
+      height: 1080px;
+      background-color: white;
+      z-index: 100;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      background: transparent;
+      box-shadow: none;
+    }
+  
+    .locationIcon{
+      width: 25px;
+      margin-left: 20px;
+      margin-top: 20px;
+      display: inline-flex;
+  
+    }
+  
+    .actualLoc{
+      display: inline-flex;
+      position: absolute;
+      margin-top: 30px;
+      margin-left: 10px;
+    }
+  
+    .recoger{
+      display: inline-flex;
+      position: absolute;
+      margin-top: 15px;
+      font-size: 12px;
+      margin-left: 10px;
+      color: gray;
+      font-weight: 100;
+    }
+  
+    .destination{
+      display: inline-flex;
+      position: absolute;
+      margin-top: 100px;
+      margin-left: 10px;
+    }
+  
+    .destino{
+      display: inline-flex;
+      position: absolute;
+      margin-top: 85px;
+      font-size: 12px;
+      margin-left: 10px;
+      color: gray;
+      font-weight: 100;
+    }
+  
+    .grid-botones{
+      margin-left: auto;
+      margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 260px;
+    }
+  
+    .menu{
+      position: absolute;
+      left:0;
+      right:0;
+      margin-left: auto;
+      margin-right: auto;
+      margin: 0;
+      bottom: 0;
+      background-color: white;
+      z-index: 1000;
+      width: 100vw;
+      height: 220px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+  
+    }
+   //intento
+  
+   .mapboxgl-ctrl-geocoder {
+     margin-top: 100px !important;
+   }

@@ -101,10 +101,10 @@ numbersOnly(input){
 
 
    reSendCode() {
-      this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
-      if (this.verificationCode.length != 4) {
-        this.verificationCode = this.verificationCode + "1";
-      }
+      // this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
+      // if (this.verificationCode.length != 4) {
+      //   this.verificationCode = this.verificationCode + "1";
+      // }
       Parse.User.current().set('verificationCode', this.verificationCode)
       Parse.User.current().save().then((savedUser) => {
         Parse.Cloud.run('sendVerificationCode', {

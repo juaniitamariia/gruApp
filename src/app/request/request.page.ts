@@ -40,14 +40,11 @@ export class RequestPage implements OnInit {
           result[i] = result[i].toJSON();
         }
         this.requests = result;
-
+        this.provider.requests = result;
         this.provider.requestQuantity = result.length; //devuelve la cantidad total de items en el array
         this.service = this.requests.service;
-        
         console.log(this.provider.requestQuantity);
-
-        // console.log(this.requests.destination.latitude, this.requests.destination.longitude); // destination     
-        this.provider.serviceId = this.requests.objectid;                                                  
+        this.provider.serviceId = this.requests.objectid; //guarda el id del request                                              
       }
       // tslint:disable-next-line:no-unused-expression
     }), (error) => {
@@ -55,15 +52,17 @@ export class RequestPage implements OnInit {
     };
   }
 
-  seeDriver(objectId){
+  seeDriver(objectId, request){
     console.log(this.requests);
     this.provider.serviceId = objectId;
+    this.provider.selectedRequest = request;
    this.control.navigateForward("/serviceoptions");
   }
 
-  goTo(objectId)
+  goTo(objectId, request)
   {
-    this.provider.serviceId = objectId
+    this.provider.serviceId = objectId;
+    this.provider.selectedRequest = request;
     this.control.navigateRoot('/cotizaciones');
   }
 

@@ -31,8 +31,10 @@ export class PassInputPage implements OnInit {
       androiddelay: 100,
      }
   console.log('transition');
+  console.log("entrando al navigate");
+  this.provider.sendCode(this.verifiedPassword);
    this.nativePageTransitions.slide(options);
-    this.nav.navigateRoot("/num-verification");
+    // this.nav.navigateRoot("/num-verification");
   }
 
   navigateBack(){
@@ -52,10 +54,11 @@ export class PassInputPage implements OnInit {
   async confirmPass(){
     this.provider.password = this.password;
 
-    if( this.password == this.verifiedPassword){ //&& this.provider.signUp() == true
-      this.provider.signUp(); //función del provider que setea el codigo
+    if( this.password == this.verifiedPassword && this.provider.signUserUp() == true ){
+      //this.provider.signUserUp();
+
       this.navigate();
-    }else if (this.password != this.verifiedPassword){
+    }else if ( this.password != this.verifiedPassword){
       const alert = await this.alert.create({
         header: 'Error',
         message: 'Las contraseñas no son iguales',
@@ -70,9 +73,10 @@ export class PassInputPage implements OnInit {
       });
       await alert.present();
     }
-    // else if (this.password == this.verifiedPassword){ //&& this.provider.signUp() == false
-    //   this.presentAlert();
-    // }
+    else if(this.password == this.verifiedPassword &&  (this.provider.signUserUp() == false)) { 
+      console.log("no se guardo la data");
+            this.presentAlert();
+    }
   }
 
   async presentAlert() {

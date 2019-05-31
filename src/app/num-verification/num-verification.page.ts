@@ -54,6 +54,8 @@ numbersOnly(input){
    var regularExp = /[^0-9]/;
    input.value = input.value.replace(regularExp, "");
  }
+ 
+
 
    navigateFoward(){
 
@@ -75,6 +77,7 @@ numbersOnly(input){
       Parse.Cloud.run('setVerified', { userId: Parse.User.current().id, number: this.numbers} )
       .then((result) => {
         if(result.success == true){
+          this.gru.signUserUp();
          this.nativePageTransitions.slide(options);
          this.nav.navigateRoot('/metodo-pago');
         }else{

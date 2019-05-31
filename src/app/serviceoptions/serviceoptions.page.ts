@@ -161,7 +161,7 @@ export class ServiceoptionsPage implements OnInit {
             this.navMenu();
           }
         }
-      ]
+      ] 
     });
 
     await alert.present();

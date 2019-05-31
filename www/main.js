@@ -1256,12 +1256,14 @@ var GruproviderService = /** @class */ (function () {
         parse.serverURL = 'https://parseapi.back4app.com/';
         parse__WEBPACK_IMPORTED_MODULE_2__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     };
-    GruproviderService.prototype.signUp = function () {
+    GruproviderService.prototype.signUserUp = function () {
         var _this = this;
+        console.log("Entrando singUp()");
         this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
         if (this.verificationCode.length != 4) {
             this.verificationCode = this.verificationCode + "1";
         }
+        console.log("Verification Code:", this.verificationCode);
         //Used to catch the error thrown by the signUp() function
         var no = false;
         var user = new parse__WEBPACK_IMPORTED_MODULE_2__["User"]();
@@ -1279,17 +1281,24 @@ var GruproviderService = /** @class */ (function () {
             _this.currentUser = user;
             _this.sendCode(_this.verificationCode);
         }).catch(function (error) {
+            console.log(error);
             return false;
         });
         return true;
     };
     GruproviderService.prototype.sendCode = function (code) {
+        var _this = this;
+        console.log("sendCode()");
+        var userId = parse__WEBPACK_IMPORTED_MODULE_2__["User"].current().id;
+        console.log("ID:", userId);
         parse__WEBPACK_IMPORTED_MODULE_2__["Cloud"].run('sendVerificationCode', {
             verificationCode: code,
-            userId: parse__WEBPACK_IMPORTED_MODULE_2__["User"].current().id,
+            userId: userId,
             phoneNumber: parse__WEBPACK_IMPORTED_MODULE_2__["User"].current().get('phoneNumber')
         }).then(function (result) {
+            console.log("mensaje enviado");
             console.log(result);
+            _this.nav.navigateRoot("/num-verification");
             return true;
         }, function (error) {
             console.log(error);
@@ -2059,12 +2068,12 @@ var ShareComponent = /** @class */ (function () {
     function ShareComponent(socialSharing) {
         this.socialSharing = socialSharing;
         this.mensaje = 'GruApp es una aplicación móvil de asistencia en carretera que trabaja de manera segura y rápida en todo el país y sin costos de membresía. ¡Haga clic aquí www.gruapp.app para descargar!';
-        this.url = 'http://localhost:8102';
     }
     ShareComponent.prototype.ngOnInit = function () { };
     ShareComponent.prototype.shareFacebook = function () {
         // Share via facebook
-        this.socialSharing.shareViaFacebook('GruApp es una aplicación móvil de asistencia en carretera que trabaja de manera segura y rápida en todo el país y sin costos de membresía. ¡Haga clic aquí www.gruapp.app para descargar!', 'http://localhost:8102').then(function (result) {
+        console.log(this.mensaje);
+        this.socialSharing.shareViaFacebook(this.mensaje, 'http://localhost:8102').then(function (result) {
             console.log(result);
         }).catch(function (error) {
             console.log(error);
@@ -2072,12 +2081,13 @@ var ShareComponent = /** @class */ (function () {
     };
     ShareComponent.prototype.shareInstagram = function () {
         // Share via facebook
-        this.socialSharing.shareViaInstagram('message', 'image').then(function () {
+        this.socialSharing.shareViaInstagram(this.mensaje, 'http://localhost:8102').then(function () {
             // Success!
         }).catch(function () {
             // Error!
         });
     };
+    //falta anadir el icono de twitter
     ShareComponent.prototype.shareTwitter = function () {
         this.socialSharing.shareViaTwitter('message', 'image').then(function () {
             // Success!
@@ -2086,7 +2096,7 @@ var ShareComponent = /** @class */ (function () {
         });
     };
     ShareComponent.prototype.shareWhatsapp = function () {
-        this.socialSharing.shareViaWhatsApp('message', 'image', 'url').then(function () {
+        this.socialSharing.shareViaWhatsApp(this.mensaje, 'image', 'http://localhost:8102').then(function () {
             // Success!
         }).catch(function () {
             // Error!

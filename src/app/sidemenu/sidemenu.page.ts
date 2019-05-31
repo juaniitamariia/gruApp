@@ -29,7 +29,6 @@ import {
 import {
   PopoverController
 } from '@ionic/angular';
-import * as Parse from 'parse';
 import {
   ModalController
 } from '@ionic/angular';
@@ -46,6 +45,7 @@ import {
   getAllRouteGuards
 } from '@angular/router/src/utils/preactivation';
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import * as Parse from 'parse';
 
 let parse = require('parse');
 
@@ -250,7 +250,7 @@ export class SidemenuPage implements OnInit {
   async Gasolina() {
     const alert = await this.alerCtrl.create({
       header: '¡ALERTA!',
-      message: 'Le llevamos solo $5 de gasolina para que pueda llegar a la estación de gasolina más cercana. No aplica para gasolina diesel.',
+      message: 'Le llevamos solo $5 de gasolina para que pueda llegar a la estación de gasolina más cercana. No aplica para diesel.',
       buttons: [{
         text: 'OK',
         role: 'cancel',
@@ -289,7 +289,7 @@ export class SidemenuPage implements OnInit {
   async Llaves() {
     const alert = await this.alerCtrl.create({
       header: '¡ALERTA!',
-      message: 'Abrimos la principal para que pueda tener acceso al vehículo.',
+      message: 'Abrimos la puerta principal para que pueda tener acceso al vehículo.',
       buttons: [{
         text: 'OK',
         role: 'cancel',

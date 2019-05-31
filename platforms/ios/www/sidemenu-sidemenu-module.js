@@ -58,7 +58,7 @@ var SidemenuPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- sidemenu code -->\n<button class=\"boton\" (click)='openCustom()'>\n    <ion-icon class=menuBtn name=\"menu\"></ion-icon>\n</button>\n<ion-menu side=\"start\" menuId=\"custom\" class=\"my-custom-menu\">\n    <ion-header no-border>\n        <ion-toolbar class=\"menuBar\">\n            <ion-img src=\"assets/logowhite.png\" class=\"logo\" style=\"width: 200px;\"></ion-img>\n            <h6 class=center style=\"text-align: center; font-weight: 300; font-size: 20px; color: white;\">{{user}}</h6>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <ion-item ion-buttons (click)='close()' lines=\"none\">\n                <ion-img padding style=\"padding-right: 10px; width: 60px; margin-right: 0px; padding-left: 10px;\"\n                    src=\"assets/homegruapp.svg\"></ion-img>Inicio\n            </ion-item>\n            <ion-item ion-buttons (click)=metodoPago() lines=\"none\">\n                <ion-img style=\"width: 55px;\" padding src=\"assets/Wallet.svg\"></ion-img>Método de Pago\n            </ion-item>\n            <ion-item ion-buttons (click)='solicitudes()' lines=\"none\">\n                <ion-icon style=\"width: 55px; color: rgb(189, 189, 189)\" name=\"person-add\"></ion-icon>Solicitudes\n                \n                <ion-badge *ngIf= \"requestCount > 0\" slot=\"end\" color=\"danger\">{{requestCount}}</ion-badge>\n            </ion-item>\n            <ion-item ion-buttons (click)='navHistorial()' lines=\"none\">\n                <ion-img style=\"height: 35px; width: 58px; margin: 0px;\" src=\"assets/historial.png\"></ion-img>Historial\n            </ion-item>\n            <ion-item ion-buttons (click)='miVehiculo()' lines=\"none\">\n                <ion-img padding class=\"imagen-carro\" src=\"assets/carro.svg\"></ion-img>Mi vehículo\n            </ion-item>\n            <ion-item ion-buttons (click)=inviteFriends() lines=\"none\">\n                <ion-img style=\"height: 35px; width: 58px; margin: 0px;\" src=\"assets/invite.png\"></ion-img>Invitar amigos\n            </ion-item>\n            <ion-item ion-buttons (click)=profile() lines=\"none\">\n                <ion-img style=\"width: 60px;\" padding src=\"assets/Settings.svg\"></ion-img>Ajustes\n            </ion-item>\n            <ion-item ion-buttons (click)='logOut()' lines=\"none\">\n                <ion-img style=\"width: 55px;\" padding src=\"assets/logout.png\"></ion-img>Cerrar\n            </ion-item>\n        </ion-list>\n    </ion-content>\n\n    <ion-router-outlet main></ion-router-outlet>\n</ion-menu>\n\n<ion-card class=mainMenu>\n        <div class=\"instruction\" margin=10px expand=\"block\">\n                <h5 style=\"padding: 15px; font-size: 15px; margin-bottom: 0px;\">*Escoja el servicio que desea*</h5>\n            </div>\n\n    <!-- Services button icons(1) -->\n    <div class=divElem>\n        <ion-grid>\n            <ion-row>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('grua')\" class=btnIcon>\n                        <ion-img style=\"margin-left: 20px; object-fit: contain;\" src=\"assets/grua.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GRÚA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('goma')\" class=btnIcon>\n                        <ion-img style=\"object-fit: contain;\" src=\"assets/gomavacia.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GOMA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('gasolina')\" class=btnIcon>\n                        <ion-img style=\"object-fit: contain; width: 30px; margin-left: 35px;\" src=\"assets/gasolina.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GASOLINA</h6>\n                    </button>\n                </ion-col>\n            </ion-row>\n            <!-- Services button icons(2) -->\n            <ion-row>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('especial')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; margin-left: 10px;\" src=\"assets/choqueicon.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px; text-align: center;\">SERVICIO\n                            ESPECIAL</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('bateria')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; width: 90px;\" src=\"assets/bateria.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px;\">BATERÍA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('llaves')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; width: 75px; margin-left: 15px;\"\n                            src=\"assets/llaves.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px;\">CERRAJERO</h6>\n                    </button>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </div>\n\n</ion-card>\n\n<!-- Map view -->\n\n<ion-header>\n\n    <meta charset='utf-8' />\n    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />\n    <div id='mapindex' style='width: 100%; height: 70vh;'></div>\n\n    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>\n    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />\n\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        #map {\n            position: absolute;\n            top: 0;\n            bottom: 0;\n            width: 100%;\n        }\n    </style>\n\n</ion-header>\n\n<ion-content>\n\n\n</ion-content>"
+module.exports = "<!-- sidemenu code -->\n<button class=\"boton\" (click)='openCustom()'>\n    <ion-icon class=menuBtn name=\"menu\"></ion-icon>\n</button>\n<ion-menu side=\"start\" menuId=\"custom\" class=\"my-custom-menu\">\n    <ion-header no-border>\n        <ion-toolbar class=\"menuBar\">\n            <ion-img src=\"assets/logowhite.png\" class=\"logo\" style=\"width: 200px;\"></ion-img>\n            <h6 class=center style=\"text-align: center; font-weight: 300; font-size: 20px; color: white;\">{{user}}</h6>\n        </ion-toolbar>\n    </ion-header>\n    <ion-content>\n        <ion-list>\n            <ion-item ion-buttons (click)='close()' lines=\"none\">\n                <ion-img padding style=\"padding-right: 10px; width: 60px; margin-right: 0px; padding-left: 10px;\"\n                    src=\"assets/homegruapp.svg\"></ion-img>Inicio\n            </ion-item>\n            <ion-item ion-buttons (click)=metodoPago() lines=\"none\">\n                <ion-img style=\"width: 55px;\" padding src=\"assets/Wallet.svg\"></ion-img>Método de Pago\n            </ion-item>\n            <ion-item ion-buttons (click)='solicitudes()' lines=\"none\">\n                <ion-icon style=\"width: 55px; color: rgb(189, 189, 189)\" name=\"person-add\"></ion-icon>Solicitudes\n                \n                <!-- <ion-badge *ngIf= \"requestCount > 0\" slot=\"end\" color=\"danger\">{{requestCount}}</ion-badge> -->\n            </ion-item>\n            <ion-item ion-buttons (click)='navHistorial()' lines=\"none\">\n                <ion-img style=\"height: 35px; width: 58px; margin: 0px;\" src=\"assets/historial.png\"></ion-img>Historial\n            </ion-item>\n            <ion-item ion-buttons (click)='miVehiculo()' lines=\"none\">\n                <ion-img padding class=\"imagen-carro\" src=\"assets/carro.svg\"></ion-img>Mi vehículo\n            </ion-item>\n            <ion-item ion-buttons (click)=inviteFriends() lines=\"none\">\n                <ion-img style=\"height: 35px; width: 58px; margin: 0px;\" src=\"assets/invite.png\"></ion-img>Invitar amigos\n            </ion-item>\n            <ion-item ion-buttons (click)=profile() lines=\"none\">\n                <ion-img style=\"width: 60px;\" padding src=\"assets/Settings.svg\"></ion-img>Ajustes\n            </ion-item>\n            <ion-item ion-buttons (click)='logOut()' lines=\"none\">\n                <ion-img style=\"width: 55px;\" padding src=\"assets/logout.png\"></ion-img>Cerrar\n            </ion-item>\n        </ion-list>\n    </ion-content>\n\n    <ion-router-outlet main></ion-router-outlet>\n</ion-menu>\n\n<ion-card class=mainMenu>\n        <div class=\"instruction\" margin=10px expand=\"block\">\n                <h5 style=\"padding: 15px; font-size: 15px; margin-bottom: 0px;\">*Escoja el servicio que desea*</h5>\n            </div>\n\n    <!-- Services button icons(1) -->\n    <div class=divElem>\n        <ion-grid>\n            <ion-row>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('grua')\" class=btnIcon>\n                        <ion-img style=\"margin-left: 20px; object-fit: contain;\" src=\"assets/grua.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GRÚA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('goma')\" class=btnIcon>\n                        <ion-img style=\"object-fit: contain;\" src=\"assets/gomavacia.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GOMA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('gasolina')\" class=btnIcon>\n                        <ion-img style=\"object-fit: contain; width: 30px; margin-left: 35px;\" src=\"assets/gasolina.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 5px; font-size: 12px;\">GASOLINA</h6>\n                    </button>\n                </ion-col>\n            </ion-row>\n            <!-- Services button icons(2) -->\n            <ion-row>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('especial')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; margin-left: 10px;\" src=\"assets/choqueicon.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px; text-align: center;\">SERVICIO\n                            ESPECIAL</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('bateria')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; width: 90px;\" src=\"assets/bateria.svg\"></ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px;\">BATERÍA</h6>\n                    </button>\n                </ion-col>\n                <ion-col size=\"4\">\n                    <button (click)=\"alerts('llaves')\" class=btnIcon2>\n                        <ion-img padding style=\"object-fit: contain; width: 75px; margin-left: 15px;\"\n                            src=\"assets/llaves.svg\">\n                        </ion-img>\n                        <h6 style=\"font-weight: 200; margin-top: 0px; font-size: 12px;\">CERRAJERO</h6>\n                    </button>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </div>\n\n</ion-card>\n\n<!-- Map view -->\n\n<ion-header>\n\n    <meta charset='utf-8' />\n    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />\n    <div id='mapindex' style='width: 100%; height: 70vh;'></div>\n\n    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>\n    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />\n\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        #map {\n            position: absolute;\n            top: 0;\n            bottom: 0;\n            width: 100%;\n        }\n    </style>\n\n</ion-header>\n\n<ion-content>\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -92,11 +92,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mapbox_gl__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(mapbox_gl__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
 /* harmony import */ var _ionic_native_native_page_transitions_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/native-page-transitions/ngx */ "./node_modules/@ionic-native/native-page-transitions/ngx/index.js");
-/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
-/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(parse__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
-/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../popover/popover.component */ "./src/app/popover/popover.component.ts");
-/* harmony import */ var _share_share_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../share/share.component */ "./src/app/share/share.component.ts");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+/* harmony import */ var _popover_popover_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../popover/popover.component */ "./src/app/popover/popover.component.ts");
+/* harmony import */ var _share_share_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../share/share.component */ "./src/app/share/share.component.ts");
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! parse */ "./node_modules/parse/index.js");
+/* harmony import */ var parse__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(parse__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -129,7 +129,7 @@ var SidemenuPage = /** @class */ (function () {
         this.geolocation = geolocation;
         mapbox_gl__WEBPACK_IMPORTED_MODULE_5__["accessToken"] = 'pk.eyJ1IjoianJvc2FyaW8yNDEiLCJhIjoiY2pzdXF6NmJiMmgzNzQ5cnJkMjFsa285NSJ9.a6Z7HjeR6q74TBxQhXPy5A';
         parse.serverURL = 'https://parseapi.back4app.com/';
-        parse__WEBPACK_IMPORTED_MODULE_8__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
+        parse__WEBPACK_IMPORTED_MODULE_11__["initialize"]("guMi91jQ9mwtDypMkb74aFyKPmI0sQN2CY9TPHW2", "qEd42GYwiQaSxPHkgST0XJXOFqeacdlz4vPYNZh8");
     }
     SidemenuPage.prototype.ngOnInit = function () {
         this.loadMap();
@@ -300,7 +300,7 @@ var SidemenuPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.alerCtrl.create({
                             header: '¡ALERTA!',
-                            message: 'Le llevamos solo $5 de gasolina para que pueda llegar a la estación de gasolina más cercana. No aplica para gasolina diesel.',
+                            message: 'Le llevamos solo $5 de gasolina para que pueda llegar a la estación de gasolina más cercana. No aplica para diesel.',
                             buttons: [{
                                     text: 'OK',
                                     role: 'cancel',
@@ -357,7 +357,7 @@ var SidemenuPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.alerCtrl.create({
                             header: '¡ALERTA!',
-                            message: 'Abrimos la principal para que pueda tener acceso al vehículo.',
+                            message: 'Abrimos la puerta principal para que pueda tener acceso al vehículo.',
                             buttons: [{
                                     text: 'OK',
                                     role: 'cancel',
@@ -410,7 +410,7 @@ var SidemenuPage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.modalCtrl.create({
-                            component: _share_share_component__WEBPACK_IMPORTED_MODULE_11__["ShareComponent"],
+                            component: _share_share_component__WEBPACK_IMPORTED_MODULE_10__["ShareComponent"],
                             componentProps: {
                                 value: 123
                             }
@@ -428,7 +428,7 @@ var SidemenuPage = /** @class */ (function () {
     };
     SidemenuPage.prototype.logOut = function () {
         var _this = this;
-        parse__WEBPACK_IMPORTED_MODULE_8__["User"].logOut().then(function (resp) {
+        parse__WEBPACK_IMPORTED_MODULE_11__["User"].logOut().then(function (resp) {
             console.log('Logged out successfully', resp);
             _this.nav.navigateRoot('/registro');
         }, function (err) {
@@ -441,7 +441,7 @@ var SidemenuPage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.popoverController.create({
-                            component: _popover_popover_component__WEBPACK_IMPORTED_MODULE_10__["PopoverComponent"],
+                            component: _popover_popover_component__WEBPACK_IMPORTED_MODULE_9__["PopoverComponent"],
                             //event: event,
                             translucent: false,
                             backdropDismiss: false
@@ -457,8 +457,8 @@ var SidemenuPage = /** @class */ (function () {
     };
     SidemenuPage.prototype.getName = function () {
         var _this = this;
-        parse__WEBPACK_IMPORTED_MODULE_8__["Cloud"].run('getName', {
-            userId: parse__WEBPACK_IMPORTED_MODULE_8__["User"].current().id
+        parse__WEBPACK_IMPORTED_MODULE_11__["Cloud"].run('getName', {
+            userId: parse__WEBPACK_IMPORTED_MODULE_11__["User"].current().id
         }).then(function (result) {
             _this.user = result;
             console.log(_this.user);
@@ -468,8 +468,8 @@ var SidemenuPage = /** @class */ (function () {
     };
     SidemenuPage.prototype.getPhoto = function () {
         var _this = this;
-        parse__WEBPACK_IMPORTED_MODULE_8__["Cloud"].run('getUser', {
-            userId: parse__WEBPACK_IMPORTED_MODULE_8__["User"].current().id
+        parse__WEBPACK_IMPORTED_MODULE_11__["Cloud"].run('getUser', {
+            userId: parse__WEBPACK_IMPORTED_MODULE_11__["User"].current().id
         }).then(function (result) {
             if (result.get('profilePic') == null) {
                 console.log("photo object is null");
@@ -529,7 +529,7 @@ var SidemenuPage = /** @class */ (function () {
             _gruprovider_service__WEBPACK_IMPORTED_MODULE_4__["GruproviderService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"],
             _ionic_native_native_page_transitions_ngx__WEBPACK_IMPORTED_MODULE_7__["NativePageTransitions"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_9__["Geolocation"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_8__["Geolocation"]])
     ], SidemenuPage);
     return SidemenuPage;
 }());

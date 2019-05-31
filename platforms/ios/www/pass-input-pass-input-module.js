@@ -116,8 +116,10 @@ var PassInputPage = /** @class */ (function () {
             androiddelay: 100,
         };
         console.log('transition');
+        console.log("entrando al navigate");
+        this.provider.sendCode(this.verifiedPassword);
         this.nativePageTransitions.slide(options);
-        this.nav.navigateRoot("/num-verification");
+        // this.nav.navigateRoot("/num-verification");
     };
     PassInputPage.prototype.navigateBack = function () {
         var options = {
@@ -139,8 +141,8 @@ var PassInputPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.provider.password = this.password;
-                        if (!(this.password == this.verifiedPassword && this.provider.signUp() == true)) return [3 /*break*/, 1];
-                        this.provider.signUp();
+                        if (!(this.password == this.verifiedPassword && this.provider.signUserUp() == true)) return [3 /*break*/, 1];
+                        //this.provider.signUserUp();
                         this.navigate();
                         return [3 /*break*/, 5];
                     case 1:
@@ -164,7 +166,8 @@ var PassInputPage = /** @class */ (function () {
                         _a.sent();
                         return [3 /*break*/, 5];
                     case 4:
-                        if (this.password == this.verifiedPassword && this.provider.signUp() == false) {
+                        if (this.password == this.verifiedPassword && (this.provider.signUserUp() == false)) {
+                            console.log("no se guardo la data");
                             this.presentAlert();
                         }
                         _a.label = 5;

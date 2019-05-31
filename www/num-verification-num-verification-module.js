@@ -146,6 +146,7 @@ var NumVerificationPage = /** @class */ (function () {
         parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('setVerified', { userId: parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().id, number: this.numbers })
             .then(function (result) {
             if (result.success == true) {
+                _this.gru.signUserUp();
                 _this.nativePageTransitions.slide(options);
                 _this.nav.navigateRoot('/metodo-pago');
             }
@@ -164,10 +165,10 @@ var NumVerificationPage = /** @class */ (function () {
         nextElement.setFocus();
     };
     NumVerificationPage.prototype.reSendCode = function () {
-        this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
-        if (this.verificationCode.length != 4) {
-            this.verificationCode = this.verificationCode + "1";
-        }
+        // this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
+        // if (this.verificationCode.length != 4) {
+        //   this.verificationCode = this.verificationCode + "1";
+        // }
         parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().set('verificationCode', this.verificationCode);
         parse__WEBPACK_IMPORTED_MODULE_5__["User"].current().save().then(function (savedUser) {
             parse__WEBPACK_IMPORTED_MODULE_5__["Cloud"].run('sendVerificationCode', {

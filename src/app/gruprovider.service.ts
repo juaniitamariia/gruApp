@@ -83,11 +83,14 @@ export class GruproviderService {
 
   }
 
-  signUp() {
+  signUserUp() {
+    console.log("Entrando singUp()");
     this.verificationCode = (Math.floor(Math.random() * 9999)).toString(10);
     if (this.verificationCode.length != 4) {
       this.verificationCode = this.verificationCode + "1";
     }
+
+    console.log("Verification Code:", this.verificationCode);
     //Used to catch the error thrown by the signUp() function
     var no = false;
     const user = new Parse.User();
@@ -105,18 +108,25 @@ export class GruproviderService {
       this.currentUser = user;
       this.sendCode(this.verificationCode);
     }).catch((error) => {
+      console.log(error);
       return false;
     });
     return true;
   }
   
   sendCode(code){
+    console.log("sendCode()");
+  
+    let userId = Parse.User.current().id;
+    console.log("ID:", userId);
   Parse.Cloud.run('sendVerificationCode', {
     verificationCode: code,
-    userId: Parse.User.current().id,
+    userId: userId,
     phoneNumber: Parse.User.current().get('phoneNumber')
   }).then((result) => {
+    console.log("mensaje enviado");
     console.log(result);
+    this.nav.navigateRoot("/num-verification");
     return true;
   }, (error) => {
     console.log(error);
